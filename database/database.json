@@ -1,14 +1,14 @@
 {
-    "zl3e12": {
+    "1": {
         "username": "Lunabii",
         "password": "1234",
         "posts": {
-            "idNumber1": {
+            "01": {
                 "time": "0101",
                 "message": "Här är min första inlägg"
             },
-            "idNumber2": {
-                "time": "0101",
+            "02": {
+                "time": "getTime()",
                 "message": "Här är min första inlägg"
             }
         },
