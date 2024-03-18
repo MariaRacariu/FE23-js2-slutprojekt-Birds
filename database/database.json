@@ -1,0 +1,17 @@
+{
+    "zl3e12": {
+        "username": "Lunabii",
+        "password": "1234",
+        "posts": {
+            "idNumber1": {
+                "time": "0101",
+                "message": "Här är min första inlägg"
+            },
+            "idNumber2": {
+                "time": "0101",
+                "message": "Här är min första inlägg"
+            }
+        },
+        "profilePicture": "Link"
+    }
+}
