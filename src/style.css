@@ -1,0 +1,11 @@
+.sideNav {
+    width: 20%
+}
+
+.post-display {
+    width: 69%;
+}
+
+section {
+    display: flex;
+}
