@@ -1,20 +1,19 @@
 {
   "posts": [],
   "users": {
-    "alex": {
-      "name": "Alex Lio",
-      "password": 123,
+    "luna": {
+      "name": "Luna Berg",
+      "password": "123",
       "profile_pic": "image.jpg"
     }
   },
-
   "categories": {
     "anime": {
       "name": "Anime",
       "description": "Explore the world of Japanese animation, discussing everything from classic series to the latest releases."
     },
     "meme": {
-      "name": "Meme",
+      "name": "Memes",
       "description": "Dive into the realm of internet culture, sharing and discussing the most viral and hilarious memes."
     },
     "datorit": {
