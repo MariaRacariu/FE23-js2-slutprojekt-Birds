@@ -5,9 +5,7 @@
   "main": "main.js",
   "type": "module",
   "scripts": {
-    "front:start": "live-server ./frontend/",
-    "backend:start": "node --watch ./backend/main.js",
-    "start": "live-server ./frontend/; node --watch ./backend/main.js",
+    "start": "live-server ./src",
     "dev": "parcel ./src/index.html",
     "build": "parcel build ./src/index.html --dist-dir docs --public-url ./",
     "clean": "del-cli ./.parcel-cache ./docs ./dist"
@@ -20,7 +18,7 @@
     "uuid": "^9.0.1"
   },
   "devDependencies": {
-    "@types/node": "^20.11.28",
-    "del-cli": "^5.1.0"
+    "del-cli": "^5.1.0",
+    "live-server": "^1.2.2"
   }
 }
