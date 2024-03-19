@@ -1,20 +1,17 @@
-console.log("Hello");
+
+import express from "express";
+import cors from "cors";
+
+const app = express();
+
+app.use(express.json(), cors());
 
 
 
-function generateHeader (a) {
-    const ulEl = document.createElement('ul')as HTMLUListElement;
-    const liEl = document.createElement('li')as HTMLLIElement;
-    const liEl2 = document.createElement('li')as HTMLLIElement;
-    const liEl3 = document.createElement('li')as HTMLLIElement;
-    const divHead = document.getElementById('ul-header')as HTMLDivElement;
 
-    divHead.appendChild(ulEl);
-    ulEl.appendChild(liEl);
-    ulEl.appendChild(liEl2);
-    ulEl.appendChild(liEl3);
-    liEl.innerText = 'home';
-    liEl.innerText = 'profile';
-    liEl.innerText = 'users';
 
-}
+
+app.listen(1234, () => {
+  console.log("listening on port 1234");
+});
+

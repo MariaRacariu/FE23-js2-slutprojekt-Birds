@@ -1,17 +1,25 @@
 {
-    "1": {
-        "username": "Lunabii",
-        "password": "1234",
-        "posts": {
-            "01": {
-                "time": "0101",
-                "message": "Här är min första inlägg"
-            },
-            "02": {
-                "time": "getTime()",
-                "message": "Här är min första inlägg"
-            }
-        },
-        "profilePicture": "Link"
+  "posts": [],
+  "users": {
+    "alex": {
+      "name": "Alex Lio",
+      "password": 123,
+      "profile_pic": "image.jpg"
     }
+  },
+
+  "categories": {
+    "anime": {
+      "name": "Anime",
+      "description": "Explore the world of Japanese animation, discussing everything from classic series to the latest releases."
+    },
+    "meme": {
+      "name": "Meme",
+      "description": "Dive into the realm of internet culture, sharing and discussing the most viral and hilarious memes."
+    },
+    "datorit": {
+      "name": "Dator/IT",
+      "description": "Engage in discussions about the latest in technology, troubleshooting, and advancements in computers and information technology."
+    }
+  }
 }
