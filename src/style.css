@@ -1,11 +1,45 @@
-.sideNav {
-    width: 20%
+*{
+    margin:0;
+    padding:0;
 }
 
-.post-display {
-    width: 69%;
+body {background-color: #A3CDB5;}
+
+header{
+    border: black solid 3px;
+    width: 1440px;
+    height: 141px;
+    margin: auto;
 }
 
-section {
-    display: flex;
+h1 {
+    text-align: center;
+    padding: 50px;
 }
+
+.head-div {
+    width: 400px;
+}
+
+
+.inlogg {
+    display:flex;
+    justify-content: center;
+    border: red solid 3px;
+    width: 1440px;
+    margin: auto;
+}
+
+form {
+    margin: 200px;
+}
+
+#emailMar {
+    margin-bottom: 40px;
+}
+
+b {
+    margin-bottom: 30px;
+}
+
+button {margin-top: 50px;}
