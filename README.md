@@ -3,7 +3,7 @@
 To start frontend:
 
 ```
-cd ./frontend
+cd ./frontend/
 npm run start
 
 ```
@@ -13,7 +13,7 @@ To start backend:
 (Go back from frontend folder with cd ..)
 
 ```
-cd ./backend
+cd ./backend/
 npm run dev
 
 ```
