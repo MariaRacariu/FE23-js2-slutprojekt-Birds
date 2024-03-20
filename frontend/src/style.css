@@ -8,6 +8,19 @@
     border: solid black 3px;
     justify-content: space-around;
     background-color: aqua;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #A3CDB5;
+}
+
+header {
+    border: black solid 3px;
+    width: 1440px;
+    height: 141px;
+    margin: auto;
 }
 
 
@@ -72,4 +85,40 @@ h5 {font-size: 2em;
 
 .show-logIn {
     visibility: hidden;
+}
+
+.titleContainer {
+    width: 400px;
+}
+
+.logInContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: red solid 3px;
+    min-width: 1440px;
+    min-height: 600px;
+    margin: auto;
+}
+
+.logInContainer>form {
+    min-width: 250px;
+}
+
+.formContainer {
+    margin-bottom: 20px;
+}
+
+.formContainer>label,
+.formContainer>input {
+    display: block;
+}
+
+.textLab {
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.error {
+    color: red;
 }
