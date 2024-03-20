@@ -49,47 +49,46 @@
         </div>
         <div class="input-field">
           <label for="fname">First name:</label>
-          <input type="text" id="fname" name="fname">
+          <input type="text" id="fname" name="fname" />
         </div>
       </div>
       <div class="right-nav">
-        <div class="show-profile">
-        <div>
-            <h5>Profil: name</h5>
-        </div>
-        <div class="img-box">
-            <img>
-        </div>
-        <div>
-            <ul>
-                <li>detta är ditt senaste inlägg</li>
+        <div id="profile" class="content-box">
+          <div>
+            <h5 id="profile-name">Profil: name</h5>
+          </div>
+          <div class="img-box">
+            <img id="profile-image" />
+          </div>
+          <div>
+            <ul id="profile-latest-posts">
             </ul>
+          </div>
+        </div>
+        <div id="show-logInn" class="content-box">
+          <form>
+            <label for="user-name" class="textLab"><b>User name</b></label
+            ><br />
+            <input
+              type="text"
+              placeholder="Enter Email"
+              name="email"
+              required
+              id="emailMar"
+            /><br />
+
+            <label for="psw" class="textLab"><b>Password</b></label
+            ><br />
+            <input
+              type="password"
+              placeholder="Enter Password"
+              name="psw"
+              required
+            /><br />
+            <button id="signup-button">Sign up</button>
+          </form>
         </div>
       </div>
-      <div id="show-logInn" class="show-logIn">
-        <form>
-          <label for="user-name" class="textLab"><b>User name</b></label
-          ><br />
-          <input
-            type="text"
-            placeholder="Enter Email"
-            name="email"
-            required
-            id="emailMar"
-          /><br />
-  
-          <label for="psw" class="textLab"><b>Password</b></label
-          ><br />
-          <input
-            type="password"
-            placeholder="Enter Password"
-            name="psw"
-            required
-          /><br />
-          <button>Sign up</button>
-        </form>
-      </div>
-    </div>
     </section>
   </body>
 </html>

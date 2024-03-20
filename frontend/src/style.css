@@ -83,8 +83,11 @@ h5 {font-size: 2em;
 }
 
 
-.show-logIn {
-    visibility: hidden;
+.content-box{
+    display: none;
+}
+.content-box-active{
+    display: block;
 }
 
 .titleContainer {
