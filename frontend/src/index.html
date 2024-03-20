@@ -14,66 +14,81 @@
         <div class="titleContainer">
           <h1>ForumMister</h1>
         </div>
-        <div class="ul-header"></div>
+        <button id="idBu">Log in</button>
       </div>
     </header>
-
-
- <section>
-      <div class="logInContainer">
-        <form>
-          <div class="formContainer">
-            <label for="userName" class="textLab">User name</label>
-            <!-- This ID makes no sense because we are using username @ -->
-            <input type="text" placeholder="Enter User name" name="userName" required id="emailMar">
-          </div>
-          <div class="formContainer">
-            <label for="password" class="textLab">Password</label>
-            <input type="password" placeholder="Enter Password" name="password" required>
-            <!-- Temporary -->
-            <!-- Just generate this in TypeScript when needed-->
-            <p class="error" id="errorMesssage">username or password is invalid</p>
-          </div>
-          <div class="formContainer">
-            <button>Sign up</button>
-          </div>
-
-        </form>
-      </div>
-
-      <!--</
-      <div class="sideNav">
+    <section>
+      <div class="sid-nav">
         <div>
           <h2>Forum</h2>
         </div>
         <div>
           <ul>
-            <li>Category 1</li>
-            <li>Category 2</li>
-            <li>Category 3</li>
+            <li>Anime</li>
+            <li>Meme</li>
+            <li>Dator/it</li>
           </ul>
         </div>
-        <hr>
         <div>
-          <h3>User's</h3>
+          <h3>Members</h3>
         </div>
         <div>
           <ul>
-            <li>Init33</li>
-            <li>Oh3</li>
+            <li>heddddh</li>
           </ul>
         </div>
       </div>
-      <div class="post-display">
+      <div class="post-div">
         <div>
-          <h4>Forum:name</h4>
+          <h4>Forum: name</h4>
         </div>
-        <div>
-          <ul>
-            <li>Hej jag heter Peter jag gillar bilar wrooom</li>
+        <div class="inlagDiv">
+          <ul id="post-ul">
+            <li>här är ett inlägg</li>
           </ul>
         </div>
-      </div>-->
+        <div class="input-field">
+          <label for="fname">First name:</label>
+          <input type="text" id="fname" name="fname" />
+        </div>
+      </div>
+      <div class="right-nav">
+        <div id="profile" class="content-box">
+          <div>
+            <h5 id="profile-name">Profil: name</h5>
+          </div>
+          <div class="img-box">
+            <img id="profile-image" />
+          </div>
+          <div>
+            <ul id="profile-latest-posts">
+            </ul>
+          </div>
+        </div>
+        <div id="show-logInn" class="content-box">
+          <form>
+            <label for="user-name" class="textLab"><b>User name</b></label
+            ><br />
+            <input
+              type="text"
+              placeholder="Enter Email"
+              name="email"
+              required
+              id="emailMar"
+            /><br />
+
+            <label for="psw" class="textLab"><b>Password</b></label
+            ><br />
+            <input
+              type="password"
+              placeholder="Enter Password"
+              name="psw"
+              required
+            /><br />
+            <button id="signup-button">Sign up</button>
+          </form>
+        </div>
+      </div>
     </section>
   </body>
 </html>
