@@ -68,3 +68,8 @@ h5 {font-size: 2em;
     width: 50%;
     height: 20%;
 }
+
+
+.show-logIn {
+    visibility: hidden;
+}
