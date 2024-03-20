@@ -9,35 +9,35 @@
   </head>
   <body>
     <header id="header">
+      <!-- Use descriptive classes pls @ -->
       <div class="wrap">
-        <div class="head-div">
+        <div class="titleContainer">
           <h1>ForumMister</h1>
         </div>
         <div class="ul-header"></div>
       </div>
     </header>
-    <section>
-      <div class="inlogg">
-        <form>
-          <label for="user-name" class="textLab"><b>User name</b></label
-          ><br />
-          <input
-            type="text"
-            placeholder="Enter Email"
-            name="email"
-            required
-            id="emailMar"
-          /><br />
 
-          <label for="psw" class="textLab"><b>Password</b></label
-          ><br />
-          <input
-            type="password"
-            placeholder="Enter Password"
-            name="psw"
-            required
-          /><br />
-          <button>Sign up</button>
+
+ <section>
+      <div class="logInContainer">
+        <form>
+          <div class="formContainer">
+            <label for="userName" class="textLab">User name</label>
+            <!-- This ID makes no sense because we are using username @ -->
+            <input type="text" placeholder="Enter User name" name="userName" required id="emailMar">
+          </div>
+          <div class="formContainer">
+            <label for="password" class="textLab">Password</label>
+            <input type="password" placeholder="Enter Password" name="password" required>
+            <!-- Temporary -->
+            <!-- Just generate this in TypeScript when needed-->
+            <p class="error" id="errorMesssage">username or password is invalid</p>
+          </div>
+          <div class="formContainer">
+            <button>Sign up</button>
+          </div>
+
         </form>
       </div>
 

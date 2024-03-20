@@ -1,11 +1,13 @@
-*{
-    margin:0;
-    padding:0;
+* {
+    margin: 0;
+    padding: 0;
 }
 
-body {background-color: #A3CDB5;}
+body {
+    background-color: #A3CDB5;
+}
 
-header{
+header {
     border: black solid 3px;
     width: 1440px;
     height: 141px;
@@ -17,29 +19,38 @@ h1 {
     padding: 50px;
 }
 
-.head-div {
+.titleContainer {
     width: 400px;
 }
 
-
-.inlogg {
-    display:flex;
+.logInContainer {
+    display: flex;
     justify-content: center;
+    align-items: center;
     border: red solid 3px;
-    width: 1440px;
+    min-width: 1440px;
+    min-height: 600px;
     margin: auto;
 }
 
-form {
-    margin: 200px;
+.logInContainer>form {
+    min-width: 250px;
 }
 
-#emailMar {
-    margin-bottom: 40px;
+.formContainer {
+    margin-bottom: 20px;
 }
 
-b {
-    margin-bottom: 30px;
+.formContainer>label,
+.formContainer>input {
+    display: block;
 }
 
-button {margin-top: 50px;}
+.textLab {
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.error {
+    color: red;
+}
