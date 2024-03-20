@@ -1,4 +1,4 @@
-function generateHeader (a) {
+/*function generateHeader (a) {
   const ulEl = document.createElement('ul')as HTMLUListElement;
   const liEl = document.createElement('li')as HTMLLIElement;
   const liEl2 = document.createElement('li')as HTMLLIElement;
@@ -13,4 +13,4 @@ function generateHeader (a) {
   liEl.innerText = 'profile';
   liEl.innerText = 'users';
 
-}
+}*/
