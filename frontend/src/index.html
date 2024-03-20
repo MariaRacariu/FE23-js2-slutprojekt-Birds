@@ -8,17 +8,67 @@
     <script type="module" src="./main.ts"></script>
   </head>
   <body>
-    <header id="header">
-      <div class="wrap">
-        <div class="head-div">
+    <header>
+      <div class="flex">
+        <div>
           <h1>ForumMister</h1>
         </div>
-        <div class="ul-header"></div>
+        <button>Log in</button>
       </div>
     </header>
     <section>
-      <div class="inlogg">
-        <form>
+      <div class="div-allt">
+      <div class="sid-nav">
+        <div>
+          <h2>Forum</h2>
+        </div>
+        <div>
+          <ul>
+            <li>Anime</li>
+            <li>Meme</li>
+            <li>Dator/it</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Members</h3>
+        </div>
+        <div>
+          <ul>
+            <li>heddddh</li>
+          </ul>
+        </div>
+      </div>
+      <div class="post-div">
+        <div>
+          <h4>Forum: name</h4>
+        </div>
+        <div class="inlagDiv">
+          <ul id="post-ul">
+            <li>här är ett inlägg</li>
+          </ul>
+        </div>
+        <div class="input-field">
+          <label for="fname">First name:</label>
+          <input type="text" id="fname" name="fname">
+        </div>
+      </div>
+      <div class="right-nav">
+        <div>
+            <h5>Profil: name</h5>
+        </div>
+        <div>
+            <img>
+        </div>
+        <div>
+            <ul>
+                <li>detta är ditt senaste inlägg</li>
+            </ul>
+        </div>
+      </div>
+    </div>
+    </section>
+    
+        <!--<form>
           <label for="user-name" class="textLab"><b>User name</b></label
           ><br />
           <input
@@ -38,8 +88,6 @@
             required
           /><br />
           <button>Sign up</button>
-        </form>
-      </div>
-    </section>
+        </form>-->
   </body>
 </html>

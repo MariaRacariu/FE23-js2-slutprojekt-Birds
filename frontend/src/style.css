@@ -1,45 +1,61 @@
-*{
-    margin:0;
-    padding:0;
+* {
+    list-style: none;
 }
 
-body {background-color: #A3CDB5;}
 
-header{
-    border: black solid 3px;
-    width: 1440px;
-    height: 141px;
-    margin: auto;
+.flex {
+    display: flex;
+    border: solid black 3px;
+    justify-content: space-around;
+    background-color: aqua;
 }
 
-h1 {
+
+.div-allt{
+    display: flex;
+    gap: 3px;
+}
+
+.sid-nav {
+    width: 15%;
+    border: 3px solid black;;
+}
+
+
+.post-div {
+    border: 3px solid black;
+    width: 65%;
+}
+
+
+.right-nav {
+    border: 2px red solid;
+    width: 20%;
+}
+
+.inlagDiv {
     text-align: center;
-    padding: 50px;
-}
-
-.head-div {
-    width: 400px;
-}
-
-
-.inlogg {
-    display:flex;
-    justify-content: center;
-    border: red solid 3px;
-    width: 1440px;
+    background-color: aqua;
+    width: 90%;
     margin: auto;
 }
 
-form {
-    margin: 200px;
+
+
+.input-field {
+    margin: auto;
+    text-align: center;
+    background-color: bisque;
+    width: 90%;
 }
 
-#emailMar {
-    margin-bottom: 40px;
+body {
+    width: 1600px;
+    margin: auto;
 }
 
-b {
-    margin-bottom: 30px;
-}
-
-button {margin-top: 50px;}
+h2 {font-size: 2em;}
+h3 {font-size: 2em;}
+h4 {font-size: 2em;
+text-align: center;}
+h5 {font-size: 2em;}
