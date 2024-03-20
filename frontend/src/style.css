@@ -33,6 +33,10 @@ h1 {
     margin: auto;
 }
 
+.logInContainer>form {
+    min-width: 250px;
+}
+
 .formContainer {
     margin-bottom: 20px;
 }
@@ -49,5 +53,4 @@ h1 {
 
 .error {
     color: red;
-    max-width: 100px;
 }
