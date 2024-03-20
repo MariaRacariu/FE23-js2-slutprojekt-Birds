@@ -1,5 +1,3 @@
-// REDDIT => FAKKIT (FAKE IT)
-
 import express from "express";
 import cors from "cors";
 import { createUser, loginUser } from "./src/modules/user.js";
