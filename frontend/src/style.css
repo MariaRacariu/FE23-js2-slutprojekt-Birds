@@ -3,11 +3,10 @@
 }
 
 
-.flex {
+section {
     display: flex;
     border: solid black 3px;
     justify-content: space-around;
-    background-color: aqua;
     margin: 0;
     padding: 0;
 }
@@ -18,7 +17,7 @@ body {
 
 header {
     border: black solid 3px;
-    width: 1440px;
+    width: 1598px;
     height: 141px;
     margin: auto;
 }
@@ -42,7 +41,7 @@ header {
 
 
 .right-nav {
-    border: 2px red solid;
+    border: 2px black solid 3px;;
     width: 20%;
     height: 70vh;
 }
