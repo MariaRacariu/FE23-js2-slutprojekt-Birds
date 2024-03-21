@@ -1,5 +1,7 @@
 import { promises as fs } from "fs";
 import { Database } from "./db.types.js";
+import { DBResponse, ResponseDataType } from "./res.types.js";
+import { Response } from "express";
 const filePath = "./db.json";
 
 // Define an async function to read a JSON file and parse its content
@@ -27,5 +29,29 @@ export async function writeJsonFile(data: Database): Promise<void> {
     // Handle errors (e.g., write permission issues)
     console.error(`Error writing JSON file: ${error}`);
     throw error; // Rethrow the error for further handling
+  }
+}
+
+export function createErrorResponse(code: number, message: string): DBResponse {
+  return {
+    status: code,
+    data: {
+      error: message,
+    },
+  };
+}
+
+export function createSuccessResponse(data: ResponseDataType): DBResponse {
+  return {
+    status: 200,
+    data,
+  };
+}
+
+export function tryCatch(res: Response, func: Function) {
+  try {
+    func();
+  } catch (error) {
+    res.status(404).send({ error: "Something went wrong" });
   }
 }

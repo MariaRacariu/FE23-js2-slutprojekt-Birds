@@ -5,7 +5,6 @@ export type Database = {
   comments: { [key: string]: Comment[] };
 };
 export type User = {
-  name: string;
   password: string;
   profile_pic: string;
 };
@@ -15,12 +14,14 @@ export type Post = {
   id: string;
   body: string;
   category: string;
+  created_at: number;
 };
 export type Category = { name: string; description: string };
 export type Comment = {
   id: string;
   body: string;
   author: string;
+  created_at: number;
 };
 
 //Example db

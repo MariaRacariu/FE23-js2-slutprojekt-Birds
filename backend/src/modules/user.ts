@@ -1,71 +1,58 @@
 import { DBResponse } from "../res.types.js";
-import { readJsonFile, writeJsonFile } from "../util.js";
+import {
+  createErrorResponse,
+  createSuccessResponse,
+  readJsonFile,
+  writeJsonFile,
+} from "../util.js";
 
-export async function loginUser(data: {
+type LoginUserArgs = {
   username: string;
   password: string;
-}): Promise<DBResponse> {
+};
+
+type CreateUserArgs = {
+  username: string;
+  password: string;
+  name: string;
+  profile_pic: string;
+};
+
+export async function loginUser(data: LoginUserArgs): Promise<DBResponse> {
   const db = await readJsonFile();
   const { username, password } = data;
 
-  if (!db.users[username]) {
-    return {
-      status: 404,
-      data: { error: "User not found" },
-    };
-  }
+  if (!db.users[username]) return createErrorResponse(404, "User not found");
 
   if (db.users[username].password === password) {
-    return {
-      status: 200,
-      data: {
-        username,
-        name: db.users[username].name,
-        profile_pic: db.users[username].profile_pic,
-      },
-    };
+    return createSuccessResponse({
+      username,
+      profile_pic: db.users[username].profile_pic,
+    });
   } else {
-    return {
-      status: 403,
-      data: { error: "Wrong password" },
-    };
+    return createErrorResponse(403, "Wrong Password");
   }
 }
 
-export async function createUser(
-  username: string,
-  password: string,
-  name: string,
-  profile_pic: string
-): Promise<DBResponse> {
+export async function createUser(data: CreateUserArgs): Promise<DBResponse> {
+  const { username, password, profile_pic } = data;
   const db = await readJsonFile();
-  try {
-    if (db.users[username]) {
-      return {
-        status: 401,
-        data: {
-          error: "Username already exists",
-        },
-      };
-    } else {
-      const userData = {
-        name,
-        password,
-        profile_pic,
-      };
+  if (db.users[username])
+    return createErrorResponse(401, "Username already exists");
 
-      db.users[username] = userData;
-      return await writeJsonFile(db).then(() => ({
-        status: 200,
-        data: { username, name, profile_pic },
-      }));
-    }
-  } catch (err) {
-    return {
-      status: 404,
-      data: {
-        error: "Something went wrong",
-      },
-    };
-  }
+  if (!username || !password || !profile_pic)
+    return createErrorResponse(400, "Missing fields");
+
+  const userData = {
+    password,
+    profile_pic,
+  };
+
+  db.users[username] = userData;
+  return await writeJsonFile(db).then(() =>
+    createSuccessResponse({
+      username,
+      profile_pic,
+    })
+  );
 }
