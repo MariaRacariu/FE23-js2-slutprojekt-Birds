@@ -1,4 +1,6 @@
 import { content, profile } from "./modules/constant";
+import { fetchFromDatabase } from "./modules/getpost";
+import { PostListResponse } from "./res.types";
 
 //mockup user, 
 const user = {
@@ -39,6 +41,17 @@ function generateLogin ():void {
   
 }
 
+
+function generateSignup ():void {
+  hideAllContentBoxes()
+  const div = document.getElementById('signup')as HTMLDivElement;
+  div.classList.add(content.isActive);
+  
+}
+
+const sigupButton = document.getElementById('signupButton')as HTMLButtonElement;
+sigupButton.addEventListener('click', generateSignup);
+
 function generateProfil ():void {
   hideAllContentBoxes();
   generateCategory();
@@ -68,7 +81,7 @@ const buttonLog = document.getElementById('idBu')as HTMLButtonElement;
 buttonLog.addEventListener('click', generateLogin);
 
 const buttonSignUp = document.getElementById('signup-button')as HTMLButtonElement;
-buttonSignUp.addEventListener('click', generateProfil,);
+buttonSignUp.addEventListener('click', generateProfil);
 
 
 function generateCategory ():void{
@@ -77,55 +90,25 @@ const div = document.getElementById('forum-container');
 div?.classList.add(content.isActive);
 }
 
+function getPost():void{
+  const ulEl = document.getElementById('post-ul')as HTMLUListElement;
+  const resultFromDatabase = fetchFromDatabase('posts', 'get') as Promise<PostListResponse>;
+  resultFromDatabase.then(res => {
+    res.posts.forEach(post => {
+      const liEl = document.createElement('li')as HTMLLIElement;
+      const authorP = document.createElement('p')as HTMLParagraphElement;
+      const titleP = document.createElement('p')as HTMLParagraphElement;
+      const bodyP = document.createElement('p')as HTMLParagraphElement;
+      ulEl.appendChild(liEl);
+      liEl.appendChild(authorP);
+      liEl.appendChild(titleP);
+      liEl.appendChild(bodyP);
+      authorP.innerText = post.author;
+      titleP.innerText = post.title;
+      bodyP.innerText = post.body;
+    }) 
 
-/*function getUserInfo (){
-const ulEl = document.getElementById('member-ul');
-const usersStringArr = Object.keys(users);
-usersStringArr.forEach(key => {
-  const user = users[key];
-  user
-})
-
-
-}*/
-//"posts":
-const posts = [
-  {
-    "id": "2sksks",
-    "author": "luna",
-    "title": "How to fish in a toilet",
-    "body": "You shouldn't, thats nasty!",
-    "category": "anime",
-    "created_at": 1710974917
-  },
-  {
-    "id": "12334",
-    "author": "Simon",
-    "title": "How to learn",
-    "body": "yes yes, thats nasty!",
-    "category": "anime",
-    "created_at": 1710974902
-  }
-]
-
-function getPost ():void{
-const ulEl = document.getElementById('post-ul')as HTMLUListElement;
-posts.forEach(post =>{
-const liEl = document.createElement('li')as HTMLLIElement;
-const authorP = document.createElement('p')as HTMLParagraphElement;
-const titleP = document.createElement('p')as HTMLParagraphElement;
-const bodyP = document.createElement('p')as HTMLParagraphElement;
-ulEl.appendChild(liEl);
-liEl.appendChild(authorP);
-liEl.appendChild(titleP);
-liEl.appendChild(bodyP);
-authorP.innerText = post.author;
-titleP.innerText = post.title;
-bodyP.innerText = post.body;
-}
-
-  ) 
-
+  })
 }
 
 const buttonPost = document.getElementById('post-button')as HTMLButtonElement;

@@ -14,11 +14,8 @@
         <div class="titleContainer">
           <h1>ForumMister</h1>
         </div>
-
-
-        <button id="idBu"><a href="login.html">Log in</a></button>
-
         <button id="idBu">Log in</button>
+        <button id="signupButton">Sign up</button>
       </div>
     </header>
     <section>
@@ -68,25 +65,46 @@
           </div>
         </div>
         <div id="show-logInn" class="content-box">
-          <form>
-            <label for="user-name" class="textLab"><b>User name</b></label
-            ><br />
+          <p>Login</p>
+          <form id="loginForm">
+            <label for="user-name" class="textLab"><b>User name</b></label>
             <input
               type="text"
-              placeholder="Enter Email"
-              name="email"
+              placeholder="Enter username"
+              name="username"
               required
               id="emailMar"
-            /><br />
+            />
 
-            <label for="psw" class="textLab"><b>Password</b></label
-            ><br />
+            <label for="psw" class="textLab"><b>Password</b></label>
             <input
               type="password"
               placeholder="Enter Password"
               name="psw"
               required
-            /><br />
+            />
+            <button id="signup-button">Login</button>
+          </form>
+        </div>
+        <div id="signup" class="content-box">
+          <p>Signup</p>
+          <form id="signupForm">
+            <label for="user-name" class="textLab"><b>User name</b></label>
+            <input
+              type="text"
+              placeholder="Enter username"
+              name="usernameSignup"
+              required
+              id="emailMar"
+            />
+
+            <label for="psw" class="textLab"><b>Password</b></label>
+            <input
+              type="password"
+              placeholder="Enter Password"
+              name="pswSignup"
+              required
+            />
             <button id="signup-button">Sign up</button>
           </form>
         </div>

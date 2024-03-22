@@ -1,13 +1,14 @@
-async function getPost(){
-    const res = await fetch("http://localhost:3000/", {
-      method: "GET",
-      headers: {
-        "Content-type": "application/json"
+import {ResponseDataType} from '../res.types'
+
+export async function fetchFromDatabase(endpoint: string, method: string): Promise<ResponseDataType> {
+  const res = await fetch(`http://localhost:3000/${endpoint}`, {
+    method: method,
+    headers: {
+      "Content-type": "application/json"
     }
-      // Set the FormData instance as the request body
-    })
-    let post = await res.json();
-    //createBoards(tasks);
+  });
+  let responseData = await res.json() as Promise<ResponseDataType>;
+  return responseData;
 }
 
 
