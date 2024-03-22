@@ -14,7 +14,7 @@
         <div class="titleContainer">
           <h1>ForumMister</h1>
         </div>
-        <button id="logInButtonTriggerContainer">Log in</button>
+        <button id="idBu"><a href="login.html">Log in</a></button>
       </div>
     </header>
     <section>
@@ -63,18 +63,26 @@
             </ul>
           </div>
         </div>
-        <!-- This form needs to be formatted correctly. 
-        Do not use b or br when you already are using classes
-        just do it in CSS. Instead of using br just use flex or 
-        use HTML elements such as div which are block elements -->
-        <div class="content-box" id="displayLoginContainer">
+        <div id="show-logInn" class="content-box">
           <form>
-            <label for="userName" class="textLab"><b>User name</b></label><br />
-            <input type="text" placeholder="Enter Email" name="userName" required id=""/><br />
+            <label for="user-name" class="textLab"><b>User name</b></label
+            ><br />
+            <input
+              type="text"
+              placeholder="Enter Email"
+              name="email"
+              required
+              id="emailMar"
+            /><br />
 
-            <label for="password" class="textLab"><b>Password</b></label><br />
-            <input type="password" placeholder="Enter Password" name="password" required/><br />
-            
+            <label for="psw" class="textLab"><b>Password</b></label
+            ><br />
+            <input
+              type="password"
+              placeholder="Enter Password"
+              name="psw"
+              required
+            /><br />
             <button id="signup-button">Sign up</button>
           </form>
         </div>
