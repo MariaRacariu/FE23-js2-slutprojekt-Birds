@@ -12,6 +12,18 @@ const user = {
     },
 ]
 } 
+const users = {
+    "luna": {
+      "name": "Luna Berg",
+      "password": "123",
+      "profile_pic": "image1"
+    },
+    "testson": {
+      "name": "Test Testson",
+      "password": "test",
+      "profile_pic": "image1"
+    }
+} 
 
 //Hide all content boxes
 function hideAllContentBoxes():void {
@@ -63,3 +75,15 @@ hideAllContentBoxes();
 const div = document.getElementById('forum-container');
 div?.classList.add(content.isActive);
 }
+
+
+/*function getUserInfo (){
+const ulEl = document.getElementById('member-ul');
+const usersStringArr = Object.keys(users);
+usersStringArr.forEach(key => {
+  const user = users[key];
+  user
+})
+
+
+}*/
