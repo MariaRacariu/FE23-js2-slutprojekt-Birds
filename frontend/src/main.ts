@@ -42,6 +42,7 @@ function generateLogin ():void {
 function generateProfil ():void {
   hideAllContentBoxes();
   generateCategory();
+  generateInput();
   //TODO: Fetch user
   //user = fetchUser
   const div = document.getElementById(profile.id)as HTMLDivElement;
@@ -87,3 +88,53 @@ usersStringArr.forEach(key => {
 
 
 }*/
+//"posts":
+const posts = [
+  {
+    "id": "2sksks",
+    "author": "luna",
+    "title": "How to fish in a toilet",
+    "body": "You shouldn't, thats nasty!",
+    "category": "anime",
+    "created_at": 1710974917
+  },
+  {
+    "id": "12334",
+    "author": "Simon",
+    "title": "How to learn",
+    "body": "yes yes, thats nasty!",
+    "category": "anime",
+    "created_at": 1710974902
+  }
+]
+
+function getPost ():void{
+const ulEl = document.getElementById('post-ul')as HTMLUListElement;
+posts.forEach(post =>{
+const liEl = document.createElement('li')as HTMLLIElement;
+const authorP = document.createElement('p')as HTMLParagraphElement;
+const titleP = document.createElement('p')as HTMLParagraphElement;
+const bodyP = document.createElement('p')as HTMLParagraphElement;
+ulEl.appendChild(liEl);
+liEl.appendChild(authorP);
+liEl.appendChild(titleP);
+liEl.appendChild(bodyP);
+authorP.innerText = post.author;
+titleP.innerText = post.title;
+bodyP.innerText = post.body;
+}
+
+  ) 
+
+}
+
+const buttonPost = document.getElementById('post-button')as HTMLButtonElement;
+buttonPost.addEventListener('click', getPost);
+
+function generateInput ():void{
+  //hideAllContentBoxes();
+  const divEl = document.getElementById('input-field')as HTMLDivElement;
+  divEl.classList.add(content.isActive);
+  }
+
+

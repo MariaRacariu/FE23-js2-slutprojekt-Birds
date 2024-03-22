@@ -81,6 +81,9 @@ h5 {font-size: 2em;
     height: 20%;
 }
 
+#input-field {
+    text-align: center;
+}
 
 .content-box{
     display: none;
