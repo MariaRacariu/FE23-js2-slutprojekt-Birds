@@ -38,6 +38,7 @@ const users = {
 }
 
 //Hide all content boxes
+// Void? why you are not taking anything in
 export function hideAllContentBoxes(): void {
   document.querySelectorAll(`.${content.name}`).forEach(contentBox => {
     contentBox.classList.remove(content.isActive);
@@ -46,6 +47,7 @@ export function hideAllContentBoxes(): void {
 
 // This whole function needs to be in a module
 // Better variable names
+// Void? why you are not taking anything in
 function generateProfil(): void {
   hideAllContentBoxes();
   generateCategory();
@@ -64,6 +66,7 @@ function generateProfil(): void {
 }
 
 // This function needs to be in a module
+// Void? why you are not taking anything in
 function generatePosts(ulEl: HTMLUListElement, posts: any[]): void {
   posts.forEach(post => {
     const liEl = document.createElement('li') as HTMLLIElement;
@@ -77,6 +80,7 @@ function generatePosts(ulEl: HTMLUListElement, posts: any[]): void {
 
 
 // This needs to be a module
+// Void? why you are not taking anything in
 function generateCategory(): void {
   hideAllContentBoxes();
   const div = document.getElementById('forum-container');
@@ -114,6 +118,7 @@ const posts = [
   }
 ]
 // This needs to be a module
+// Void? why you are not taking anything in
 function getPost(): void {
   const ulEl = document.getElementById('post-ul') as HTMLUListElement;
   posts.forEach(post => {
@@ -137,6 +142,7 @@ function getPost(): void {
 const buttonPost = document.getElementById('post-button') as HTMLButtonElement;
 buttonPost.addEventListener('click', getPost);
 
+// Void? why you are not taking anything in
 function generateInput(): void {
   //hideAllContentBoxes();
   const divEl = document.getElementById('input-field') as HTMLDivElement;

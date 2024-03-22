@@ -1,5 +1,5 @@
 import { hideAllContentBoxes } from "../main.ts";
-import { content } from "../modules/constant.ts";
+import { content} from "./modules/constant.ts";
 
 export function generateLoginContainer() {
     hideAllContentBoxes();
