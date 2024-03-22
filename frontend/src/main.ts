@@ -29,6 +29,7 @@ function generateLogin ():void {
 
 function generateProfil ():void {
   hideAllContentBoxes();
+  generateCategory();
   //TODO: Fetch user
   //user = fetchUser
   const div = document.getElementById(profile.id)as HTMLDivElement;
@@ -54,4 +55,11 @@ const buttonLog = document.getElementById('idBu')as HTMLButtonElement;
 buttonLog.addEventListener('click', generateLogin);
 
 const buttonSignUp = document.getElementById('signup-button')as HTMLButtonElement;
-buttonSignUp.addEventListener('click', generateProfil);
+buttonSignUp.addEventListener('click', generateProfil,);
+
+
+function generateCategory ():void{
+hideAllContentBoxes();
+const div = document.getElementById('forum-container');
+div?.classList.add(content.isActive);
+}
