@@ -145,7 +145,7 @@ h5 {font-size: 2em;
 
 
 .li-post {
-    border: black solid 1px;
+    border: rgb(255, 255, 255) solid 1px;
 }
 
 .ul-post {
@@ -171,7 +171,7 @@ h5 {font-size: 2em;
     display: none;
   }
   
-  label {
+.img-ul label {
     border: 1px solid #fff;
     padding: 10px;
     display: block;
@@ -180,7 +180,7 @@ h5 {font-size: 2em;
     cursor: pointer;
   }
   
-  label:before {
+.img-ul label:before {
     background-color: white;
     color: white;
     content: " ";
@@ -198,24 +198,25 @@ h5 {font-size: 2em;
     transform: scale(0);
   }
   
-  label img {
+.img-ul label img {
     height: 100px;
     width: 100px;
     transition-duration: 0.2s;
     transform-origin: 50% 50%;
   }
   
-  :checked + label {
+.img-ul :checked + label {
     border-color: #ddd;
+    
   }
-  
-  :checked + label:before {
+   
+.img-ul :checked + label:before {
     content: "✓";
-    background-color: grey;
+    background-color: #CADDD2;
     transform: scale(1);
   }
   
-  :checked + label img {
+.img-ul :checked + label img {
     transform: scale(0.9);
     box-shadow: 0 0 5px #333;
     z-index: -1;
