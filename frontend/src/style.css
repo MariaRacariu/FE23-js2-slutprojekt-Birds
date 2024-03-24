@@ -5,10 +5,10 @@
 
 section {
     display: flex;
-    border: solid black 3px;
     justify-content: space-around;
     margin: 0;
     padding: 0;
+    gap: 1rem;
 }
 
 body {
@@ -17,9 +17,10 @@ body {
 
 header {
     border: black solid 3px;
-    width: 1598px;
+    width: 1594px;
     height: 141px;
     margin: auto;
+    margin-bottom: 1rem;
 }
 
 
@@ -41,16 +42,17 @@ header {
 
 
 .right-nav {
-    border: 2px black solid 3px;;
+    border: black solid 3px;
     width: 20%;
     height: 70vh;
 }
 
 .inlagDiv {
     text-align: center;
-    background-color: aqua;
+    background-color: #CADDD2;
     width: 90%;
     margin: auto;
+    border: solid 3px black;
 }
 
 
@@ -126,4 +128,15 @@ h5 {font-size: 2em;
 
 .error {
     color: red;
+}
+
+
+.li-post {
+    border: black solid 1px;
+}
+
+.ul-post {
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
