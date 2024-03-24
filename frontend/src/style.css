@@ -221,3 +221,8 @@ h5 {font-size: 2em;
     box-shadow: 0 0 5px #333;
     z-index: -1;
   }
+
+#title {
+    width: 89.2%;
+    margin-top: 20px;
+}
