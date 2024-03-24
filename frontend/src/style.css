@@ -87,6 +87,19 @@ h5 {font-size: 2em;
     text-align: center;
 }
 
+.message-wrapper {
+    display: flex;
+    margin: auto;
+    width: 90%;
+    margin-top: 1rem;
+}
+
+
+#message {
+    width: 95%;
+    height: 80px;
+}
+
 .content-box{
     display: none;
 }
