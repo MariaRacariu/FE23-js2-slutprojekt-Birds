@@ -212,7 +212,7 @@ h5 {font-size: 2em;
    
 .img-ul :checked + label:before {
     content: "✓";
-    background-color: #CADDD2;
+    background-color: grey;
     transform: scale(1);
   }
   
