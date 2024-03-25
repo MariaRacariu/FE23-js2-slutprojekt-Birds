@@ -22,8 +22,9 @@ const app = express();
 
 app.use(express.json(), cors());
 
-//  CREATE LOGIN 
-app.post("/login", (req, res) => {
+
+
+app.get("/login", (req, res) => {
   tryCatch(res, () =>
     loginUser(req.body).then((response: DBResponse) => {
       const { status, data } = response;
