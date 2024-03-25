@@ -27,13 +27,15 @@
   ],
   "users": {
     "luna": {
-      "name": "Luna Berg",
       "password": "123",
       "profile_pic": "image1"
     },
     "maria": {
-      "name": "Maria Racariu",
       "password": "admin",
+      "profile_pic": "image1"
+    },
+    "papamelon": {
+      "password": "123",
       "profile_pic": "image1"
     }
   },
