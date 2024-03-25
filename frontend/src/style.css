@@ -5,10 +5,10 @@
 
 section {
     display: flex;
-    border: solid black 3px;
     justify-content: space-around;
     margin: 0;
     padding: 0;
+    gap: 1rem;
 }
 
 body {
@@ -17,9 +17,10 @@ body {
 
 header {
     border: black solid 3px;
-    width: 1598px;
+    width: 1594px;
     height: 141px;
     margin: auto;
+    margin-bottom: 1rem;
 }
 
 
@@ -41,16 +42,17 @@ header {
 
 
 .right-nav {
-    border: 2px black solid 3px;;
+    border: black solid 3px;
     width: 20%;
     height: 70vh;
 }
 
 .inlagDiv {
     text-align: center;
-    background-color: aqua;
+    background-color: #CADDD2;
     width: 90%;
     margin: auto;
+    border: solid 3px black;
 }
 
 
@@ -83,6 +85,19 @@ h5 {font-size: 2em;
 
 #input-field {
     text-align: center;
+}
+
+.message-wrapper {
+    display: flex;
+    margin: auto;
+    width: 90%;
+    margin-top: 1rem;
+}
+
+
+#message {
+    width: 95%;
+    height: 80px;
 }
 
 .content-box{
@@ -126,4 +141,88 @@ h5 {font-size: 2em;
 
 .error {
     color: red;
+}
+
+
+.li-post {
+    border: rgb(255, 255, 255) solid 1px;
+}
+
+.ul-post {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+#post-description {
+    text-align: center;
+}
+
+
+.img-ul {
+    list-style-type: none;
+  }
+  
+.img-ul li {
+    display: inline-block;
+  }
+  
+  input[type="radio"][id^="cb"] {
+    display: none;
+  }
+  
+.img-ul label {
+    border: 1px solid #fff;
+    padding: 10px;
+    display: block;
+    position: relative;
+    margin: 10px;
+    cursor: pointer;
+  }
+  
+.img-ul label:before {
+    background-color: white;
+    color: white;
+    content: " ";
+    display: block;
+    border-radius: 50%;
+    border: 1px solid grey;
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    line-height: 28px;
+    transition-duration: 0.4s;
+    transform: scale(0);
+  }
+  
+.img-ul label img {
+    height: 100px;
+    width: 100px;
+    transition-duration: 0.2s;
+    transform-origin: 50% 50%;
+  }
+  
+.img-ul :checked + label {
+    border-color: #ddd;
+    
+  }
+   
+.img-ul :checked + label:before {
+    content: "✓";
+    background-color: grey;
+    transform: scale(1);
+  }
+  
+.img-ul :checked + label img {
+    transform: scale(0.9);
+    box-shadow: 0 0 5px #333;
+    z-index: -1;
+  }
+
+#title {
+    width: 89.2%;
+    margin-top: 20px;
 }

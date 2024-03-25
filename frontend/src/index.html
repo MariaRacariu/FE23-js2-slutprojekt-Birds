@@ -14,7 +14,8 @@
         <div class="titleContainer">
           <h1>ForumMister</h1>
         </div>
-        <button id="logInButtonTriggerContainer">Log in</button>
+        <button id="idBu">Log in</button>
+        <button id="signupButton">Sign up</button>
       </div>
     </header>
     <section>
@@ -22,9 +23,6 @@
         <div id="forum-container" class="content-box">
           <h2 id="forum-header">Forum</h2>
           <ul id="forum-ul">
-            <li><button>Anime</button></li>
-            <li><button>Meme</button></li>
-            <li><button>Dator</button></li>
           </ul>
         </div>
         <div>
@@ -32,22 +30,29 @@
         </div>
         <div>
           <ul id="member-ul">
-            <li>heddddh</li>
+            <li>Peter</li>
           </ul>
         </div>
       </div>
       <div id="post-container"class="post-div">
         <div>
-          <h4>Forum: name</h4>
+          <h4 id="post-header">Latest posts</h4>
+          <p id="post-description"></p>
         </div>
         <div id = "id-container"class="inlagDiv">
           <ul id="post-ul">
-            <li>här är ett inlägg</li>
           </ul>
         </div>
         <div id="input-field" class="content-box">
-          <input type="text" id="message" name="message" />
-          <button id="post-button">send</button>
+          <form>
+            <div>
+              <input type="text" id="title" name="title" placeholder="Write a title">
+            </div>
+            <div class="message-wrapper">
+              <textarea type="text" id="message" name="message"></textarea>
+              <button id="post-button">send</button>
+            </div>
+          </form>
         </div>
       </div>
       <div class="right-nav">
@@ -63,18 +68,58 @@
             </ul>
           </div>
         </div>
-        <!-- This form needs to be formatted correctly. 
-        Do not use b or br when you already are using classes
-        just do it in CSS. Instead of using br just use flex or 
-        use HTML elements such as div which are block elements -->
-        <div class="content-box" id="displayLoginContainer">
-          <form>
-            <label for="userName" class="textLab"><b>User name</b></label><br />
-            <input type="text" placeholder="Enter Email" name="userName" required id=""/><br />
+        <div id="show-logInn" class="content-box">
+          <p>Login</p>
+          <form id="loginForm">
+            <label for="user-name" class="textLab"><b>User name</b></label>
+            <input
+              type="text"
+              placeholder="Enter username"
+              name="username"
+              required
+              id="emailMar"
+            />
 
-            <label for="password" class="textLab"><b>Password</b></label><br />
-            <input type="password" placeholder="Enter Password" name="password" required/><br />
-            
+            <label for="psw" class="textLab"><b>Password</b></label>
+            <input
+              type="password"
+              placeholder="Enter Password"
+              name="psw"
+              required
+            />
+            <button id="signup-button">Login</button>
+          </form>
+        </div>
+        <div id="signup" class="content-box">
+          <p>Signup</p>
+          <form id="signupForm">
+            <label for="user-name" class="textLab"><b>User name</b></label>
+            <input
+              type="text"
+              placeholder="Enter username"
+              name="usernameSignup"
+              required
+              id="emailMar"
+            />
+
+            <label for="psw" class="textLab"><b>Password</b></label>
+            <input
+              type="password"
+              placeholder="Enter Password"
+              name="pswSignup"
+              required
+            />
+            <ul class="img-ul">
+              <li><input type="radio" name="test" id="cb1" />
+                <label for="cb1"><img src="./img/bird.png" /></label>
+              </li>
+              <li><input type="radio" name="test" id="cb2" />
+                <label for="cb2"><img src="./img/cat.png" /></label>
+              </li>
+              <li><input type="radio" name="test" id="cb3" />
+                <label for="cb3"><img src="./img/dog.png" /></label>
+              </li>
+            </ul>
             <button id="signup-button">Sign up</button>
           </form>
         </div>
