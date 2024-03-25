@@ -4,6 +4,7 @@ export type Database = {
   categories: { [key: string]: Category };
   comments: { [key: string]: Comment[] };
 };
+// ?
 export type User = {
   password: string;
   profile_pic: string;

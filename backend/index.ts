@@ -24,7 +24,7 @@ app.use(express.json(), cors());
 
 
 
-app.get("/login", (req, res) => {
+app.post("/login", (req, res) => {
   tryCatch(res, () =>
     loginUser(req.body).then((response: DBResponse) => {
       const { status, data } = response;
