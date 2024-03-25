@@ -2,13 +2,13 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.ts",
+  "main": "src/index.ts",
   "type": "module",
   "scripts": {
     "start": "tsc",
     "dev": "concurrently \"tsc --watch\" \"node --watch ./dist/index.js\"",
     "prebuild": "del-cli ./dist",
-    "build":"tsc"
+    "build": "tsc"
   },
   "keywords": [],
   "author": "",

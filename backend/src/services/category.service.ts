@@ -1,10 +1,9 @@
-import { DBResponse } from "../res.types.js";
-
+import { DBResponse } from "../types/res.types.js";
+import { readJsonFile } from "../util/db.util.js";
 import {
   createErrorResponse,
   createSuccessResponse,
-  readJsonFile,
-} from "../util.js";
+} from "../util/response.util.js";
 
 export async function getAllCategorise(): Promise<DBResponse> {
   const db = await readJsonFile();

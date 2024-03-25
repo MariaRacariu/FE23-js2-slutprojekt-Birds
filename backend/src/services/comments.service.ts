@@ -1,11 +1,9 @@
-import { DBResponse } from "../res.types.js";
-
+import { DBResponse } from "../types/res.types.js";
+import { readJsonFile, writeJsonFile } from "../util/db.util.js";
 import {
   createErrorResponse,
   createSuccessResponse,
-  readJsonFile,
-  writeJsonFile,
-} from "../util.js";
+} from "../util/response.util.js";
 
 export async function getCommentsByPost(postId: string): Promise<DBResponse> {
   const db = await readJsonFile();
@@ -34,16 +32,17 @@ type CreateCommentArgs = {
 };
 
 export async function createComment(
+  postId: string,
   data: CreateCommentArgs
 ): Promise<DBResponse> {
   //if any of the below doesn't exists send error
-  if (!data.author || !data.body || !data.body || !data.postId)
+  if (!data.author || !data.body)
     return createErrorResponse(404, "Missing comment information");
 
   const db = await readJsonFile();
 
   const posts = db.posts;
-  if (posts.filter((post) => post.id === data.postId).length < 1)
+  if (posts.filter((post) => post.id === postId).length < 1)
     return createErrorResponse(404, "Post Not Found");
 
   const users = db.users;
@@ -51,7 +50,7 @@ export async function createComment(
 
   const id = crypto.randomUUID();
 
-  if (!db.comments[data.postId]) db.comments[data.postId] = [];
+  if (!db.comments[postId]) db.comments[postId] = [];
 
   const commentData = {
     id,
@@ -60,7 +59,7 @@ export async function createComment(
     created_at: Date.now(),
   };
 
-  db.comments[data.postId].push(commentData);
+  db.comments[postId].push(commentData);
 
   //Rewrite the database and send response
   return await writeJsonFile(db).then(() =>

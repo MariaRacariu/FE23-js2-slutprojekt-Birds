@@ -30,12 +30,12 @@
       "password": "123",
       "profile_pic": "image1"
     },
-    "maria": {
-      "password": "admin",
-      "profile_pic": "image1"
+    "bora": {
+      "password": "345",
+      "profile_pic": "image2"
     },
-    "papamelon": {
-      "password": "123",
+    "alex": {
+      "password": "345",
       "profile_pic": "image1"
     }
   },
@@ -58,9 +58,23 @@
       {
         "id": "asdasdad",
         "body": "This is so true",
-        "author": "luna"
+        "author": "luna",
+        "created_at": 1710976732877
       }
     ],
-    "2sksks": []
+    "2sksks": [
+      {
+        "id": "3a53a74e-9638-46a5-8c4a-54585f1dff9a",
+        "author": "luna",
+        "body": "Anime is interesting browski",
+        "created_at": 1711379848119
+      },
+      {
+        "id": "ffff90b6-da1a-406e-b94c-af46dfe65016",
+        "author": "bora",
+        "body": "I think it is bullshit.",
+        "created_at": 1711382997790
+      }
+    ]
   }
 }

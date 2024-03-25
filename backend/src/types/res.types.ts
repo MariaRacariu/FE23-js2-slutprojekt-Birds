@@ -2,6 +2,8 @@ import { Post, Comment } from "./db.types.js";
 
 export type ResponseDataType =
   | LoginResponse
+  | UserResponse
+  | UserListResponse
   | CategoryListResponse
   | CategoryResponse
   | PostListResponse
@@ -18,6 +20,15 @@ export type DBResponse = {
 export type LoginResponse = {
   username: string;
   profile_pic: string;
+};
+
+export type UserResponse = {
+  username: string;
+  profile_pic: string;
+};
+
+export type UserListResponse = {
+  users: UserResponse[];
 };
 
 export type CategoryListResponse = {

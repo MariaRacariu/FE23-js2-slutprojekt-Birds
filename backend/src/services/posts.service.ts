@@ -1,11 +1,9 @@
-import { DBResponse } from "../res.types.js";
-
+import { DBResponse } from "../types/res.types.js";
+import { readJsonFile, writeJsonFile } from "../util/db.util.js";
 import {
   createErrorResponse,
   createSuccessResponse,
-  readJsonFile,
-  writeJsonFile,
-} from "../util.js";
+} from "../util/response.util.js";
 
 type CreatePostArgs = {
   author: string;
