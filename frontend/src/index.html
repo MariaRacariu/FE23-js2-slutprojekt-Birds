@@ -72,22 +72,11 @@
           <p>Login</p>
           <form id="loginForm">
             <label for="user-name" class="textLab"><b>User name</b></label>
-            <input
-              type="text"
-              placeholder="Enter username"
-              name="username"
-              required
-              id="emailMar"
-            />
+            <input type="text" placeholder="Enter username" name="username" required id="loginFormUsername"/>
 
             <label for="psw" class="textLab"><b>Password</b></label>
-            <input
-              type="password"
-              placeholder="Enter Password"
-              name="psw"
-              required
-            />
-            <button id="signup-button">Login</button>
+            <input type="password" placeholder="Enter Password" name="psw" required id="logInFormPassword"/>
+            <button id="logInButton" type="submit">Login</button>
           </form>
         </div>
         <div id="signup" class="content-box">
@@ -99,7 +88,7 @@
               placeholder="Enter username"
               name="usernameSignup"
               required
-              id="emailMar"
+              id="createAccountUsername"
             />
 
             <label for="psw" class="textLab"><b>Password</b></label>
@@ -108,19 +97,23 @@
               placeholder="Enter Password"
               name="pswSignup"
               required
+              id="createAccountPassword"
             />
             <ul class="img-ul">
-              <li><input type="radio" name="test" id="cb1" />
+              <li>
+                <input type="radio" name="option" id="cb1" value="cb1"/>
                 <label for="cb1"><img src="./img/bird.png" /></label>
               </li>
-              <li><input type="radio" name="test" id="cb2" />
+              <li>
+                <input type="radio" name="option" id="cb2" value="cb2"/>
                 <label for="cb2"><img src="./img/cat.png" /></label>
               </li>
-              <li><input type="radio" name="test" id="cb3" />
+              <li>
+                <input type="radio" name="option" id="cb3" value="cb3"/>
                 <label for="cb3"><img src="./img/dog.png" /></label>
               </li>
             </ul>
-            <button id="signup-button">Sign up</button>
+            <button id="createAccountButton" type="submit">Sign up</button>
           </form>
         </div>
       </div>
