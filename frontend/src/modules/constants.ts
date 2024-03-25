@@ -1,3 +1,4 @@
+
 export const content = {
     isActive: 'content-box-active',
     name: 'content-box'

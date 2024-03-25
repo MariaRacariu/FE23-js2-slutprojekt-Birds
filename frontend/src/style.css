@@ -226,3 +226,30 @@ h5 {font-size: 2em;
     width: 89.2%;
     margin-top: 20px;
 }
+
+.titleContainer img{
+    transition: 1s ease;
+    }
+    
+.titleContainer img:hover{
+    transform: scale(1.05);
+    transition: 1s ease;
+    cursor: pointer;
+    }
+
+.wrap {
+    display:flex;
+    justify-content: space-between;
+}
+
+#iconHeader {
+    width: 100%;
+}
+
+.titleContainer {
+    margin: 15px; 
+}
+
+.buttonHome button {
+    margin-top: 120px;
+}

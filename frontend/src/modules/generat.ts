@@ -1,7 +1,7 @@
 import { PostListResponse } from "../types/res.types";
 import { content, profile } from "./constants";
 import { hideAllContentBoxes, displayInput } from "./display";
-import { getCategories, getCategory, getLatestPosts, getPostsByCategory } from "./fetch";
+import { getCategories, getCategory, getLatestPosts, getPostsByCategory } from "./databaseFetch";
 
 //mockup user, TODO: use real login user
 const user = {
@@ -76,18 +76,19 @@ export function generatePostsByCategory(id: string): void {
 
 export function generateCategories(): void {
   hideAllContentBoxes();
+  const categoryList = document.getElementById("forum-ul") as HTMLUListElement;
+  categoryList.innerHTML = '';
   const resultFromDatabase = getCategories();
   resultFromDatabase.then((res) => {
-    const ulEl = document.getElementById("forum-ul") as HTMLUListElement;
-    const div = document.getElementById("forum-container") as HTMLDivElement;
-    div.classList.add(content.isActive);
+    const categoriesContainer = document.getElementById("forum-container") as HTMLDivElement;
+    categoriesContainer.classList.add(content.isActive);
     res.categories.forEach((category) => {
-      const liEl = document.createElement("li") as HTMLLIElement;
-      const buttonEl = document.createElement("button") as HTMLButtonElement;
-      buttonEl.innerText = category.name;
-      ulEl.appendChild(liEl);
-      liEl.appendChild(buttonEl);
-      buttonEl.addEventListener("click", () => generateCategory(category.id));
+      const categoryListItem = document.createElement("li") as HTMLLIElement;
+      const categoryButton = document.createElement("button") as HTMLButtonElement;
+      categoryButton.innerText = category.name;
+      categoryList.appendChild(categoryListItem);
+      categoryListItem.appendChild(categoryButton);
+      categoryButton.addEventListener("click", () => generateCategory(category.id));
     });
   });
 }
