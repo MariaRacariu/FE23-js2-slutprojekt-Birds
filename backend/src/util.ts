@@ -4,6 +4,8 @@ import { DBResponse, ResponseDataType } from "./res.types.js";
 import { Response } from "express";
 const filePath = "./db.json";
 
+// READ AND WRITE DATA
+
 // Define an async function to read a JSON file and parse its content
 export async function readJsonFile(): Promise<Database> {
   try {
@@ -32,6 +34,8 @@ export async function writeJsonFile(data: Database): Promise<void> {
   }
 }
 
+// ERROR RESPONSE HANDLING
+
 export function createErrorResponse(code: number, message: string): DBResponse {
   return {
     status: code,
@@ -40,6 +44,9 @@ export function createErrorResponse(code: number, message: string): DBResponse {
     },
   };
 }
+
+
+// SUCCESS RESPONSE HANDLING
 
 export function createSuccessResponse(data: ResponseDataType): DBResponse {
   return {

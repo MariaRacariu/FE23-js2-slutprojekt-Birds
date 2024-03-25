@@ -22,6 +22,7 @@ const app = express();
 
 app.use(express.json(), cors());
 
+//  CREATE LOGIN 
 app.post("/login", (req, res) => {
   tryCatch(res, () =>
     loginUser(req.body).then((response: DBResponse) => {
@@ -31,6 +32,7 @@ app.post("/login", (req, res) => {
   );
 });
 
+// CREATE USER
 app.post("/users", (req, res) => {
   tryCatch(res, () =>
     createUser(req.body).then((response: DBResponse) => {
@@ -40,6 +42,7 @@ app.post("/users", (req, res) => {
   );
 });
 
+// GET CATEGORIES
 app.get("/categories", (req, res) => {
   tryCatch(res, () =>
     getAllCategorise().then((response: DBResponse) => {
@@ -49,6 +52,7 @@ app.get("/categories", (req, res) => {
   );
 });
 
+// GET CATEG0RY BY ID
 app.get("/categories/:id", (req, res) => {
   tryCatch(res, () =>
     getCategory(req.params.id).then((response: DBResponse) => {
@@ -58,6 +62,7 @@ app.get("/categories/:id", (req, res) => {
   );
 });
 
+// GET POSTS
 app.get("/posts", (req, res) => {
   tryCatch(res, () =>
     getAllPosts().then((response: DBResponse) => {
@@ -67,6 +72,7 @@ app.get("/posts", (req, res) => {
   );
 });
 
+// GET POSTS BY ITS CATEGORY
 app.get("/categories/:categoryId/posts", (req, res) => {
   tryCatch(res, () =>
     getPostsByCategory(req.params.categoryId).then((response: DBResponse) => {
@@ -76,6 +82,7 @@ app.get("/categories/:categoryId/posts", (req, res) => {
   );
 });
 
+// GET USER'S POSTS
 app.get("/users/:userId/posts", (req, res) => {
   tryCatch(res, () =>
     getPostsByUser(req.params.userId).then((response: DBResponse) => {
@@ -85,6 +92,7 @@ app.get("/users/:userId/posts", (req, res) => {
   );
 });
 
+// GET POST
 app.get("/posts/:postId", (req, res) => {
   tryCatch(res, () =>
     getPost(req.params.postId).then((response: DBResponse) => {
@@ -94,6 +102,7 @@ app.get("/posts/:postId", (req, res) => {
   );
 });
 
+// DELETE POST
 app.delete("/posts/:postId", (req, res) => {
   tryCatch(res, () =>
     deletePost(req.params.postId).then((response: DBResponse) => {
@@ -103,6 +112,7 @@ app.delete("/posts/:postId", (req, res) => {
   );
 });
 
+// CREATE POST
 app.post("/posts", (req, res) => {
   tryCatch(res, () =>
     createPost(req.body).then((response: DBResponse) => {
@@ -112,6 +122,7 @@ app.post("/posts", (req, res) => {
   );
 });
 
+// GET COMMENTS FOR THE POST THROUGH POST ID
 app.get("/comments/:postid", (req, res) => {
   tryCatch(res, () =>
     getCommentsByPost(req.params.postid).then((response: DBResponse) => {
@@ -121,6 +132,7 @@ app.get("/comments/:postid", (req, res) => {
   );
 });
 
+// CREATE COMMENT
 app.post("/comments", (req, res) => {
   tryCatch(res, () =>
     createComment(req.body).then((response: DBResponse) => {
@@ -130,6 +142,7 @@ app.post("/comments", (req, res) => {
   );
 });
 
+// DELETE COMMENT
 app.delete("/posts/:postId/comments/:commentId", (req, res) => {
   tryCatch(res, () =>
     deleteComment(req.params.postId, req.params.commentId).then(
