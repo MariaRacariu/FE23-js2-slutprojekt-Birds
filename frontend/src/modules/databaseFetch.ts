@@ -12,22 +12,22 @@ export async function fetchFromDatabase(endpoint: string, method: string): Promi
 }
 
 export async function getCategories(): Promise<CategoryListResponse> {
-  const resultFromDatabase = fetchFromDatabase('categories', 'get') ;
-  return resultFromDatabase as Promise<CategoryListResponse>
+  const resultFromDatabase = fetchFromDatabase('categories', 'get') as Promise<CategoryListResponse>;
+  return resultFromDatabase; 
 }
 
 export async function getCategory(id: string): Promise<CategoryResponse>{
-  const resultFromDatabase = fetchFromDatabase(`categories/${id}`, 'get') ;
-  return resultFromDatabase as Promise<CategoryResponse>
+  const resultFromDatabase = fetchFromDatabase(`categories/${id}`, 'get') as Promise<CategoryResponse>;
+  return resultFromDatabase; 
 }
 
 export async function getPostsByCategory(id: string): Promise<PostListResponse>{
-  const resultFromDatabase = fetchFromDatabase(`categories/${id}/posts`, 'get');
-  return resultFromDatabase as Promise<PostListResponse>
+  const resultFromDatabase = fetchFromDatabase(`categories/${id}/posts`, 'get') as Promise<PostListResponse>;
+  return resultFromDatabase;
 }
 
 export async function getLatestPosts(): Promise<PostListResponse>{
-  const resultFromDatabase = fetchFromDatabase(`posts`, 'get');
-  return resultFromDatabase as Promise<PostListResponse>
+  const resultFromDatabase = fetchFromDatabase(`posts`, 'get') as Promise<PostListResponse>;
+  return resultFromDatabase;
 }
 

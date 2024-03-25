@@ -1,8 +1,9 @@
-import { displayLogin, displaySignup } from "./modules/display";
-import { generateProfil } from "./modules/generat";
+import { displayLogin, displaySignup, displayInput } from "./modules/display";
+import { generateProfil, generateLatestPost, generateCategories } from "./modules/generat";
 /* import { getPost } from "./modules/fetch"; */
 import { fetchData, logInUser } from "./modules/logIn.ts";
 import { createAccount } from "./modules/createAccount.ts";
+
 
 
 const buttonLog = document.getElementById('idBu') as HTMLButtonElement;
@@ -30,3 +31,12 @@ createAccountFormButton.addEventListener("click", (event) => {
     event.preventDefault();
     createAccount();
 })
+
+
+const iconHome = document.getElementById('iconHeader')as HTMLImageElement;
+iconHome.addEventListener('click', () => {
+    generateCategories();
+    generateLatestPost();
+    displayInput();
+
+} );
