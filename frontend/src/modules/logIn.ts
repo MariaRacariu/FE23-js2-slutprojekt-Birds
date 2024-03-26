@@ -1,3 +1,5 @@
+import { generateProfil } from "./generat.ts";
+
 const databaseLinkLogIn = "http://localhost:3000/login";
 
 const userNameElement = document.querySelector("#loginFormUsername") as HTMLInputElement;
@@ -27,6 +29,7 @@ export function logInUser() {
         return fetch(databaseLinkLogIn, requestData)
             .then(response => {
                 console.log(response.json());
+                generateProfil();
             })
     }
 

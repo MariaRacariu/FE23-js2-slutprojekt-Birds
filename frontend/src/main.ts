@@ -21,7 +21,7 @@ loginFormButton.addEventListener("click", (event) => {
     event.preventDefault();
     logInUser();
 })
-
+// Event Listener for create account form
 const createAccountFormButton = document.querySelector("#createAccountButton") as HTMLButtonElement;
 createAccountFormButton.addEventListener("click", (event) => {
     event.preventDefault();

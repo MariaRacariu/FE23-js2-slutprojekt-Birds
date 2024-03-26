@@ -1,3 +1,5 @@
+import { generateProfil } from "./generat.ts";
+
 const databaseLinkCreateAccount = "http://localhost:3000/users";
 
 export function createAccount() {
@@ -30,6 +32,7 @@ export function createAccount() {
         return fetch(databaseLinkCreateAccount, requestData)
             .then(response => {
                 console.log(response.json());
+                generateProfil();
             })
     }
 
