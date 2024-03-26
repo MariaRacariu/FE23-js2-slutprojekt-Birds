@@ -5,7 +5,7 @@ To start frontend:
 ```
 cd ./frontend/
 npm install
-npm run start
+npm run dev
 
 ```
 
