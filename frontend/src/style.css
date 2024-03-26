@@ -2,6 +2,19 @@
     list-style: none;
 }
 
+img {
+    width: 100%;
+}
+
+.allWrapper {
+    display: flex;
+}
+.allWrapper img{
+    width: 14%;
+}
+.postWrapper {
+    width: 86%;
+}
 
 section {
     display: flex;
