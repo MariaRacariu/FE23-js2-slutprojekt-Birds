@@ -31,8 +31,11 @@ export function createAccount() {
 
         return fetch(databaseLinkCreateAccount, requestData)
             .then(response => {
-                console.log(response.json());
-                generateProfil();
+                // console.log(response.json());
+                response.json().then((data) => {
+                    // console.log(data);
+                    generateProfil(data);
+                })
             })
     }
 

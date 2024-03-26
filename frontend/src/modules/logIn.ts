@@ -9,7 +9,7 @@ export function logInUser() {
     const userNameInput = userNameElement.value;
     const passwordInput = passwordElement.value;
 
-    console.log(passwordInput, userNameInput);
+    // console.log(passwordInput, userNameInput);
 
     interface User {
         username: string,
@@ -28,8 +28,11 @@ export function logInUser() {
 
         return fetch(databaseLinkLogIn, requestData)
             .then(response => {
-                console.log(response.json());
-                generateProfil();
+                // console.log(response.json());
+                response.json().then((data) => {
+                    console.log(data);
+                    generateProfil(data);
+                })
             })
     }
 
