@@ -1,7 +1,7 @@
 import { append } from "domutils";
 import { generateProfil } from "./generat.ts";
 
-const databaseLinkLogIn = "http://localhost:3000/login";
+const databaseLinkLogIn = "http://localhost:3000/auth/login";
 
 const userNameElement = document.querySelector("#loginFormUsername") as HTMLInputElement;
 const passwordElement = document.querySelector("#logInFormPassword") as HTMLInputElement;

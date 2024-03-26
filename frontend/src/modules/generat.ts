@@ -2,7 +2,9 @@ import { PostListResponse } from "../types/res.types";
 import { content, profile } from "./constants";
 import { hideAllContentBoxes, displayInput } from "./display";
 import { getCategories, getCategory, getLatestPosts, getPostsByCategory } from "./databaseFetch";
-
+import image1 from "../img/image1.png";
+import image2 from "../img/image2.png";
+import image3 from "../img/image3.png";
 //mockup user, TODO: use real login user
 // const user = {
 //   name: "Pia",
@@ -32,14 +34,14 @@ export function generateProfil(data): void {
 
   // Showing the current user logged in name
   h5El.innerText = `Profile: ${data.username}`;
-
+  //imgEl.setAttribute("src", `../img/${data.profile_pic}.png`);
   // Paths to images do not work because of parcel pathing, need to fix/ask clara
   if (data.profile_pic === "image1") {
-    imgEl.setAttribute("src", "../img/bird.png");
+    imgEl.setAttribute("src", image1);
   } else if (data.profile_pic === "image2") {
-    imgEl.setAttribute("src", "../img/cat.png");
+    imgEl.setAttribute("src", image2);
   } else if (data.profile_pic === "image3") {
-    imgEl.setAttribute("src", "../img/dog.png");
+    imgEl.setAttribute("src", image3);
   }
 
   // Log out button, hides the profile page and clears data info
