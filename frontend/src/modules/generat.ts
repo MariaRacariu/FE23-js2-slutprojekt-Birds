@@ -16,6 +16,7 @@ import { getCategories, getCategory, getLatestPosts, getPostsByCategory } from "
 //   ],
 // };
 
+// Data has all the info for the current user logged in
 export function generateProfil(data): void {
   // console.log(data);
 
@@ -29,6 +30,7 @@ export function generateProfil(data): void {
   const imgEl = document.getElementById(profile.image) as HTMLImageElement;
   const ulEl = document.getElementById(profile.posts) as HTMLUListElement;
 
+  // Showing the current user logged in name
   h5El.innerText = `Profile: ${data.username}`;
 
   // Paths to images do not work because of parcel pathing, need to fix/ask clara
@@ -39,6 +41,13 @@ export function generateProfil(data): void {
   } else if (data.profile_pic === "image3") {
     imgEl.setAttribute("src", "../img/dog.png");
   }
+
+  // Log out button, hides the profile page and clears data info
+  const logOutButton = document.querySelector("#logOutButton") as HTMLButtonElement;
+  logOutButton.addEventListener("click", () => {
+    hideAllContentBoxes();
+    data = "";
+  })
 
   div.classList.add(content.isActive);
   generateLatestPost();
