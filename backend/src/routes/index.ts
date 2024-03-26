@@ -4,6 +4,7 @@ import { CategoryRouter } from "./categories.route.js";
 import { PostRouter } from "./post.route.js";
 import { AuthRouter } from "./auth.route.js";
 
+// All the starting router paths
 const router = Router();
 
 const routes = [
