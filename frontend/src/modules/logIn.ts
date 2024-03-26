@@ -30,7 +30,9 @@ export function logInUser() {
             .then(response => {
                 // console.log(response.json());
                 response.json().then((data) => {
-                    console.log(data);
+                    // console.log(data);
+
+                    // Send log in response data to generate a users profile information
                     generateProfil(data);
                 })
             })

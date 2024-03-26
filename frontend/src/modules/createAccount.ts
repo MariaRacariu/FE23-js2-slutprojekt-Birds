@@ -34,6 +34,8 @@ export function createAccount() {
                 // console.log(response.json());
                 response.json().then((data) => {
                     // console.log(data);
+
+                    // Send create account response data to generate a users profile information
                     generateProfil(data);
                 })
             })
