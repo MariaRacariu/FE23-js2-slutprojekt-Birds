@@ -1,7 +1,7 @@
 import { displayLogin, displaySignup, displayInput } from "./modules/display";
 import { generateProfil, generateLatestPost, generateCategories } from "./modules/generat";
 /* import { getPost } from "./modules/fetch"; */
-import { fetchData, logInUser } from "./modules/logIn.ts";
+import { logInUser } from "./modules/logIn.ts";
 import { createAccount } from "./modules/createAccount.ts";
 
 
@@ -9,9 +9,6 @@ import { createAccount } from "./modules/createAccount.ts";
 const buttonLog = document.getElementById('idBu') as HTMLButtonElement;
 buttonLog.addEventListener('click', displayLogin);
 
-// !
-// const buttonSignUp = document.getElementById('logInButton') as HTMLButtonElement;
-// buttonSignUp.addEventListener('click', generateProfil);
 
 /* const buttonPost = document.getElementById('post-button')as HTMLButtonElement;
 buttonPost.addEventListener('click', submitPost); */
@@ -25,7 +22,7 @@ loginFormButton.addEventListener("click", (event) => {
     event.preventDefault();
     logInUser();
 })
-
+// Event Listener for create account form
 const createAccountFormButton = document.querySelector("#createAccountButton") as HTMLButtonElement;
 createAccountFormButton.addEventListener("click", (event) => {
     event.preventDefault();
