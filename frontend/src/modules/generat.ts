@@ -4,19 +4,21 @@ import { hideAllContentBoxes, displayInput } from "./display";
 import { getCategories, getCategory, getLatestPosts, getPostsByCategory } from "./fetch";
 
 //mockup user, TODO: use real login user
-const user = {
-  name: "Pia",
-  posts: [
-    {
-      message: "test test",
-    },
-    {
-      message: "message 2",
-    },
-  ],
-};
+// const user = {
+//   name: "Pia",
+//   posts: [
+//     {
+//       message: "test test",
+//     },
+//     {
+//       message: "message 2",
+//     },
+//   ],
+// };
 
-export function generateProfil(): void {
+export function generateProfil(data): void {
+  // console.log(data);
+
   hideAllContentBoxes();
   generateCategories();
   displayInput();
@@ -27,8 +29,17 @@ export function generateProfil(): void {
   const imgEl = document.getElementById(profile.image) as HTMLImageElement;
   const ulEl = document.getElementById(profile.posts) as HTMLUListElement;
 
-  h5El.innerText = `Profile: ${user.name}`;
-  imgEl.setAttribute("src", "#");
+  h5El.innerText = `Profile: ${data.username}`;
+
+  // Paths to images do not work because of parcel pathing, need to fix/ask clara
+  if (data.profile_pic === "image1") {
+    imgEl.setAttribute("src", "../img/bird.png");
+  } else if (data.profile_pic === "image2") {
+    imgEl.setAttribute("src", "../img/cat.png");
+  } else if (data.profile_pic === "image3") {
+    imgEl.setAttribute("src", "../img/dog.png");
+  }
+
   div.classList.add(content.isActive);
   generateLatestPost();
 }
