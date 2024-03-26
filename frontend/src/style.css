@@ -253,3 +253,7 @@ h5 {font-size: 2em;
 .buttonHome button {
     margin-top: 120px;
 }
+
+.img-box img {
+    width: 100%;
+}
