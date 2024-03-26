@@ -1,4 +1,5 @@
-import {PostListResponse, ResponseDataType, CategoryListResponse,CategoryResponse} from '../types/res.types'
+import { promises } from 'dns';
+import {PostListResponse, ResponseDataType, CategoryListResponse,CategoryResponse, CommentListResponse, LoginResponse} from '../types/res.types'
 
 export async function fetchFromDatabase(endpoint: string, method: string): Promise<ResponseDataType> {
   const res = await fetch(`http://localhost:3000/${endpoint}`, {
@@ -31,3 +32,12 @@ export async function getLatestPosts(): Promise<PostListResponse>{
   return resultFromDatabase;
 }
 
+export async function getAllCommentsByPost(id: string): Promise<CommentListResponse>{
+  const resultFromDatabase = fetchFromDatabase (`posts/${id}/comments`, 'get') as Promise<CommentListResponse>;
+  return resultFromDatabase;
+}
+
+export async function getUser(id: string): Promise<LoginResponse>{
+  const resultFromDatabase = fetchFromDatabase (`users/${id}`, "get") as Promise<LoginResponse> 
+  return resultFromDatabase;
+}
