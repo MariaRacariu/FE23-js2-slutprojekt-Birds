@@ -37,6 +37,10 @@
     "papamelon": {
       "password": "123",
       "profile_pic": "image1"
+    },
+    "Charles Leclerc": {
+      "password": "testing",
+      "profile_pic": "image2"
     }
   },
   "categories": {

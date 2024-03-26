@@ -3,13 +3,6 @@ const databaseLinkLogIn = "http://localhost:3000/login";
 const userNameElement = document.querySelector("#loginFormUsername") as HTMLInputElement;
 const passwordElement = document.querySelector("#logInFormPassword") as HTMLInputElement;
 
-export async function fetchData() {
-    const response = await fetch(databaseLinkLogIn);
-    const data = await response.json();
-    console.log(data);
-    return data;
-}
-
 export function logInUser() {
     const userNameInput = userNameElement.value;
     const passwordInput = passwordElement.value;
