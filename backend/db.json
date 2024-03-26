@@ -41,7 +41,15 @@
     "Charles Leclerc": {
       "password": "testing",
       "profile_pic": "image2"
+    },
+    "Anne": {
+      "password": "321",
+      "profile_pic": "image3"
     }
+    
+    
+
+
   },
   "categories": {
     "anime": {
