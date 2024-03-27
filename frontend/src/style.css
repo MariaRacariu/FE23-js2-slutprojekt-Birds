@@ -18,7 +18,7 @@ img {
     display: flex;
 }
 .allWrapper img{
-    width: 14%;
+    width: 17%;
 }
 .postWrapper {
     width: 86%;
@@ -98,7 +98,7 @@ h5 {font-size: 2em;
     text-align: center}
 
 .img-box {
-    background-color: gray;
+    background-color:  #a3cdb5;
     margin: auto;
     width: 50%;
     height: 20%;
@@ -221,7 +221,7 @@ h5 {font-size: 2em;
   
 .img-ul label img {
     height: 100px;
-    width: 100px;
+    /*width: 100px;*/
     transition-duration: 0.2s;
     transform-origin: 50% 50%;
   }
