@@ -20,7 +20,6 @@ export function createPost() {
         title: string,
         body: string,
         category: string,
-        created_at: number
     }
 
     function sendPost(post: Post): Promise<void> {
@@ -41,8 +40,8 @@ export function createPost() {
                 })
             })
     }
-    const timeCreated = new Date();
-    let time = timeCreated.getTime();
-    console.log(userData.username, userInputTitleValue, userInputMessageValue, chosenCategoryValue, time);
-    sendPost({ author: userData.username, title: userInputTitleValue, body: userInputMessageValue, category: chosenCategoryValue, created_at: time });
+
+    console.log(userData.username, userInputTitleValue, userInputMessageValue, chosenCategoryValue);
+
+    sendPost({ author: userData.username, title: userInputTitleValue, body: userInputMessageValue, category: chosenCategoryValue });
 }   

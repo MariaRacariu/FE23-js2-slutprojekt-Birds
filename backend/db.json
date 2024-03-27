@@ -47,6 +47,14 @@
       "body": "Testing",
       "category": "anime",
       "created_at": 1711551467581
+    },
+    {
+      "id": "1ff9f9a8-3abf-4bdd-add7-e13cc54a9de1",
+      "author": "maria",
+      "title": "This better work",
+      "body": "or I will flip a table",
+      "category": "anime",
+      "created_at": 1711555667339
     }
   ],
   "users": {

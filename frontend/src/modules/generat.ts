@@ -130,7 +130,7 @@ export function generateCategories(): void {
       const categoryListItem = document.createElement("li") as HTMLLIElement;
       const categoryButton = document.createElement("button") as HTMLButtonElement;
       categoryButton.innerText = category.name;
-      categoryButton.value = category.name;
+      categoryButton.value = category.id;
       categoryButton.setAttribute("id", "categoryButton");
       categoryList.appendChild(categoryListItem);
       categoryListItem.appendChild(categoryButton);
@@ -206,6 +206,7 @@ function generatePostInputForm() {
 
   const titleInput = document.createElement("input");
   titleInput.setAttribute("id", "title");
+  titleInput.type = "text";
   postForm.append(titleInput);
 
   const messageInput = document.createElement("textarea");
