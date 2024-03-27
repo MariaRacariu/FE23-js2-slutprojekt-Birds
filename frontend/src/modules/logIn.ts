@@ -10,12 +10,12 @@ const loginForm = document.querySelector("#loginForm") as HTMLElement;
 const errorMessageElement = document.createElement("p");
 loginForm.append(errorMessageElement);
 
-interface Data {
+export interface UserData {
     username: string,
     profile_pic: string
 };
 
-export let userData: Data;
+export let userData: UserData;
 
 export function logInUser() {
     const userNameInput = userNameElement.value;
@@ -51,7 +51,7 @@ export function logInUser() {
                         // Call it when it's needed in a file   
                         // Send log in response data to generate a users profile information
                         userData = data;
-                        generateProfil();
+                        generateProfil(data);
                     }
 
                 })
