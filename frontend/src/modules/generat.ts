@@ -59,6 +59,7 @@ export function generatePosts(postListResponse: Promise<PostListResponse>): void
           const profileImage = document.createElement('img') as HTMLImageElement;
           const postWrapper = document.createElement('div') as HTMLDivElement;
           const liEl = document.createElement("li") as HTMLLIElement;
+          const deleteButton = document.createElement('button') as HTMLButtonElement;
           const authorP = document.createElement("p") as HTMLParagraphElement;
           const titleP = document.createElement("p") as HTMLParagraphElement;
           const bodyP = document.createElement("p") as HTMLParagraphElement;
@@ -66,6 +67,7 @@ export function generatePosts(postListResponse: Promise<PostListResponse>): void
           ulEl.appendChild(liEl);
           /*           liEl.appendChild(profileImage);
                     liEl.appendChild(wrapContainer) */
+          postWrapper.appendChild(deleteButton);          
           postContainer.appendChild(profileImage);
           postContainer.appendChild(postWrapper);
           postWrapper.appendChild(authorP);
@@ -75,6 +77,8 @@ export function generatePosts(postListResponse: Promise<PostListResponse>): void
           postWrapper.classList.add('postWrapper');
           postContainer.classList.add('allWrapper')
           liEl.classList.add("li-post");
+          deleteButton.innerText= 'X';
+          deleteButton.classList.add('delete-button');
           ulEl.classList.add("ul-post");
           if (profile_pic === "image1") {
             profileImage.setAttribute("src", image1);
@@ -90,6 +94,10 @@ export function generatePosts(postListResponse: Promise<PostListResponse>): void
           authorP.classList.add('p-author')
           postWrapper.appendChild(commentButton);
           commentButton.innerText = 'Comments';
+          deleteButton.addEventListener('click', () => {
+            liEl.remove();
+            
+          })
           commentButton.addEventListener('click', () => {
             generateComments(liEl, post.id)
           })
