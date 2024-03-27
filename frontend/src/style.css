@@ -18,7 +18,7 @@ img {
     display: flex;
 }
 .allWrapper img{
-    width: 17%;
+    width: 18%;
 }
 .postWrapper {
     width: 86%;
@@ -74,6 +74,8 @@ header {
     width: 90%;
     margin: auto;
     border: solid 3px black;
+    max-height: 569px;
+    overflow-y: scroll;
 }
 
 
@@ -277,4 +279,12 @@ h5 {font-size: 2em;
 
 .img-box img {
     width: 100%;
+}
+
+textarea {
+    margin-bottom: 20px;
+}
+
+#post-button {
+    margin-bottom: 20px;
 }
