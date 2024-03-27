@@ -2,6 +2,14 @@ import { generateProfil } from "./generat.ts";
 
 const databaseLinkCreateAccount = "http://localhost:3000/users";
 
+interface User {
+    username: string,
+    password: string,
+    profile_pic: string
+}
+
+export let userData: User[] = [];
+
 export function createAccount() {
     const userNameElement = document.querySelector("#createAccountUsername") as HTMLInputElement;
     const passwordElement = document.querySelector("#createAccountPassword") as HTMLInputElement;
@@ -34,9 +42,9 @@ export function createAccount() {
                 // console.log(response.json());
                 response.json().then((data) => {
                     // console.log(data);
-
+                    userData = data;
                     // Send create account response data to generate a users profile information
-                    generateProfil(data);
+                    generateProfil();
                 })
             })
     }

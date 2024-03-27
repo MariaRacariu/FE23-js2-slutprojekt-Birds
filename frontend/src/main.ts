@@ -1,8 +1,9 @@
-import { displayLogin, displaySignup, displayInput } from "./modules/display";
+import { displayLogin, displaySignup } from "./modules/display";
 import { generateProfil, generateLatestPost, generateCategories } from "./modules/generat";
 /* import { getPost } from "./modules/fetch"; */
 import { logInUser } from "./modules/logIn.ts";
 import { createAccount } from "./modules/createAccount.ts";
+import { createPost } from "./modules/createPosts.ts";
 
 
 
@@ -30,10 +31,14 @@ createAccountFormButton.addEventListener("click", (event) => {
 })
 
 
-const iconHome = document.getElementById('iconHeader')as HTMLImageElement;
+const iconHome = document.getElementById('iconHeader') as HTMLImageElement;
 iconHome.addEventListener('click', () => {
     generateCategories();
     generateLatestPost();
-    displayInput();
+    // displayInput();
 
-} );
+});
+
+// For not logged in users to be able to view posts
+generateLatestPost();
+

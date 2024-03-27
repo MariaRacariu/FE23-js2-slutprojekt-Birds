@@ -10,15 +10,21 @@ const loginForm = document.querySelector("#loginForm") as HTMLElement;
 const errorMessageElement = document.createElement("p");
 loginForm.append(errorMessageElement);
 
+interface Data {
+    username: string,
+    profile_pic: string
+};
+
+export let userData: Data;
+
 export function logInUser() {
     const userNameInput = userNameElement.value;
     const passwordInput = passwordElement.value;
 
     // console.log(passwordInput, userNameInput);
-
     interface User {
         username: string,
-        password: string
+        password: string,
     }
 
     function checkUserExists(user: User): Promise<void> {
@@ -41,8 +47,11 @@ export function logInUser() {
                         errorMessageElement.innerText = errorMessage;
                         errorMessageElement.style.color = "red";
                     } else {
+                        // Need a global variable in this file, give it data then export it,
+                        // Call it when it's needed in a file   
                         // Send log in response data to generate a users profile information
-                        generateProfil(data);
+                        userData = data;
+                        generateProfil();
                     }
 
                 })
