@@ -5,6 +5,7 @@ import { DBResponse } from "../types/res.types.js";
 
 const router = Router();
 
+// ALL METHODS RELATED TO /posts
 router.get("/", (req, res) => {
   tryCatch(res, () =>
     PostServices.getAllPosts().then((response: DBResponse) => {
@@ -41,6 +42,7 @@ router.delete("/:id", (req, res) => {
   );
 });
 
+// Get all comments for a single post
 router.get("/:id/comments", (req, res) => {
   tryCatch(res, () =>
     CommentServices.getCommentsByPost(req.params.id).then(
@@ -52,6 +54,7 @@ router.get("/:id/comments", (req, res) => {
   );
 });
 
+// Create Comment to a single post
 router.post("/:id/comments", (req, res) => {
   tryCatch(res, () =>
     CommentServices.createComment(req.params.id, req.body).then(

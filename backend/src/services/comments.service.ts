@@ -5,6 +5,7 @@ import {
   createSuccessResponse,
 } from "../util/response.util.js";
 
+// All functions related to /comments/
 export async function getCommentsByPost(postId: string): Promise<DBResponse> {
   const db = await readJsonFile();
   const posts = db.posts;

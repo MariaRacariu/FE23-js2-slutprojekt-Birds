@@ -5,6 +5,7 @@ import { DBResponse } from "../types/res.types.js";
 
 const router = Router();
 
+// ALL METHODS RELATED TO /categories
 router.get("/", (req, res) => {
   tryCatch(res, () =>
     CategoryServices.getAllCategorise().then((response: DBResponse) => {

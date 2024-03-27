@@ -1,5 +1,6 @@
 import { DBResponse, ResponseDataType } from "../types/res.types.js";
 
+// functions for reusable code
 export function createErrorResponse(code: number, message: string): DBResponse {
   return {
     status: code,

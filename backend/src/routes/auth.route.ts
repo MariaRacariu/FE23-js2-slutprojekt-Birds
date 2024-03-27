@@ -5,6 +5,8 @@ import { DBResponse } from "../types/res.types.js";
 
 const router = Router();
 
+// LOGIN WITH NO AUTHENTICATION!
+
 router.post("/login", (req, res) => {
   tryCatch(res, () =>
     AuthServices.loginUser(req.body).then((response: DBResponse) => {

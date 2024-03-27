@@ -12,6 +12,7 @@ type CreateUserArgs = {
   profile_pic: string;
 };
 
+// All functions related to /users/
 export async function getUser(username: string): Promise<DBResponse> {
   const db = await readJsonFile();
 

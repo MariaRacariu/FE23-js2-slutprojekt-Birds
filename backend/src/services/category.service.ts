@@ -5,6 +5,8 @@ import {
   createSuccessResponse,
 } from "../util/response.util.js";
 
+// All functions related to /categories/
+
 export async function getAllCategorise(): Promise<DBResponse> {
   const db = await readJsonFile();
   const categories = db.categories;

@@ -5,9 +5,8 @@ import { DBResponse } from "../types/res.types.js";
 
 const router = Router();
 
-// /users is same as /users/
+// ALL METHODS RELATED TO /users
 router.get("/", (req, res) => {
-  // /users/
   tryCatch(res, () =>
     UserServices.getAllUsers().then((response: DBResponse) => {
       const { status, data } = response;

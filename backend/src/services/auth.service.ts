@@ -10,6 +10,7 @@ type LoginUserArgs = {
   password: string;
 };
 
+// Functions for auth/login
 export async function loginUser(data: LoginUserArgs): Promise<DBResponse> {
   const db = await readJsonFile();
   const { username, password } = data;

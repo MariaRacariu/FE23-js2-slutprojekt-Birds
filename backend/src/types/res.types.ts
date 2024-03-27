@@ -1,5 +1,6 @@
 import { Post, Comment } from "./db.types.js";
 
+// all types for Response
 export type ResponseDataType =
   | LoginResponse
   | UserResponse

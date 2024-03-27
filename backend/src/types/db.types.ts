@@ -1,3 +1,5 @@
+// all types for database
+
 export type Database = {
   users: { [key: string]: User };
   posts: Post[];

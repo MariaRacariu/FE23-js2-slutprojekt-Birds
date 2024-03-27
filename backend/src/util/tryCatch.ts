@@ -1,5 +1,6 @@
 import { Response } from "express";
 
+// reusable function to shorten try and catch
 export function tryCatch(res: Response, func: Function) {
   try {
     func();
