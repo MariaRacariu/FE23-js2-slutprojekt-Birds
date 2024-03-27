@@ -98,6 +98,7 @@ export function generatePosts(postListResponse: Promise<PostListResponse>): void
           authorP.innerText = post.author;
           titleP.innerText = post.title;
           bodyP.innerText = post.body;
+          authorP.classList.add('p-author')
           postWrapper.appendChild(commentButton);
           commentButton.innerText= 'Comments';
           commentButton.addEventListener('click', () => {
