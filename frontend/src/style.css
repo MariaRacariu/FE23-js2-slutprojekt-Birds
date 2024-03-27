@@ -2,6 +2,14 @@
     list-style: none;
 }
 
+p {
+    text-align: start;
+}
+
+.p-author {
+    font-weight: bold;
+}
+
 img {
     width: 100%;
 }
