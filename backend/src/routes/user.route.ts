@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { PostServices, UserServices } from "../services/index.js";
+import { dbPosts, dbUsers } from "../DatabaseFunctions/index.js";
 import { tryCatch } from "../util/tryCatch.js";
 import { DBResponse } from "../types/res.types.js";
 
@@ -8,7 +8,7 @@ const router = Router();
 // ALL METHODS RELATED TO /users
 router.get("/", (req, res) => {
   tryCatch(res, () =>
-    UserServices.getAllUsers().then((response: DBResponse) => {
+    dbUsers.getAllUsers().then((response: DBResponse) => {
       const { status, data } = response;
       res.status(status).send(data);
     })
@@ -18,7 +18,7 @@ router.get("/", (req, res) => {
 router.post("/", (req, res) => {
   ///users/
   tryCatch(res, () =>
-    UserServices.createUser(req.body).then((response: DBResponse) => {
+    dbUsers.createUser(req.body).then((response: DBResponse) => {
       const { status, data } = response;
       res.status(status).send(data);
     })
@@ -28,7 +28,7 @@ router.post("/", (req, res) => {
 router.get("/:id", (req, res) => {
   // /users/:id
   tryCatch(res, () =>
-    UserServices.getUser(req.params.id).then((response: DBResponse) => {
+    dbUsers.getUser(req.params.id).then((response: DBResponse) => {
       const { status, data } = response;
       res.status(status).send(data);
     })
@@ -38,7 +38,7 @@ router.get("/:id", (req, res) => {
 router.delete("/:id", (req, res) => {
   // /users/:id
   tryCatch(res, () =>
-    UserServices.deleteUser(req.params.id).then((response: DBResponse) => {
+    dbUsers.deleteUser(req.params.id).then((response: DBResponse) => {
       const { status, data } = response;
       res.status(status).send(data);
     })
@@ -48,7 +48,7 @@ router.delete("/:id", (req, res) => {
 router.get("/:id/posts", (req, res) => {
   // /users/:id/posts
   tryCatch(res, () =>
-    PostServices.getPostsByUser(req.params.id).then((response: DBResponse) => {
+    dbPosts.getPostsByUser(req.params.id).then((response: DBResponse) => {
       const { status, data } = response;
       res.status(status).send(data);
     })
