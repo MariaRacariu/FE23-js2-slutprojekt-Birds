@@ -92,7 +92,6 @@ export function generatePosts(postListResponse: Promise<PostListResponse>): void
           commentButton.addEventListener('click', () => {
             generateComments(liEl, post.id)
           })
-
         })
 
       });
@@ -114,7 +113,6 @@ export function generateLatestPost(): void {
 export function generatePostsByCategory(id: string): void {
   const resultFromDatabase = getPostsByCategory(id);
   generatePosts(resultFromDatabase)
-  generatePostInputForm();
 }
 
 
@@ -151,6 +149,7 @@ export function generateCategory(id: string) {
     postHeader.innerText = res.name;
     postDescription.innerText = res.description;
     generatePostsByCategory(id);
+    generatePostInputForm();
   });
 }
 
@@ -195,7 +194,6 @@ function generatePostInputForm() {
   const formContainerParent = document.querySelector("#post-container") as HTMLDivElement;
 
   const formContainer = document.createElement("div");
-  formContainer.innerHTML = "";
   formContainerParent.append(formContainer);
   formContainer.setAttribute("class", "content-box");
   formContainer.setAttribute("id", "input-field");
