@@ -24,6 +24,11 @@ img {
     width: 86%;
 }
 
+.delete-button {
+    float: right;
+}
+
+
 section {
     display: flex;
     justify-content: space-around;
