@@ -1,17 +1,16 @@
 import { PostListResponse } from "../types/res.types";
+import { UserData } from './logIn.ts';
 import { content, profile } from "./constants";
 import { hideAllContentBoxes } from "./display";
-import { getAllCommentsByPost, getCategories, getCategory, getLatestPosts, getPostsByCategory, getUser } from "./databaseFetch";
+import { getAllCommentsByPost, getCategories, getCategory, getLatestPosts, getPostsByCategory, getUser, getUsers } from "./databaseFetch";
 import image1 from "../img/image1.png";
 import image2 from "../img/image2.png";
 import image3 from "../img/image3.png";
-import { userData } from "./logIn.ts";
 import { wrap } from "module";
 import { createPost } from "./createPosts.ts";
 
 // Data has all the info for the current user logged in
-export function generateProfil(): void {
-  console.log(userData);
+export function generateProfil(userData:UserData): void {
 
   hideAllContentBoxes();
   generateCategories();
@@ -42,6 +41,7 @@ export function generateProfil(): void {
 
   div.classList.add(content.isActive);
   generateLatestPost();
+  generateUserList();
 }
 
 export function generatePosts(postListResponse: Promise<PostListResponse>): void {
@@ -50,7 +50,8 @@ export function generatePosts(postListResponse: Promise<PostListResponse>): void
   postListResponse.then((res) => {
     const { posts } = res;
     if (posts.length) {
-      posts.forEach((post) => {
+      //sort posts by latest first 
+      posts.sort((a,b) => b.created_at - a.created_at).forEach((post) => {
         const userResult = getUser(post.author);
         userResult.then(res => {
           const { profile_pic } = res;
@@ -107,6 +108,14 @@ export function generatePosts(postListResponse: Promise<PostListResponse>): void
 
 export function generateLatestPost(): void {
   const resultFromDatabase = getLatestPosts();
+  const postHeader = document.getElementById(
+    "post-header"
+  ) as HTMLHeadingElement;
+  const postDescription = document.getElementById(
+    "post-description"
+  ) as HTMLParagraphElement;
+  postHeader.innerText = 'Latest posts';
+  postDescription.innerText = '';
   generatePosts(resultFromDatabase)
 }
 
@@ -117,7 +126,7 @@ export function generatePostsByCategory(id: string): void {
 
 
 export function generateCategories(): void {
-  hideAllContentBoxes();
+  //hideAllContentBoxes();
   const categoryList = document.getElementById("forum-ul") as HTMLUListElement;
   categoryList.innerHTML = '';
   const resultFromDatabase = getCategories();
@@ -222,5 +231,25 @@ function generatePostInputForm() {
   sendPostButton.addEventListener("click", (event) => {
     event.preventDefault();
     createPost();
+  })
+}
+
+function generateUserList(){
+  
+  const userList = document.getElementById('users-ul') as HTMLUListElement;
+  userList.innerHTML = '';
+  const responseFromDatabase = getUsers();
+  responseFromDatabase.then(res => {
+    const {users} = res;
+    users.forEach(user => {
+      const userDisplay = document.createElement('li') as HTMLLIElement;
+      const userSelect = document.createElement('button') as HTMLButtonElement;
+      userSelect.innerText = user.username;
+      userList.appendChild(userDisplay);
+      userDisplay.appendChild(userSelect);
+      userSelect.addEventListener('click', () => {
+        generateProfil(user)
+      })
+    })
   })
 }
