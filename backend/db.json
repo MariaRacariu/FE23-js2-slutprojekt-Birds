@@ -45,11 +45,11 @@
     "Anne": {
       "password": "321",
       "profile_pic": "image3"
+    },
+    "maria": {
+      "password": "admin",
+      "profile_pic": "image2"
     }
-    
-    
-
-
   },
   "categories": {
     "anime": {
