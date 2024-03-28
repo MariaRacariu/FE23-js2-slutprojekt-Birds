@@ -80,6 +80,7 @@ header {
     border: solid 3px black;
     max-height: 569px;
     overflow-y: scroll;
+    margin-bottom: 40px;
 }
 
 
