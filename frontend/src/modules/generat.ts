@@ -10,7 +10,7 @@ import { wrap } from "module";
 import { createPost } from "./createPosts.ts";
 
 // Data has all the info for the current user logged in
-export function generateProfil(userData:UserData): void {
+export function generateProfil(userData: UserData): void {
 
   hideAllContentBoxes();
   generateCategories();
@@ -51,7 +51,7 @@ export function generatePosts(postListResponse: Promise<PostListResponse>): void
     const { posts } = res;
     if (posts.length) {
       //sort posts by latest first 
-      posts.sort((a,b) => b.created_at - a.created_at).forEach((post) => {
+      posts.sort((a, b) => b.created_at - a.created_at).forEach((post) => {
         const userResult = getUser(post.author);
         userResult.then(res => {
           const { profile_pic } = res;
@@ -67,7 +67,7 @@ export function generatePosts(postListResponse: Promise<PostListResponse>): void
           ulEl.appendChild(liEl);
           /*           liEl.appendChild(profileImage);
                     liEl.appendChild(wrapContainer) */
-          postWrapper.appendChild(deleteButton);          
+          postWrapper.appendChild(deleteButton);
           postContainer.appendChild(profileImage);
           postContainer.appendChild(postWrapper);
           postWrapper.appendChild(authorP);
@@ -77,7 +77,7 @@ export function generatePosts(postListResponse: Promise<PostListResponse>): void
           postWrapper.classList.add('postWrapper');
           postContainer.classList.add('allWrapper')
           liEl.classList.add("li-post");
-          deleteButton.innerText= 'X';
+          deleteButton.innerText = 'X';
           deleteButton.classList.add('delete-button');
           ulEl.classList.add("ul-post");
           if (profile_pic === "image1") {
@@ -96,7 +96,7 @@ export function generatePosts(postListResponse: Promise<PostListResponse>): void
           commentButton.innerText = 'Comments';
           deleteButton.addEventListener('click', () => {
             liEl.remove();
-            
+
           })
           commentButton.addEventListener('click', () => {
             generateComments(liEl, post.id)
@@ -166,6 +166,7 @@ export function generateCategory(id: string) {
     postHeader.innerText = res.name;
     postDescription.innerText = res.description;
     generatePostsByCategory(id);
+    formContainer.innerHTML = "";
     generatePostInputForm();
   });
 }
@@ -206,11 +207,14 @@ function generateComments(post: HTMLLIElement, id: string) {
   })
 }
 
+// Global variable to be able to clear in innerHTML of the form to prevent duplicating 
+const formContainer = document.createElement("div");
+
 // Generate input form for categories
 function generatePostInputForm() {
   const formContainerParent = document.querySelector("#post-container") as HTMLDivElement;
 
-  const formContainer = document.createElement("div");
+  formContainer.innerHTML = "";
   formContainerParent.append(formContainer);
   formContainer.setAttribute("class", "content-box");
   formContainer.setAttribute("id", "input-field");
@@ -242,13 +246,13 @@ function generatePostInputForm() {
   })
 }
 
-function generateUserList(){
-  
+function generateUserList() {
+
   const userList = document.getElementById('users-ul') as HTMLUListElement;
   userList.innerHTML = '';
   const responseFromDatabase = getUsers();
   responseFromDatabase.then(res => {
-    const {users} = res;
+    const { users } = res;
     users.forEach(user => {
       const userDisplay = document.createElement('li') as HTMLLIElement;
       const userSelect = document.createElement('button') as HTMLButtonElement;
