@@ -1,8 +1,8 @@
 import { PostListResponse } from "../types/res.types";
-import { UserData } from './logIn.ts';
+import { UserData, userData } from './logIn.ts';
 import { content, profile } from "./constants";
 import { hideAllContentBoxes } from "./display";
-import { getAllCommentsByPost, getCategories, getCategory, getLatestPosts, getPostsByCategory, getUser, getUsers } from "./databaseFetch";
+import { deletePost, getAllCommentsByPost, getCategories, getCategory, getLatestPosts, getPostsByCategory, getUser, getUsers, postComment } from "./databaseFetch";
 import image1 from "../img/image1.png";
 import image2 from "../img/image2.png";
 import image3 from "../img/image3.png";
@@ -63,15 +63,14 @@ export function generatePosts(postListResponse: Promise<PostListResponse>): void
           const profileImage = document.createElement('img') as HTMLImageElement;
           const postWrapper = document.createElement('div') as HTMLDivElement;
           const liEl = document.createElement("li") as HTMLLIElement;
-          const deleteButton = document.createElement('button') as HTMLButtonElement;
           const authorP = document.createElement("p") as HTMLParagraphElement;
           const titleP = document.createElement("p") as HTMLParagraphElement;
           const bodyP = document.createElement("p") as HTMLParagraphElement;
           const commentButton = document.createElement('button') as HTMLButtonElement;
           ulEl.appendChild(liEl);
           /*           liEl.appendChild(profileImage);
-                    liEl.appendChild(wrapContainer) */
-          postWrapper.appendChild(deleteButton);
+          liEl.appendChild(wrapContainer) */
+          
           postContainer.appendChild(profileImage);
           postContainer.appendChild(postWrapper);
           postWrapper.appendChild(authorP);
@@ -81,8 +80,7 @@ export function generatePosts(postListResponse: Promise<PostListResponse>): void
           postWrapper.classList.add('postWrapper');
           postContainer.classList.add('allWrapper')
           liEl.classList.add("li-post");
-          deleteButton.innerText = 'X';
-          deleteButton.classList.add('delete-button');
+          
           ulEl.classList.add("ul-post");
           if (profile_pic === "image1") {
             profileImage.setAttribute("src", image1);
@@ -98,12 +96,22 @@ export function generatePosts(postListResponse: Promise<PostListResponse>): void
           authorP.classList.add('p-author')
           postWrapper.appendChild(commentButton);
           commentButton.innerText = 'Comments';
-          deleteButton.addEventListener('click', () => {
-            liEl.remove();
-
-          })
+          if(post.author === userData?.username){
+            const deleteButton = document.createElement('button') as HTMLButtonElement;
+            postWrapper.prepend(deleteButton);
+            deleteButton.innerText = 'X';
+            deleteButton.classList.add('delete-button');
+            deleteButton.addEventListener('click', () => {
+              liEl.remove();
+              deletePost(post.id)
+  
+            })
+          }
+          const commentContainer = document.createElement('div') as HTMLDivElement;
+          liEl.appendChild(commentContainer)
           commentButton.addEventListener('click', () => {
-            generateComments(liEl, post.id)
+            generateComments(commentContainer, post.id)
+            
           })
         })
 
@@ -184,7 +192,8 @@ function clearPosts() {
 }
 
 //Generat comments section list. 
-function generateComments(post: HTMLLIElement, id: string) {
+function generateComments(container: HTMLDivElement, id: string) {
+  container.innerHTML = '';
   const commentsGeneratList = document.createElement('ul') as HTMLUListElement;
   const resultFromDatabase = getAllCommentsByPost(id);
   resultFromDatabase.then(res => {
@@ -204,13 +213,17 @@ function generateComments(post: HTMLLIElement, id: string) {
       commentPost.appendChild(commentContainer)
       commentContainer.appendChild(profileImage)
       commentContainer.appendChild(commentWrapper)
-      post.appendChild(commentsGeneratList);
+      container.appendChild(commentsGeneratList);
       commentWrapper.classList.add('postWrapper');
       commentContainer.classList.add('allWrapper')
       commentPost.classList.add("li-post");
 
-
     })
+  }).finally(() => {
+    //check if user is login and then create comment input form
+    if(userData){
+      generateCommentInputForm(container,id)
+    }
   })
 }
 
@@ -250,6 +263,38 @@ function generatePostInputForm() {
   sendPostButton.addEventListener("click", (event) => {
     event.preventDefault();
     createPost();
+  })
+}
+
+function generateCommentInputForm(commentContainer:HTMLDivElement, postId: string) {
+  const formContainer = document.createElement("div") as HTMLDivElement;
+  commentContainer.append(formContainer);
+  //formContainer.setAttribute("id", "input-field");
+
+  const postForm = document.createElement("form");
+  formContainer.append(postForm);
+
+  const messageInput = document.createElement("textarea");
+  //messageInput.setAttribute("id", "message");
+  postForm.append(messageInput);
+
+  const sendPostButton = document.createElement("button");
+  //sendPostButton.setAttribute("id", "post-button");
+  postForm.append(sendPostButton);
+  sendPostButton.innerText = "Send";
+  sendPostButton.type = "submit";
+
+  // Event Listener for logged in users sending a post
+  // const sendPostButton = document.querySelector("#post-button") as HTMLButtonElement;
+  sendPostButton.addEventListener("click", (event) => {
+    event.preventDefault();
+    console.log(messageInput.value)
+    const postResult = postComment(postId, userData.username, messageInput.value)
+    //Update comments after it is posted to database
+    postResult.then((res) => {
+      generateComments(commentContainer,postId)
+    })
+    //createPost();
   })
 }
 

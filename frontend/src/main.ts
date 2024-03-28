@@ -5,14 +5,8 @@ import { logInUser, userData } from "./modules/logIn.ts";
 import { createAccount } from "./modules/createAccount.ts";
 import { createPost } from "./modules/createPosts.ts";
 
-
-
 const buttonLog = document.getElementById('idBu') as HTMLButtonElement;
 buttonLog.addEventListener('click', displayLogin);
-
-
-/* const buttonPost = document.getElementById('post-button')as HTMLButtonElement;
-buttonPost.addEventListener('click', submitPost); */
 
 const sigupButton = document.getElementById('signupButton') as HTMLButtonElement;
 sigupButton.addEventListener('click', displaySignup);
@@ -34,11 +28,11 @@ createAccountFormButton.addEventListener("click", (event) => {
 const iconHome = document.getElementById('iconHeader') as HTMLImageElement;
 iconHome.addEventListener('click', () => {
     if(userData){
-        //generateCategories();
+        //generateProfile also generate latest posts
         generateProfil(userData)
+    }else{
+        generateLatestPost();
     }
-    generateLatestPost();
-    // displayInput();
 
 });
 
