@@ -17,20 +17,20 @@ export function generateProfil(userData: UserData): void {
   // displayInput();
   //TODO: Fetch user
   //user = login user
-  const div = document.getElementById(profile.id) as HTMLDivElement;
-  const h5El = document.getElementById(profile.name) as HTMLHeadingElement;
-  const imgEl = document.getElementById(profile.image) as HTMLImageElement;
-  const ulEl = document.getElementById(profile.posts) as HTMLUListElement;
+  const profileContainer = document.getElementById(profile.id) as HTMLDivElement;
+  const profilHeading = document.getElementById(profile.name) as HTMLHeadingElement;
+  const profileImage = document.getElementById(profile.image) as HTMLImageElement;
+  const profilePostList = document.getElementById(profile.posts) as HTMLUListElement;
 
   // Interesting errors but it still works
   // Showing the current user logged in name
-  h5El.innerText = `Profile: ${userData.username}`;
+  profilHeading.innerText = `Profile: ${userData.username}`;
   if (userData.profile_pic === "image1") {
-    imgEl.setAttribute("src", image1);
+    profileImage.setAttribute("src", image1);
   } else if (userData.profile_pic === "image2") {
-    imgEl.setAttribute("src", image2);
+    profileImage.setAttribute("src", image2);
   } else if (userData.profile_pic === "image3") {
-    imgEl.setAttribute("src", image3);
+    profileImage.setAttribute("src", image3);
   }
 
   // Log out button, hides the profile page and clears data info
@@ -39,11 +39,15 @@ export function generateProfil(userData: UserData): void {
     hideAllContentBoxes();
   })
 
-  div.classList.add(content.isActive);
+
+  //Change html class to "active" from css style .content-box display none
+  profileContainer.classList.add(content.isActive);
   generateLatestPost();
   generateUserList();
 }
 
+
+//Generat post
 export function generatePosts(postListResponse: Promise<PostListResponse>): void {
   clearPosts();
   const ulEl = document.getElementById("post-ul") as HTMLUListElement;
@@ -114,6 +118,7 @@ export function generatePosts(postListResponse: Promise<PostListResponse>): void
   })
 }
 
+//Generat all latest post
 export function generateLatestPost(): void {
   const resultFromDatabase = getLatestPosts();
   const postHeader = document.getElementById(
@@ -127,12 +132,13 @@ export function generateLatestPost(): void {
   generatePosts(resultFromDatabase)
 }
 
+//Generar post by categories
 export function generatePostsByCategory(id: string): void {
   const resultFromDatabase = getPostsByCategory(id);
   generatePosts(resultFromDatabase)
 }
 
-
+//Generat forum categories list on nav
 export function generateCategories(): void {
   //hideAllContentBoxes();
   const categoryList = document.getElementById("forum-ul") as HTMLUListElement;
@@ -154,6 +160,7 @@ export function generateCategories(): void {
   });
 }
 
+//Generat category on heading and forum description
 export function generateCategory(id: string) {
   const resultFromDatabase = getCategory(id);
   resultFromDatabase.then((res) => {
@@ -172,11 +179,11 @@ export function generateCategory(id: string) {
 }
 
 function clearPosts() {
-  const ulEl = document.getElementById("post-ul") as HTMLUListElement;
-  ulEl.innerHTML = "";
+  const div = document.getElementById("post-ul") as HTMLUListElement;
+  div.innerHTML = "";
 }
 
-
+//Generat comments section list. 
 function generateComments(post: HTMLLIElement, id: string) {
   const commentsGeneratList = document.createElement('ul') as HTMLUListElement;
   const resultFromDatabase = getAllCommentsByPost(id);
@@ -246,10 +253,12 @@ function generatePostInputForm() {
   })
 }
 
+//Generat user list on nav
 function generateUserList() {
-
+const userHeadginContainer = document.getElementById('userHeadingContainer')as HTMLDivElement;
   const userList = document.getElementById('users-ul') as HTMLUListElement;
-  userList.innerHTML = '';
+  userList.innerHTML = ''
+  userHeadginContainer.classList.add(content.isActive);
   const responseFromDatabase = getUsers();
   responseFromDatabase.then(res => {
     const { users } = res;

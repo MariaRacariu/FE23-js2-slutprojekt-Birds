@@ -9,20 +9,20 @@ export function hideAllContentBoxes(): void {
 }
 
 
+//Display and hidded containers
 
 export function displayLogin(): void {
   hideAllContentBoxes()
-  const div = document.getElementById('show-logInn') as HTMLDivElement;
-  div.classList.add(content.isActive);
+  const loginContainer= document.getElementById('show-logInn') as HTMLDivElement;
+  loginContainer.classList.add(content.isActive);
 
 }
 
 
-
 export function displaySignup(): void {
   hideAllContentBoxes()
-  const div = document.getElementById('signup') as HTMLDivElement;
-  div.classList.add(content.isActive);
+  const signupContainer = document.getElementById('signup') as HTMLDivElement;
+  signupContainer.classList.add(content.isActive);
 
 }
 
