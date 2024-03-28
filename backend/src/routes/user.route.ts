@@ -5,7 +5,7 @@ import { DBResponse } from "../types/res.types.js";
 
 const router = Router();
 
-// ALL METHODS RELATED TO /users
+// Get all the users info
 router.get("/", (req, res) => {
   tryCatch(res, () =>
     dbUsers.getAllUsers().then((response: DBResponse) => {
@@ -15,6 +15,7 @@ router.get("/", (req, res) => {
   );
 });
 
+// Create a single user
 router.post("/", (req, res) => {
   ///users/
   tryCatch(res, () =>
@@ -25,6 +26,7 @@ router.post("/", (req, res) => {
   );
 });
 
+// Get a single user by id
 router.get("/:id", (req, res) => {
   // /users/:id
   tryCatch(res, () =>
@@ -35,6 +37,7 @@ router.get("/:id", (req, res) => {
   );
 });
 
+// Delete a single user by its id
 router.delete("/:id", (req, res) => {
   // /users/:id
   tryCatch(res, () =>
@@ -45,6 +48,7 @@ router.delete("/:id", (req, res) => {
   );
 });
 
+// Get all the posts of a single USER by its ID
 router.get("/:id/posts", (req, res) => {
   // /users/:id/posts
   tryCatch(res, () =>

@@ -103,6 +103,14 @@
     "datorit": {
       "name": "Dator/IT",
       "description": "Engage in discussions about the latest in technology, troubleshooting, and advancements in computers and information technology."
+    },
+    "weather": {
+      "name": "Weather",
+      "description": "lets talk about weather"
+    },
+    "movies": {
+      "name": "Movies",
+      "description": "Less gooooo"
     }
   },
   "comments": {

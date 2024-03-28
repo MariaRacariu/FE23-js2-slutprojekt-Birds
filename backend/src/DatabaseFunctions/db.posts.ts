@@ -62,7 +62,7 @@ export async function deletePost(id: string): Promise<DBResponse> {
   const comments = db.comments;
   //Find all the posts that doesn't have the given id and put it back in the database
   db.posts = posts.filter((post) => post.id !== id);
-  if (db.comments[id]) delete db.comments[id];
+  if (comments[id]) delete comments[id];
 
   return await writeJsonFile(db).then(() =>
     createSuccessResponse({
