@@ -35,9 +35,8 @@ router.get("/:postId", (req, res) => {
   );
 });
 
-// Delete a single post by its ID
 
-// http://localhost:3000/posts/saasdasdasd/
+// Delete a single post by its ID
 router.delete("/:postId", (req, res) => {
   tryCatch(res, () =>
     dbPosts.deletePost(req.params.postId).then((response: DBResponse) => {
@@ -47,6 +46,7 @@ router.delete("/:postId", (req, res) => {
   );
 });
 
+// Add like to a single POST 
 router.post("/:postId/like", (req, res) => {
   tryCatch(res, () =>
     dbPosts
@@ -58,6 +58,7 @@ router.post("/:postId/like", (req, res) => {
   );
 });
 
+// Add dislike to a single POST
 router.post("/:postId/dislike", (req, res) => {
   tryCatch(res, () =>
     dbPosts
@@ -105,7 +106,7 @@ router.delete("/:postId/comments/:commentId", (req, res) => {
   );
 });
 
-// Add a like to a single comment
+// Add a LIKE to a single COMMENT
 router.post("/:postId/comments/:commentId/like", (req, res) => {
   tryCatch(res, () =>
     dbComments
@@ -117,6 +118,7 @@ router.post("/:postId/comments/:commentId/like", (req, res) => {
   );
 });
 
+// Add DISLIKE to a single COMMENT
 router.post("/:postId/comments/:commentId/dislike", (req, res) => {
   tryCatch(res, () =>
     dbComments

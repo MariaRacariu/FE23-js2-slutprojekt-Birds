@@ -13,6 +13,7 @@ type CreatePostArgs = {
   category: string;
 };
 
+// Handle POSTS in database
 export async function getAllPosts(): Promise<DBResponse> {
   const db = await readJsonFile();
   const posts = db.posts;

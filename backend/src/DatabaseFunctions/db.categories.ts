@@ -11,7 +11,7 @@ type CreateCategoryArg = {
   description: string;
 };
 
-// All functions related to /categories/
+// Handle categories in database
 
 export async function getAllCategorise(): Promise<DBResponse> {
   const db = await readJsonFile();
