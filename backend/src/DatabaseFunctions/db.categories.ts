@@ -65,16 +65,17 @@ export async function createCategory(
 
 export async function deleteCategory(id: string): Promise<DBResponse> {
   const db = await readJsonFile();
+  if (!db.categories[id]) return createErrorResponse(404, "Category not found");
 
+  const posts = db.posts.filter((post) => post.category !== id);
+  db.posts = posts;
   delete db.categories[id];
-  await writeJsonFile(db);
 
-  if (!db.users[id]) return createErrorResponse(404, "Category not found");
-
-  console.log(db);
-  return createSuccessResponse({
-    id: id,
-  });
+  return await writeJsonFile(db).then(() =>
+    createSuccessResponse({
+      id,
+    })
+  );
 }
 
 // let id = randomUUID();
