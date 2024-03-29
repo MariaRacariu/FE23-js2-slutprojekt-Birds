@@ -1,3 +1,4 @@
+import { NextFunction, Request, Response } from "express";
 import { DBResponse } from "../types/res.types.js";
 import { readJsonFile, writeJsonFile } from "../util/db.util.js";
 import {
@@ -81,7 +82,7 @@ export async function createPost(data: CreatePostArgs): Promise<DBResponse> {
   const categories = db.categories;
   //Check if category exists
   if (!categories[data.category])
-    return createErrorResponse(404, "Category Doesn't exists");
+    return createErrorResponse(404, "Category Doesn't exist");
   //Get users
   const users = db.users;
   //Check if users exists
@@ -106,4 +107,81 @@ export async function createPost(data: CreatePostArgs): Promise<DBResponse> {
       ...postData,
     })
   );
+}
+
+type LikeDislikeArgs = {
+  author: string;
+};
+
+export async function likePost(
+  id: string,
+  body: LikeDislikeArgs
+): Promise<DBResponse> {
+  if (!body.author)
+    return createErrorResponse(404, "Author information missing");
+  const author = body.author;
+  const db = await readJsonFile();
+  const posts = db.posts;
+  //Get the index of the post
+  const postIndex = posts.findIndex((post) => post.id === id);
+  if (postIndex < 0) return createErrorResponse(404, "Post doesn't exist");
+  if (!posts[postIndex].hasOwnProperty("likes")) posts[postIndex].likes = [];
+  if (posts[postIndex].likes.includes(author)) {
+    return createErrorResponse(404, "User already liked the post");
+  } else {
+    posts[postIndex].likes.push(author);
+  }
+
+  db.posts = posts;
+
+  return await writeJsonFile(db).then(() =>
+    createSuccessResponse({
+      like_count: posts[postIndex].likes.length,
+    })
+  );
+}
+
+export async function dislikePost(
+  id: string,
+  body: LikeDislikeArgs
+): Promise<DBResponse> {
+  if (!body.author)
+    return createErrorResponse(404, "Author information missing");
+  const author = body.author;
+  const db = await readJsonFile();
+  const posts = db.posts;
+  //Get the index of the post
+  const postIndex = posts.findIndex((post) => post.id === id);
+  if (postIndex < 0) return createErrorResponse(404, "Post doesn't exist");
+  if (!posts[postIndex].hasOwnProperty("likes")) posts[postIndex].likes = [];
+  if (posts[postIndex].likes.includes(author)) {
+    posts[postIndex].likes = posts[postIndex].likes.filter(
+      (user) => user !== author
+    );
+  } else {
+    return createErrorResponse(404, "User didn't like the post");
+  }
+
+  db.posts = posts;
+
+  return await writeJsonFile(db).then(() =>
+    createSuccessResponse({
+      like_count: posts[postIndex].likes.length,
+    })
+  );
+}
+
+export async function checkPost(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
+  const db = await readJsonFile();
+  const posts = db.posts;
+  const postIndex = posts.findIndex((post) => post.id === req.params.postId);
+  if (postIndex < 0) {
+    res.status(404).send({ error: "Post doesn't exist middleware" });
+  } else {
+    next();
+  }
 }

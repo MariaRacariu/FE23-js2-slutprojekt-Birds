@@ -5,7 +5,6 @@ import { DBResponse } from "../types/res.types.js";
 
 const router = Router();
 
-
 // Get all the posts
 router.get("/", (req, res) => {
   tryCatch(res, () =>
@@ -27,9 +26,9 @@ router.post("/", (req, res) => {
 });
 
 // Get a single post by ID
-router.get("/:id", (req, res) => {
+router.get("/:postId", (req, res) => {
   tryCatch(res, () =>
-    dbPosts.getPost(req.params.id).then((response: DBResponse) => {
+    dbPosts.getPost(req.params.postId).then((response: DBResponse) => {
       const { status, data } = response;
       res.status(status).send(data);
     })
@@ -37,30 +36,56 @@ router.get("/:id", (req, res) => {
 });
 
 // Delete a single post by its ID
-router.delete("/:id", (req, res) => {
+
+// http://localhost:3000/posts/saasdasdasd/
+router.delete("/:postId", (req, res) => {
   tryCatch(res, () =>
-    dbPosts.deletePost(req.params.id).then((response: DBResponse) => {
+    dbPosts.deletePost(req.params.postId).then((response: DBResponse) => {
       const { status, data } = response;
       res.status(status).send(data);
     })
+  );
+});
+
+router.post("/:postId/like", (req, res) => {
+  tryCatch(res, () =>
+    dbPosts
+      .likePost(req.params.postId, req.body)
+      .then((response: DBResponse) => {
+        const { status, data } = response;
+        res.status(status).send(data);
+      })
+  );
+});
+
+router.post("/:postId/dislike", (req, res) => {
+  tryCatch(res, () =>
+    dbPosts
+      .dislikePost(req.params.postId, req.body)
+      .then((response: DBResponse) => {
+        const { status, data } = response;
+        res.status(status).send(data);
+      })
   );
 });
 
 // Get all comments for a single post
-router.get("/:id/comments", (req, res) => {
+router.get("/:postId/comments", (req, res) => {
   tryCatch(res, () =>
-    dbComments.getCommentsByPost(req.params.id).then((response: DBResponse) => {
-      const { status, data } = response;
-      res.status(status).send(data);
-    })
+    dbComments
+      .getCommentsByPost(req.params.postId)
+      .then((response: DBResponse) => {
+        const { status, data } = response;
+        res.status(status).send(data);
+      })
   );
 });
 
 // Create Comment to a single post
-router.post("/:id/comments", (req, res) => {
+router.post("/:postId/comments", (req, res) => {
   tryCatch(res, () =>
     dbComments
-      .createComment(req.params.id, req.body)
+      .createComment(req.params.postId, req.body)
       .then((response: DBResponse) => {
         const { status, data } = response;
         res.status(status).send(data);
@@ -73,6 +98,29 @@ router.delete("/:postId/comments/:commentId", (req, res) => {
   tryCatch(res, () =>
     dbComments
       .deleteComment(req.params.postId, req.params.commentId)
+      .then((response: DBResponse) => {
+        const { status, data } = response;
+        res.status(status).send(data);
+      })
+  );
+});
+
+// Add a like to a single comment
+router.post("/:postId/comments/:commentId/like", (req, res) => {
+  tryCatch(res, () =>
+    dbComments
+      .likeComment(req.params.postId, req.params.commentId, req.body)
+      .then((response: DBResponse) => {
+        const { status, data } = response;
+        res.status(status).send(data);
+      })
+  );
+});
+
+router.post("/:postId/comments/:commentId/dislike", (req, res) => {
+  tryCatch(res, () =>
+    dbComments
+      .dislikeComment(req.params.postId, req.params.commentId, req.body)
       .then((response: DBResponse) => {
         const { status, data } = response;
         res.status(status).send(data);

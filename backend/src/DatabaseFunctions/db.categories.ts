@@ -1,4 +1,3 @@
-import { randomUUID } from "crypto";
 import { DBResponse } from "../types/res.types.js";
 import { readJsonFile, writeJsonFile } from "../util/db.util.js";
 import {
@@ -39,10 +38,22 @@ export async function getCategory(id: string): Promise<DBResponse> {
   });
 }
 
+//thanks to chatgpt
+function isValidString(str: string) {
+  // Check if the string contains only letters from a to z
+  return /^[a-z]+$/.test(str.toLowerCase());
+}
+
 export async function createCategory(
   data: CreateCategoryArg
 ): Promise<DBResponse> {
   const { id, name, description } = data;
+  if (!isValidString(id))
+    return createErrorResponse(
+      401,
+      "Category id is invalid, only use charachters from a-z"
+    );
+
   const db = await readJsonFile();
 
   if (db.categories[id])
@@ -54,7 +65,7 @@ export async function createCategory(
     description,
   };
 
-  db.categories[id] = newCategoryData;
+  db.categories[id] = { name, description };
 
   return await writeJsonFile(db).then(() =>
     createSuccessResponse({
@@ -77,13 +88,3 @@ export async function deleteCategory(id: string): Promise<DBResponse> {
     })
   );
 }
-
-// let id = randomUUID();
-// const categories = (db.categories[id] = {
-//   name: data.name,
-//   description: data.description,
-// });
-
-// // if (id === categories.id) createErrorResponse(401, "Category already exists");
-
-// if (!categories.name || !categories.description)

@@ -17,6 +17,7 @@ export type Post = {
   body: string;
   category: string;
   created_at: number;
+  likes?: string[];
 };
 export type Category = { name: string; description: string };
 export type Comment = {
@@ -24,6 +25,7 @@ export type Comment = {
   body: string;
   author: string;
   created_at: number;
+  likes?: string[];
 };
 
 //Example db
