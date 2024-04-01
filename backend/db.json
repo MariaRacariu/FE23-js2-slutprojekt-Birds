@@ -63,6 +63,14 @@
       "body": "Bka",
       "category": "anime",
       "created_at": 1711571032473
+    },
+    {
+      "id": "97e2ed78-0ce7-40c9-8e45-d32005d9e143",
+      "author": "maria",
+      "title": "Maria Testing posts get request",
+      "body": "Wewe wowo",
+      "category": "anime",
+      "created_at": 1711963301284
     }
   ],
   "users": {

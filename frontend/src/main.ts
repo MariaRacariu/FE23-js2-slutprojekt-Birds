@@ -33,7 +33,7 @@ createAccountFormButton.addEventListener("click", (event) => {
 
 const iconHome = document.getElementById('iconHeader') as HTMLImageElement;
 iconHome.addEventListener('click', () => {
-    if(userData){
+    if (userData) {
         //generateCategories();
         generateProfil(userData)
     }
