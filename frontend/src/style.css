@@ -59,7 +59,7 @@ header {
 .sid-nav {
     width: 15%;
     /*border: 3px solid black;*/
-    background-color: aliceblue;
+    /*background-color: aliceblue;*/
     border-right: 2px solid #0000001f;
 }
 
@@ -353,3 +353,17 @@ textarea {
     border: none;
     color: white;
 }
+
+button:hover {
+    /*background-color: #FED1A2;*/
+    color: white;
+    background-image: linear-gradient(to right, #333, #333);
+}
+
+#signupButton:hover {
+    background-color: #ffffff;
+    border-top: solid 1px #07B290;
+    border-bottom: solid 1px #07B290;
+    color: black;
+}
+
