@@ -8,6 +8,7 @@ import image2 from "../img/image2.png";
 import image3 from "../img/image3.png";
 import { wrap } from "module";
 import { createPost } from "./createPosts.ts";
+import { getUserInfoPerPost } from "./displayProfileFromPosts.ts";
 
 // Data has all the info for the current user logged in
 export function generateProfil(userData: UserData): void {
@@ -42,8 +43,10 @@ export function generateProfil(userData: UserData): void {
 
   //Change html class to "active" from css style .content-box display none
   profileContainer.classList.add(content.isActive);
+  getUserInfoPerPost(userData.username);
   generateLatestPost();
   generateUserList();
+
 }
 
 
@@ -63,7 +66,8 @@ export function generatePosts(postListResponse: Promise<PostListResponse>): void
           const profileImage = document.createElement('img') as HTMLImageElement;
           const postWrapper = document.createElement('div') as HTMLDivElement;
           const liEl = document.createElement("li") as HTMLLIElement;
-          const authorP = document.createElement("p") as HTMLParagraphElement;
+          const deleteButton = document.createElement('button') as HTMLButtonElement;
+          const authorP = document.createElement("button") as HTMLButtonElement;
           const titleP = document.createElement("p") as HTMLParagraphElement;
           const bodyP = document.createElement("p") as HTMLParagraphElement;
           const commentButton = document.createElement('button') as HTMLButtonElement;
@@ -93,7 +97,9 @@ export function generatePosts(postListResponse: Promise<PostListResponse>): void
           authorP.innerText = post.author;
           titleP.innerText = post.title;
           bodyP.innerText = post.body;
-          authorP.classList.add('p-author')
+          authorP.classList.add('p-author');
+          authorP.setAttribute("value", post.author);
+          authorP.setAttribute("id", "postProfile");
           postWrapper.appendChild(commentButton);
           commentButton.innerText = 'Comments';
           if(post.author === userData?.username){
@@ -113,6 +119,10 @@ export function generatePosts(postListResponse: Promise<PostListResponse>): void
             generateComments(commentContainer, post.id)
             
           })
+          authorP.addEventListener('click', () => {
+            getUserInfoPerPost(authorP.value);
+          })
+
         })
 
       });
@@ -124,6 +134,8 @@ export function generatePosts(postListResponse: Promise<PostListResponse>): void
       ulEl.classList.add("ul-post");
     }
   })
+
+
 }
 
 //Generat all latest post
@@ -300,7 +312,7 @@ function generateCommentInputForm(commentContainer:HTMLDivElement, postId: strin
 
 //Generat user list on nav
 function generateUserList() {
-const userHeadginContainer = document.getElementById('userHeadingContainer')as HTMLDivElement;
+  const userHeadginContainer = document.getElementById('userHeadingContainer') as HTMLDivElement;
   const userList = document.getElementById('users-ul') as HTMLUListElement;
   userList.innerHTML = ''
   userHeadginContainer.classList.add(content.isActive);

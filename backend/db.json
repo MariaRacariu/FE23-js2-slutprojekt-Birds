@@ -7,7 +7,9 @@
       "body": "You shouldn't, thats nasty!",
       "category": "anime",
       "created_at": 1710974917,
-      "likes": ["bora"]
+      "likes": [
+        "bora"
+      ]
     },
     {
       "id": "23d3dd",
@@ -70,7 +72,18 @@
       "body": "Bka",
       "category": "anime",
       "created_at": 1711571032473,
-      "likes": ["luna"]
+      "likes": [
+        "luna"
+      ]
+    },
+    {
+      "id": "97e2ed78-0ce7-40c9-8e45-d32005d9e143",
+      "author": "maria",
+      "title": "Maria Testing posts get request",
+      "body": "Wewe wowo",
+      "category": "anime",
+      "created_at": 1711963301284,
+      "likes": []
     }
   ],
   "users": {
@@ -132,7 +145,9 @@
         "body": "This is so true",
         "author": "luna",
         "created_at": 1710976732877,
-        "likes": ["luna"]
+        "likes": [
+          "luna"
+        ]
       }
     ],
     "2sksks": [

@@ -17,9 +17,11 @@ img {
 .allWrapper {
     display: flex;
 }
-.allWrapper img{
+
+.allWrapper img {
     width: 18%;
 }
+
 .postWrapper {
     width: 86%;
 }
@@ -50,14 +52,15 @@ header {
 }
 
 
-.div-allt{
+.div-allt {
     display: flex;
     gap: 3px;
 }
 
 .sid-nav {
     width: 15%;
-    border: 3px solid black;;
+    border: 3px solid black;
+    ;
 }
 
 
@@ -73,7 +76,7 @@ header {
 }
 
 .inlagDiv {
-    text-align: center;
+    /* text-align: center; */
     background-color: #CADDD2;
     width: 90%;
     margin: auto;
@@ -97,15 +100,26 @@ body {
     margin: auto;
 }
 
-h2 {font-size: 2em;}
-h3 {font-size: 2em;}
-h4 {font-size: 2em;
-text-align: center;}
-h5 {font-size: 2em;
-    text-align: center}
+h2 {
+    font-size: 2em;
+}
+
+h3 {
+    font-size: 2em;
+}
+
+h4 {
+    font-size: 2em;
+    text-align: center;
+}
+
+h5 {
+    font-size: 2em;
+    text-align: center
+}
 
 .img-box {
-    background-color:  #a3cdb5;
+    background-color: #a3cdb5;
     margin: auto;
     width: 50%;
     height: 20%;
@@ -128,10 +142,11 @@ h5 {font-size: 2em;
     height: 80px;
 }
 
-.content-box{
+.content-box {
     display: none;
 }
-.content-box-active{
+
+.content-box-active {
     display: block;
 }
 
@@ -189,16 +204,16 @@ h5 {font-size: 2em;
 
 .img-ul {
     list-style-type: none;
-  }
-  
+}
+
 .img-ul li {
     display: inline-block;
-  }
-  
-  input[type="radio"][id^="cb"] {
+}
+
+input[type="radio"][id^="cb"] {
     display: none;
-  }
-  
+}
+
 .img-ul label {
     border: 1px solid #fff;
     padding: 10px;
@@ -206,8 +221,8 @@ h5 {font-size: 2em;
     position: relative;
     margin: 10px;
     cursor: pointer;
-  }
-  
+}
+
 .img-ul label:before {
     background-color: white;
     color: white;
@@ -224,49 +239,49 @@ h5 {font-size: 2em;
     line-height: 28px;
     transition-duration: 0.4s;
     transform: scale(0);
-  }
-  
+}
+
 .img-ul label img {
     height: 100px;
     /*width: 100px;*/
     transition-duration: 0.2s;
     transform-origin: 50% 50%;
-  }
-  
-.img-ul :checked + label {
+}
+
+.img-ul :checked+label {
     border-color: #ddd;
-    
-  }
-   
-.img-ul :checked + label:before {
+
+}
+
+.img-ul :checked+label:before {
     content: "✓";
     background-color: grey;
     transform: scale(1);
-  }
-  
-.img-ul :checked + label img {
+}
+
+.img-ul :checked+label img {
     transform: scale(0.9);
     box-shadow: 0 0 5px #333;
     z-index: -1;
-  }
+}
 
 #title {
     width: 89.2%;
     margin-top: 20px;
 }
 
-.titleContainer img{
+.titleContainer img {
     transition: 1s ease;
-    }
-    
-.titleContainer img:hover{
+}
+
+.titleContainer img:hover {
     transform: scale(1.05);
     transition: 1s ease;
     cursor: pointer;
-    }
+}
 
 .wrap {
-    display:flex;
+    display: flex;
     justify-content: space-between;
 }
 
@@ -275,7 +290,7 @@ h5 {font-size: 2em;
 }
 
 .titleContainer {
-    margin: 15px; 
+    margin: 15px;
 }
 
 .buttonHome button {

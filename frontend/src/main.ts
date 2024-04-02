@@ -27,10 +27,11 @@ createAccountFormButton.addEventListener("click", (event) => {
 
 const iconHome = document.getElementById('iconHeader') as HTMLImageElement;
 iconHome.addEventListener('click', () => {
-    if(userData){
-        //generateProfile also generate latest posts
+
+    if (userData) {
+        //generateCategories();
         generateProfil(userData)
-    }else{
+    } else {
         generateLatestPost();
     }
 
