@@ -74,7 +74,7 @@ export function generatePosts(postListResponse: Promise<PostListResponse>): void
           ulEl.appendChild(liEl);
           /*           liEl.appendChild(profileImage);
           liEl.appendChild(wrapContainer) */
-          
+          commentButton.classList.add('buttonComment');
           postContainer.appendChild(profileImage);
           postContainer.appendChild(postWrapper);
           postWrapper.appendChild(authorP);
