@@ -1,5 +1,5 @@
 export function getUserInfoPerPost(buttonValue) {
-    console.log(buttonValue);
+    // console.log(buttonValue);
 
     const databaseLinkGetUserPosts = `http://localhost:3000/users/${buttonValue}/posts`;
 
@@ -22,19 +22,23 @@ export function getUserInfoPerPost(buttonValue) {
         return fetch(databaseLinkGetUserPosts, requestPosts)
             .then(response => {
                 response.json().then((data) => {
-                    console.log(data);
-                    console.log(Array.isArray(data));
-                    console.log(Array.isArray(data.posts));
-                    console.log(data.posts);
+                    // console.log(data);
+                    // console.log(data.posts);
 
-                    const test = data.posts;
+                    const listOfPosts = data.posts;
+                    const listOfPostsReversed = [...listOfPosts].reverse();
 
-                    test.forEach(element => {
-                        console.log(element.author);
-                        console.log(Array.isArray(element));
+                    listOfPostsReversed.slice(0, 3).forEach(post => {
+                        // console.log(post);
+                        generateRecentPosts(post);
                     });
                 })
             })
     }
     getPosts();
+}
+
+export function generateRecentPosts(post) {
+    console.log(post.title);
+    console.log(post.body);
 }

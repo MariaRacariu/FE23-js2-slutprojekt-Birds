@@ -43,8 +43,10 @@ export function generateProfil(userData: UserData): void {
 
   //Change html class to "active" from css style .content-box display none
   profileContainer.classList.add(content.isActive);
+  getUserInfoPerPost(userData.username);
   generateLatestPost();
   generateUserList();
+
 }
 
 
