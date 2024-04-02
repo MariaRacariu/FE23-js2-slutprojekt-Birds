@@ -6,7 +6,10 @@
       "title": "How to fish in a toilet",
       "body": "You shouldn't, thats nasty!",
       "category": "anime",
-      "created_at": 1710974917
+      "created_at": 1710974917,
+      "likes": [
+        "bora"
+      ]
     },
     {
       "id": "23d3dd",
@@ -14,7 +17,8 @@
       "title": "How to pee in a bowl",
       "body": "You shouldn't, thats nasty!",
       "category": "it",
-      "created_at": 1710975917
+      "created_at": 1710975917,
+      "likes": []
     },
     {
       "id": "07c0d197-18dd-45c5-a51e-61f4a1cbf9cb",
@@ -22,7 +26,8 @@
       "title": "How to dance in a volcano",
       "body": "You shouldn't, thats dangerous!",
       "category": "meme",
-      "created_at": 1710976732877
+      "created_at": 1710976732877,
+      "likes": []
     },
     {
       "id": "ef321844-76c3-448c-b479-358a71ba7850",
@@ -30,7 +35,8 @@
       "title": "testing",
       "body": "Testing",
       "category": "anime",
-      "created_at": 1711544034397
+      "created_at": 1711544034397,
+      "likes": []
     },
     {
       "id": "b84e56f0-7591-4ff2-8b00-66ed45509e25",
@@ -38,7 +44,8 @@
       "title": "testing",
       "body": "Testing",
       "category": "anime",
-      "created_at": 1711551192173
+      "created_at": 1711551192173,
+      "likes": []
     },
     {
       "id": "ffa36e41-a177-47de-90d4-97569c512370",
@@ -46,7 +53,8 @@
       "title": "testing",
       "body": "Testing",
       "category": "anime",
-      "created_at": 1711551467581
+      "created_at": 1711551467581,
+      "likes": []
     },
     {
       "id": "1ff9f9a8-3abf-4bdd-add7-e13cc54a9de1",
@@ -54,7 +62,8 @@
       "title": "This better work",
       "body": "or I will flip a table",
       "category": "anime",
-      "created_at": 1711555667339
+      "created_at": 1711555667339,
+      "likes": []
     },
     {
       "id": "6a4d61c2-cfb0-4c80-9a56-0d3da94161ba",
@@ -62,7 +71,10 @@
       "title": "He he - meme",
       "body": "Bka",
       "category": "anime",
-      "created_at": 1711571032473
+      "created_at": 1711571032473,
+      "likes": [
+        "luna"
+      ]
     },
     {
       "id": "97e2ed78-0ce7-40c9-8e45-d32005d9e143",
@@ -70,7 +82,8 @@
       "title": "Maria Testing posts get request",
       "body": "Wewe wowo",
       "category": "anime",
-      "created_at": 1711963301284
+      "created_at": 1711963301284,
+      "likes": []
     }
   ],
   "users": {
@@ -111,6 +124,18 @@
     "datorit": {
       "name": "Dator/IT",
       "description": "Engage in discussions about the latest in technology, troubleshooting, and advancements in computers and information technology."
+    },
+    "weather": {
+      "name": "Weather",
+      "description": "lets talk about weather"
+    },
+    "movies": {
+      "name": "Movies",
+      "description": "Less gooooo"
+    },
+    "cars": {
+      "name": "Cars",
+      "sss": "4-wheeled monsters"
     }
   },
   "comments": {
@@ -119,7 +144,10 @@
         "id": "asdasdad",
         "body": "This is so true",
         "author": "luna",
-        "created_at": 1710976732877
+        "created_at": 1710976732877,
+        "likes": [
+          "luna"
+        ]
       }
     ],
     "2sksks": [
@@ -127,13 +155,15 @@
         "id": "3a53a74e-9638-46a5-8c4a-54585f1dff9a",
         "author": "luna",
         "body": "Anime is interesting browski",
-        "created_at": 1711379848119
+        "created_at": 1711379848119,
+        "likes": []
       },
       {
         "id": "ffff90b6-da1a-406e-b94c-af46dfe65016",
         "author": "bora",
         "body": "I think it is bullshit.",
-        "created_at": 1711382997790
+        "created_at": 1711382997790,
+        "likes": []
       }
     ]
   }

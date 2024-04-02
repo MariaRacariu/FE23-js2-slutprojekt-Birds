@@ -5,7 +5,7 @@ import { DBResponse } from "../types/res.types.js";
 
 const router = Router();
 
-// ALL METHODS RELATED TO /posts
+// Get all the posts
 router.get("/", (req, res) => {
   tryCatch(res, () =>
     dbPosts.getAllPosts().then((response: DBResponse) => {
@@ -15,6 +15,7 @@ router.get("/", (req, res) => {
   );
 });
 
+// Create a single post
 router.post("/", (req, res) => {
   tryCatch(res, () =>
     dbPosts.createPost(req.body).then((response: DBResponse) => {
@@ -24,39 +25,32 @@ router.post("/", (req, res) => {
   );
 });
 
-router.get("/:id", (req, res) => {
+// Get a single post by ID
+router.get("/:postId", (req, res) => {
   tryCatch(res, () =>
-    dbPosts.getPost(req.params.id).then((response: DBResponse) => {
+    dbPosts.getPost(req.params.postId).then((response: DBResponse) => {
       const { status, data } = response;
       res.status(status).send(data);
     })
   );
 });
 
-router.delete("/:id", (req, res) => {
+
+// Delete a single post by its ID
+router.delete("/:postId", (req, res) => {
   tryCatch(res, () =>
-    dbPosts.deletePost(req.params.id).then((response: DBResponse) => {
+    dbPosts.deletePost(req.params.postId).then((response: DBResponse) => {
       const { status, data } = response;
       res.status(status).send(data);
     })
   );
 });
 
-// Get all comments for a single post
-router.get("/:id/comments", (req, res) => {
+// Add like to a single POST 
+router.post("/:postId/like", (req, res) => {
   tryCatch(res, () =>
-    dbComments.getCommentsByPost(req.params.id).then((response: DBResponse) => {
-      const { status, data } = response;
-      res.status(status).send(data);
-    })
-  );
-});
-
-// Create Comment to a single post
-router.post("/:id/comments", (req, res) => {
-  tryCatch(res, () =>
-    dbComments
-      .createComment(req.params.id, req.body)
+    dbPosts
+      .likePost(req.params.postId, req.body)
       .then((response: DBResponse) => {
         const { status, data } = response;
         res.status(status).send(data);
@@ -64,10 +58,71 @@ router.post("/:id/comments", (req, res) => {
   );
 });
 
+// Add dislike to a single POST
+router.post("/:postId/dislike", (req, res) => {
+  tryCatch(res, () =>
+    dbPosts
+      .dislikePost(req.params.postId, req.body)
+      .then((response: DBResponse) => {
+        const { status, data } = response;
+        res.status(status).send(data);
+      })
+  );
+});
+
+// Get all comments for a single post
+router.get("/:postId/comments", (req, res) => {
+  tryCatch(res, () =>
+    dbComments
+      .getCommentsByPost(req.params.postId)
+      .then((response: DBResponse) => {
+        const { status, data } = response;
+        res.status(status).send(data);
+      })
+  );
+});
+
+// Create Comment to a single post
+router.post("/:postId/comments", (req, res) => {
+  tryCatch(res, () =>
+    dbComments
+      .createComment(req.params.postId, req.body)
+      .then((response: DBResponse) => {
+        const { status, data } = response;
+        res.status(status).send(data);
+      })
+  );
+});
+
+// Delete a single comment by its ID
 router.delete("/:postId/comments/:commentId", (req, res) => {
   tryCatch(res, () =>
     dbComments
       .deleteComment(req.params.postId, req.params.commentId)
+      .then((response: DBResponse) => {
+        const { status, data } = response;
+        res.status(status).send(data);
+      })
+  );
+});
+
+// Add a LIKE to a single COMMENT
+router.post("/:postId/comments/:commentId/like", (req, res) => {
+  tryCatch(res, () =>
+    dbComments
+      .likeComment(req.params.postId, req.params.commentId, req.body)
+      .then((response: DBResponse) => {
+        const { status, data } = response;
+        res.status(status).send(data);
+      })
+  );
+});
+
+// Add DISLIKE to a single COMMENT
+router.post("/:postId/comments/:commentId/dislike", (req, res) => {
+  tryCatch(res, () =>
+    dbComments
+      .dislikeComment(req.params.postId, req.params.commentId, req.body)
       .then((response: DBResponse) => {
         const { status, data } = response;
         res.status(status).send(data);

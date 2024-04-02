@@ -4,6 +4,16 @@ export type Database = {
   categories: { [key: string]: Category };
   comments: { [key: string]: Comment[] };
 };
+export type DatabaseApiBody =
+  | CreateCommentArgs
+  | null
+  | undefined;
+  
+export type CreateCommentArgs = {
+    author: string;
+    postId: string;
+    body: string;
+  };
 // ?
 export type User = {
   password: string;

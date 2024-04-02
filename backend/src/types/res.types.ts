@@ -11,6 +11,7 @@ export type ResponseDataType =
   | PostResponse
   | DeleteResponse
   | CommentListResponse
+  | LikeResponse
   | ErrorResponse;
 
 export type DBResponse = {
@@ -45,6 +46,10 @@ export type CategoryResponse = {
 
 export type PostListResponse = {
   posts: Post[];
+};
+
+export type LikeResponse = {
+  like_count: number;
 };
 
 export type CommentListResponse = {
