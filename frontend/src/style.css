@@ -123,11 +123,15 @@ h3 {
 h4 {
     font-size: 2em;
     text-align: center;
+    font-family: "Montserrat Subrayada", sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
 h5 {
     font-size: 2em;
     text-align: center
+    
 }
 
 .img-box {
@@ -333,11 +337,13 @@ textarea {
 }
 
 #forum-ul button{
-    width: 233px;
-    padding: 12px;
     background-color: #FAFAFA;
     border: none;
+    width: 233px;
     margin: 3px;
+    padding: 12px;
+    /*box-shadow: 0 1px 1px #636363;*/
+    box-shadow: 0 0px 1px #636363;
   }
 
 #users-ul {
@@ -345,11 +351,17 @@ textarea {
 }
 
 #users-ul button{
-    width: 233px;
+    /*width: 233px;
     padding: 12px;
     background-color: #FAFAFA;
     border: none;
+    margin: 3px;*/
+    background-color: #FAFAFA;
+    border: none;
+    width: 233px;
     margin: 3px;
+    padding: 12px;
+    box-shadow: 0 0px 1px #636363;
   }
 
 
