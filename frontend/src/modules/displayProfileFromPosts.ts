@@ -39,6 +39,18 @@ export function getUserInfoPerPost(buttonValue) {
 }
 
 export function generateRecentPosts(post) {
+    const postsContainer = document.querySelector('#profile-latest-posts');
+
+    const singlePostContainer = document.createElement("div");
+    postsContainer?.append(singlePostContainer);
+
+    const postsTitleElement = document.createElement("p");
+    singlePostContainer?.append(postsTitleElement);
+    postsTitleElement.innerText = post.title;
     console.log(post.title);
+
+    const postsBodyElement = document.createElement("p");
+    singlePostContainer?.append(postsBodyElement);
+    postsBodyElement.innerText = post.body;
     console.log(post.body);
 }
