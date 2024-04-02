@@ -17,12 +17,22 @@ export function getUserInfoPerPost(buttonValue) {
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
-            }
+            },
         }
         return fetch(databaseLinkGetUserPosts, requestPosts)
             .then(response => {
                 response.json().then((data) => {
                     console.log(data);
+                    console.log(Array.isArray(data));
+                    console.log(Array.isArray(data.posts));
+                    console.log(data.posts);
+
+                    const test = data.posts;
+
+                    test.forEach(element => {
+                        console.log(element.author);
+                        console.log(Array.isArray(element));
+                    });
                 })
             })
     }
