@@ -59,8 +59,8 @@ header {
 .sid-nav {
     width: 15%;
     /*border: 3px solid black;*/
-    background-color: aliceblue;
-    border-right: 2px solid #0000001f;
+    /*background-color: aliceblue;*/
+    /*border-right: 2px solid #0000001f;*/
 }
 
 
@@ -70,8 +70,10 @@ header {
 
 
 .right-nav {
-    border: black solid 3px;
+    /*border: black solid 3px;*/
     width: 20%;
+    background-color: #fafafa;
+    box-shadow: 0 0 1px #636363;
 }
 
 .inlagDiv {
@@ -104,6 +106,9 @@ h2 {
     background-color: #A2CFFE;
     color: white;
     text-align: center;
+    font-family: "Montserrat Subrayada", sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
 h3 {
@@ -112,16 +117,29 @@ h3 {
     background-color: #A2CFFE;
     color: white;
     text-align: center;
+    font-family: "Montserrat Subrayada", sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
 h4 {
     font-size: 2em;
     text-align: center;
+    font-family: "Montserrat Subrayada", sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }
+
 
 h5 {
     font-size: 2em;
-    text-align: center
+    text-align: center;
+    font-family: Montserrat Subrayada, sans-serif;
+    font-size: 2em;
+    font-style: normal;
+    font-weight: 400;
+    
+    
 }
 
 .img-box {
@@ -134,6 +152,18 @@ h5 {
     text-align: center;
 }
 
+#deleteButton {
+    width: 313px;
+    background-color: #EF203B;
+    border: none;
+    color: white;
+}
+
+#deleteButton:hover {
+    background-color: #BA081F;
+}
+
+
 .message-wrapper {
     display: flex;
     margin: auto;
@@ -143,6 +173,8 @@ h5 {
 
 
 #message {
+    /*width: 95%;
+    height: 80px;*/
     width: 95%;
     height: 80px;
 }
@@ -271,8 +303,11 @@ input[type="radio"][id^="cb"] {
 }
 
 #title {
-    width: 89.2%;
+    /*width: 89.2%;
+    margin-top: 20px;*/
+    width: 95%;
     margin-top: 20px;
+    margin-bottom: 18px;
 }
 
 .titleContainer img {
@@ -327,11 +362,13 @@ textarea {
 }
 
 #forum-ul button{
-    width: 233px;
-    padding: 12px;
     background-color: #FAFAFA;
     border: none;
+    width: 233px;
     margin: 3px;
+    padding: 12px;
+    /*box-shadow: 0 1px 1px #636363;*/
+    box-shadow: 0 0px 1px #636363;
   }
 
 #users-ul {
@@ -339,11 +376,17 @@ textarea {
 }
 
 #users-ul button{
-    width: 233px;
+    /*width: 233px;
     padding: 12px;
     background-color: #FAFAFA;
     border: none;
+    margin: 3px;*/
+    background-color: #FAFAFA;
+    border: none;
+    width: 233px;
     margin: 3px;
+    padding: 12px;
+    box-shadow: 0 0px 1px #636363;
   }
 
 
@@ -352,4 +395,34 @@ textarea {
     background-color: #A2CFFE;
     border: none;
     color: white;
+}
+
+button:hover {
+    background-color: #333;
+    color: white;
+    /*background-image: linear-gradient(to right, #333, #333);*/
+    
+}
+
+#signupButton:hover {
+    background-color: #ffffff;
+    border-top: solid 1px #07B290;
+    border-bottom: solid 1px #07B290;
+    color: black;
+}
+
+
+#forum-ul button:hover {
+    background-color: #333;
+    color: white;
+}
+
+#users-ul button:hover {
+    background-color: #333;
+    color: white;
+}
+
+
+form {
+    background-color: aliceblue;
 }
