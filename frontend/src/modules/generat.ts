@@ -14,7 +14,6 @@ import { showPosts } from "./displayRecentPosts.ts";
 export function generateProfil(userData: UserData): void {
 
   hideAllContentBoxes();
-  generateCategories();
   // displayInput();
   //TODO: Fetch user
   //user = login user
@@ -45,8 +44,6 @@ export function generateProfil(userData: UserData): void {
   //Change html class to "active" from css style .content-box display none
   profileContainer.classList.add(content.isActive);
   generateLatestPost();
-  generateUserList();
-
 }
 
 
@@ -155,6 +152,7 @@ export function generateLatestPost(): void {
   postHeader.innerText = 'Latest posts';
   postDescription.innerText = '';
   generatePosts(resultFromDatabase)
+  generateUserList();
 }
 
 //Generar post by categories
@@ -216,6 +214,7 @@ function generateComments(container: HTMLDivElement, id: string) {
   resultFromDatabase.then(res => {
     const { comments } = res;
     comments.forEach(comment => {
+      console.log(comment);
       const commentPost = document.createElement('li') as HTMLLIElement;
       const commentContainer = document.createElement('div') as HTMLDivElement;
       const profileImage = document.createElement('img') as HTMLImageElement;
@@ -235,6 +234,17 @@ function generateComments(container: HTMLDivElement, id: string) {
       commentContainer.classList.add('allWrapper')
       commentPost.classList.add("li-post");
 
+      // Display Comments User Profile Picture
+      const resultFromDatabase = getUser(comment.author);
+      resultFromDatabase.then(res => {
+        if (res.profile_pic === "image1") {
+          profileImage.setAttribute("src", image1);
+        } else if (res.profile_pic === "image2") {
+          profileImage.setAttribute("src", image2);
+        } else if (res.profile_pic === "image3") {
+          profileImage.setAttribute("src", image3);
+        }
+      })
     })
   }).finally(() => {
     //check if user is login and then create comment input form

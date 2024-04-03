@@ -1,5 +1,5 @@
 import { append } from "domutils";
-import { generateProfil } from "./generat.ts";
+import { generateProfil, generateCategories } from "./generat.ts";
 
 const databaseLinkLogIn = "http://localhost:3000/auth/login";
 
@@ -52,7 +52,8 @@ export function logInUser() {
                         // Send log in response data to generate a users profile information
                         userData = data;
                         generateProfil(data);
-                        
+                        generateCategories();
+
                     }
 
                 })
