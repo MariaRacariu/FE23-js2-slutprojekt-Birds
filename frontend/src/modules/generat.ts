@@ -2,13 +2,13 @@ import { PostListResponse } from "../types/res.types";
 import { UserData, userData } from './logIn.ts';
 import { content, profile } from "./constants";
 import { hideAllContentBoxes } from "./display";
-import { deletePost, getAllCommentsByPost, getCategories, getCategory, getLatestPosts, getPostsByCategory, getUser, getUsers, postComment } from "./databaseFetch";
+import { deletePost, getAllCommentsByPost, getCategories, getCategory, getLatestPosts, getPostsByCategory, getUser, getUsers, postComment, getUsersPosts } from "./databaseFetch";
 import image1 from "../img/image1.png";
 import image2 from "../img/image2.png";
 import image3 from "../img/image3.png";
 import { wrap } from "module";
 import { createPost } from "./createPosts.ts";
-import { getUserInfoPerPost } from "./displayProfileFromPosts.ts";
+import { showPosts } from "./displayRecentPosts.ts";
 
 // Data has all the info for the current user logged in
 export function generateProfil(userData: UserData): void {
@@ -39,11 +39,11 @@ export function generateProfil(userData: UserData): void {
   logOutButton.addEventListener("click", () => {
     hideAllContentBoxes();
   })
-
+  // Maria
+  showPosts(userData.username);
 
   //Change html class to "active" from css style .content-box display none
   profileContainer.classList.add(content.isActive);
-  getUserInfoPerPost(userData.username);
   generateLatestPost();
   generateUserList();
 
@@ -84,7 +84,7 @@ export function generatePosts(postListResponse: Promise<PostListResponse>): void
           postWrapper.classList.add('postWrapper');
           postContainer.classList.add('allWrapper')
           liEl.classList.add("li-post");
-          
+
           ulEl.classList.add("ul-post");
           if (profile_pic === "image1") {
             profileImage.setAttribute("src", image1);
@@ -102,7 +102,7 @@ export function generatePosts(postListResponse: Promise<PostListResponse>): void
           authorP.setAttribute("id", "postProfile");
           postWrapper.appendChild(commentButton);
           commentButton.innerText = 'Comments';
-          if(post.author === userData?.username){
+          if (post.author === userData?.username) {
             const deleteButton = document.createElement('button') as HTMLButtonElement;
             postWrapper.prepend(deleteButton);
             deleteButton.innerText = 'X';
@@ -110,17 +110,22 @@ export function generatePosts(postListResponse: Promise<PostListResponse>): void
             deleteButton.addEventListener('click', () => {
               liEl.remove();
               deletePost(post.id)
-  
+
             })
           }
           const commentContainer = document.createElement('div') as HTMLDivElement;
           liEl.appendChild(commentContainer)
           commentButton.addEventListener('click', () => {
             generateComments(commentContainer, post.id)
-            
+
           })
+          // Generate new Profile based on which post is selected to view
           authorP.addEventListener('click', () => {
-            getUserInfoPerPost(authorP.value);
+            const getUserInfo = getUser(authorP.value);
+            getUserInfo.then(res => {
+              generateProfil(res);
+            })
+            showPosts(authorP.value);
           })
 
         })
@@ -233,8 +238,8 @@ function generateComments(container: HTMLDivElement, id: string) {
     })
   }).finally(() => {
     //check if user is login and then create comment input form
-    if(userData){
-      generateCommentInputForm(container,id)
+    if (userData) {
+      generateCommentInputForm(container, id)
     }
   })
 }
@@ -278,7 +283,7 @@ function generatePostInputForm() {
   })
 }
 
-function generateCommentInputForm(commentContainer:HTMLDivElement, postId: string) {
+function generateCommentInputForm(commentContainer: HTMLDivElement, postId: string) {
   const formContainer = document.createElement("div") as HTMLDivElement;
   commentContainer.append(formContainer);
   //formContainer.setAttribute("id", "input-field");
@@ -304,7 +309,7 @@ function generateCommentInputForm(commentContainer:HTMLDivElement, postId: strin
     const postResult = postComment(postId, userData.username, messageInput.value)
     //Update comments after it is posted to database
     postResult.then((res) => {
-      generateComments(commentContainer,postId)
+      generateComments(commentContainer, postId)
     })
     //createPost();
   })
@@ -326,6 +331,7 @@ function generateUserList() {
       userList.appendChild(userDisplay);
       userDisplay.appendChild(userSelect);
       userSelect.addEventListener('click', () => {
+        console.log(user);
         generateProfil(user)
       })
     })

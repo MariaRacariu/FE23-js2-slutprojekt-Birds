@@ -39,30 +39,12 @@
       "likes": []
     },
     {
-      "id": "b84e56f0-7591-4ff2-8b00-66ed45509e25",
-      "author": "maria",
-      "title": "testing",
-      "body": "Testing",
-      "category": "anime",
-      "created_at": 1711551192173,
-      "likes": []
-    },
-    {
       "id": "ffa36e41-a177-47de-90d4-97569c512370",
       "author": "maria",
       "title": "testing",
       "body": "Testing",
       "category": "anime",
       "created_at": 1711551467581,
-      "likes": []
-    },
-    {
-      "id": "1ff9f9a8-3abf-4bdd-add7-e13cc54a9de1",
-      "author": "maria",
-      "title": "This better work",
-      "body": "or I will flip a table",
-      "category": "anime",
-      "created_at": 1711555667339,
       "likes": []
     },
     {
