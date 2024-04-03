@@ -70,8 +70,10 @@ header {
 
 
 .right-nav {
-    border: black solid 3px;
+    /*border: black solid 3px;*/
     width: 20%;
+    background-color: #fafafa;
+    box-shadow: 0 0 1px #636363;
 }
 
 .inlagDiv {
@@ -131,7 +133,12 @@ h4 {
 
 h5 {
     font-size: 2em;
-    text-align: center
+    text-align: center;
+    font-family: Montserrat Subrayada, sans-serif;
+    font-size: 2em;
+    font-style: normal;
+    font-weight: 400;
+    
     
 }
 
@@ -144,6 +151,18 @@ h5 {
 #input-field {
     text-align: center;
 }
+
+#deleteButton {
+    width: 313px;
+    background-color: #EF203B;
+    border: none;
+    color: white;
+}
+
+#deleteButton:hover {
+    background-color: #BA081F;
+}
+
 
 .message-wrapper {
     display: flex;
