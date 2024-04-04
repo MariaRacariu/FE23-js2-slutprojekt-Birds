@@ -1,6 +1,6 @@
 import { Category } from "../types/db.types";
 import { userData } from "./logIn";
-import { generateLatestPost } from "./generat";
+import { generateLatestPost } from "./generate.post";
 
 const databaseLinkCreatePosts = "http://localhost:3000/posts";
 

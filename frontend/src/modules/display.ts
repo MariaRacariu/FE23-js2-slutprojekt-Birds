@@ -1,5 +1,7 @@
 import { content, profile } from "./constants";
-
+import image1 from "../img/image1.png";
+import image2 from "../img/image2.png";
+import image3 from "../img/image3.png";
 
 //Hide all content boxes
 export function hideAllContentBoxes(): void {
@@ -32,3 +34,12 @@ export function displaySignup(): void {
 //   const divEl = document.getElementById('input-field') as HTMLDivElement;
 //   divEl.classList.add(content.isActive);
 // }
+export function displayProfileImage(profile_pic: string, profileImageNode: HTMLImageElement) :void {
+  if (profile_pic === "image1") {
+      profileImageNode.setAttribute("src", image1);
+  } else if (profile_pic === "image2") {
+      profileImageNode.setAttribute("src", image2);
+  } else if (profile_pic === "image3") {
+      profileImageNode.setAttribute("src", image3);
+  }
+}

@@ -22,7 +22,10 @@ img {
 .allWrapper img {
     width: 18%;
 }
-
+.allWrapper .like-button{
+    width: 26px;
+    height: 24px;
+}
 .postWrapper {
     width: 86%;
 }
@@ -437,3 +440,4 @@ button:hover {
 form {
     background-color: aliceblue;
 }
+

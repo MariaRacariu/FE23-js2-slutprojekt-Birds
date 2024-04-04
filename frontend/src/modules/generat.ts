@@ -1,3 +1,4 @@
+//DO NOT USE THIS FILE
 import { PostListResponse } from "../types/res.types";
 import { UserData, userData } from "./logIn.ts";
 import { content, profile } from "./constants";
@@ -19,6 +20,7 @@ import {
 import image1 from "../img/image1.png";
 import image2 from "../img/image2.png";
 import image3 from "../img/image3.png";
+import like from "../img/like.png";
 import { wrap } from "module";
 import { createPost } from "./createPosts.ts";
 import { showPosts } from "./displayRecentPosts.ts";
@@ -104,6 +106,9 @@ export function generatePosts(
             ) as HTMLImageElement;
             const postWrapper = document.createElement("div") as HTMLDivElement;
             const liEl = document.createElement("li") as HTMLLIElement;
+            const likeButton = document.createElement('img')
+            likeButton.classList.add('like-button');
+            likeButton.setAttribute('src',like)
             const authorP = document.createElement(
               "button"
             ) as HTMLButtonElement;
@@ -121,6 +126,8 @@ export function generatePosts(
             postWrapper.appendChild(authorP);
             postWrapper.appendChild(titleP);
             postWrapper.appendChild(bodyP);
+            postWrapper.appendChild(likeButton);
+
             liEl.appendChild(postContainer);
             postWrapper.classList.add("postWrapper");
             postContainer.classList.add("allWrapper");
@@ -252,10 +259,7 @@ export function generateCategory(id: string) {
   });
 }
 
-function clearPosts() {
-  const div = document.getElementById("post-ul") as HTMLUListElement;
-  div.innerHTML = "";
-}
+
 
 //Generat comments section list.
 function generateComments(container: HTMLDivElement, id: string) {
