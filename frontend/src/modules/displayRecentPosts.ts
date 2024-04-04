@@ -1,45 +1,4 @@
 import { getUser, getUsersPosts } from "./databaseFetch.ts";
-import { generateProfil } from "./generat.ts";
-
-// export function getUserInfoPerPost(buttonValue) {
-//     // console.log(buttonValue);
-
-//     const databaseLinkGetUserPosts = `http://localhost:3000/users/${buttonValue}/posts`;
-
-//     type Post = {
-//         id: number,
-//         title: string,
-//         body: string,
-//         category: string,
-//         created_at: number
-//     };
-
-//     function getPosts(): Promise<void> {
-//         const requestPosts: RequestInit = {
-//             method: "GET",
-//             headers: {
-//                 'Content-Type': 'application/json',
-//                 'Accept': 'application/json'
-//             },
-//         }
-//         return fetch(databaseLinkGetUserPosts, requestPosts)
-//             .then(response => {
-//                 response.json().then((data) => {
-
-//                     const userDataResponse = getUser(buttonValue);
-//                     userDataResponse.then(res => {
-//                         generateProfil(res);
-//                     })
-
-//                     // console.log(data);
-//                     // console.log(data.posts);
-
-
-//                 })
-//             })
-//     }
-//     getPosts();
-// }
 
 export function showPosts(user) {
 

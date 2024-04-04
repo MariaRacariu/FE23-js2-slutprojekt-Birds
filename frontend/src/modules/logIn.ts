@@ -1,4 +1,3 @@
-import { append } from "domutils";
 import { generateProfil, generateCategories } from "./generat.ts";
 
 const databaseLinkLogIn = "http://localhost:3000/auth/login";
@@ -47,9 +46,9 @@ export function logInUser() {
                         errorMessageElement.innerText = errorMessage;
                         errorMessageElement.style.color = "red";
                     } else {
-                        // Need a global variable in this file, give it data then export it,
-                        // Call it when it's needed in a file   
-                        // Send log in response data to generate a users profile information
+                        const profileDeleteButton = document.querySelector("#deleteAccountButtonContainer") as HTMLButtonElement;
+                        profileDeleteButton.value = "";
+                        profileDeleteButton.value = data.username;
                         userData = data;
                         generateProfil(data);
                         generateCategories();

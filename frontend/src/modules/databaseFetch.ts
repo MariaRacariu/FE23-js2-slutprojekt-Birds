@@ -72,3 +72,6 @@ export async function deletePost(postId: string): Promise<void> {
 export async function deleteComment(postId: string, commentId: string): Promise<void> {
   const resultFromDatabase = doFetchToDatabase(`/posts/${postId}/comments/${commentId}`, 'delete') as Promise<ResponseDataType>;
 }
+export async function deleteAccount(id: string): Promise<void> {
+  const resultFromDatabase = doFetchToDatabase(`/users/${id}`, 'delete') as Promise<ResponseDataType>;
+}
