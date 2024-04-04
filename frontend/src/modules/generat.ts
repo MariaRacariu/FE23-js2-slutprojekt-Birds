@@ -29,10 +29,18 @@ export function generateProfil(userData: UserData): void {
   // displayInput();
   //TODO: Fetch user
   //user = login user
-  const profileContainer = document.getElementById(profile.id) as HTMLDivElement;
-  const profileHeading = document.getElementById(profile.name) as HTMLHeadingElement;
-  const profileImage = document.getElementById(profile.image) as HTMLImageElement;
-  const profileDeleteButton = document.querySelector("#deleteAccountButtonContainer") as HTMLButtonElement;
+  const profileContainer = document.getElementById(
+    profile.id
+  ) as HTMLDivElement;
+  const profileHeading = document.getElementById(
+    profile.name
+  ) as HTMLHeadingElement;
+  const profileImage = document.getElementById(
+    profile.image
+  ) as HTMLImageElement;
+  const profileDeleteButton = document.querySelector(
+    "#deleteAccountButtonContainer"
+  ) as HTMLButtonElement;
   // Showing the current user logged in name
   profileHeading.innerText = `Profile: ${userData.username}`;
 
@@ -45,9 +53,13 @@ export function generateProfil(userData: UserData): void {
   }
 
   // Log out button, hides the profile page and clears data info
-  const logOutButton = document.querySelector("#logOutButton") as HTMLButtonElement;
+  const logOutButton = document.querySelector(
+    "#logOutButton"
+  ) as HTMLButtonElement;
   logOutButton.addEventListener("click", () => {
-    hideAllContentBoxes();
+    window.localStorage.removeItem("forum_userdata");
+    window.location.reload();
+    // hideAllContentBoxes();
   });
 
   // Maria
@@ -63,13 +75,15 @@ export function generateProfil(userData: UserData): void {
     profileDeleteButton.style.visibility = "visible";
     profileDeleteButton.addEventListener("click", () => {
       deleteAccount(profileDeleteButton.value);
-    })
+    });
   } else {
     profileDeleteButton.style.visibility = "hidden";
   }
 }
 //Generat post
-export function generatePosts(postListResponse: Promise<PostListResponse>): void {
+export function generatePosts(
+  postListResponse: Promise<PostListResponse>
+): void {
   clearPosts();
   const ulEl = document.getElementById("post-ul") as HTMLUListElement;
   postListResponse.then((res) => {
@@ -246,10 +260,12 @@ function clearPosts() {
 //Generat comments section list.
 function generateComments(container: HTMLDivElement, id: string) {
   //toggle comments with generate or remove
-  if(container.innerHTML){
+  if (container.innerHTML) {
     container.innerHTML = "";
-  }else{
-    const commentsGeneratList = document.createElement("ul") as HTMLUListElement;
+  } else {
+    const commentsGeneratList = document.createElement(
+      "ul"
+    ) as HTMLUListElement;
     const resultFromDatabase = getAllCommentsByPost(id);
     resultFromDatabase
       .then((res) => {
@@ -260,8 +276,12 @@ function generateComments(container: HTMLDivElement, id: string) {
           const commentContainer = document.createElement(
             "div"
           ) as HTMLDivElement;
-          const profileImage = document.createElement("img") as HTMLImageElement;
-          const commentWrapper = document.createElement("div") as HTMLDivElement;
+          const profileImage = document.createElement(
+            "img"
+          ) as HTMLImageElement;
+          const commentWrapper = document.createElement(
+            "div"
+          ) as HTMLDivElement;
           const author = document.createElement("p") as HTMLParagraphElement;
           const commentsText = document.createElement("p");
           commentWrapper.appendChild(author);
@@ -372,7 +392,7 @@ function generateCommentInputForm(
   //formContainer.setAttribute("id", "input-field");
 
   const postForm = document.createElement("form");
-  postForm.classList.add('comment-form')
+  postForm.classList.add("comment-form");
   formContainer.append(postForm);
 
   const messageInput = document.createElement("textarea");
