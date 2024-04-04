@@ -270,10 +270,21 @@ function generatePostInputForm() {
   const postForm = document.createElement("form");
   formContainer.append(postForm);
 
+  const titleInputLabel = document.createElement('label');
+  titleInputLabel.setAttribute("for", "title");
+  titleInputLabel.innerText = "Title";
+  postForm.append(titleInputLabel);
+
   const titleInput = document.createElement("input");
   titleInput.setAttribute("id", "title");
+  titleInput.setAttribute("name", "titleInput");
   titleInput.type = "text";
   postForm.append(titleInput);
+
+  const messageInputLabel = document.createElement('label');
+  titleInputLabel.setAttribute("for", "message");
+  messageInputLabel.innerText = "Message";
+  postForm.append(messageInputLabel);
 
   const messageInput = document.createElement("textarea");
   messageInput.setAttribute("id", "message");
