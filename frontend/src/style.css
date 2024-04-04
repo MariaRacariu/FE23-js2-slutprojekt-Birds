@@ -16,6 +16,7 @@ img {
 
 .allWrapper {
     display: flex;
+    
 }
 
 .allWrapper img {
@@ -78,7 +79,7 @@ header {
 
 .inlagDiv {
     /* text-align: center; */
-    background-color: #FAFAFA;
+    
     width: 90%;
     margin: auto;
     max-height: 569px;
@@ -225,7 +226,17 @@ h5 {
 
 
 .li-post {
-    border: rgb(255, 255, 255) solid 1px;
+    border: #acacac solid 1px;
+    margin: 1rem 0;
+    background-color: #FAFAFA;
+}
+
+.comment-form textarea{
+    width: 99%;
+}
+.comment-form button{
+    margin: auto;
+    display: block;
 }
 
 .ul-post {
