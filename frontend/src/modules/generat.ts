@@ -62,6 +62,7 @@ export function generateProfil(userData: UserData): void {
     profileDeleteButton.style.visibility = "visible";
     profileDeleteButton.addEventListener("click", () => {
       deleteAccount(profileDeleteButton.value);
+      alert("Account Deleted");
     })
   } else {
     profileDeleteButton.style.visibility = "hidden";
