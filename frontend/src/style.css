@@ -16,7 +16,7 @@ img {
 
 .allWrapper {
     display: flex;
-    
+
 }
 
 .allWrapper img {
@@ -43,8 +43,7 @@ section {
     gap: 1rem;
 }
 
-body {
-}
+body {}
 
 header {
     border-bottom: solid #0000002e 2px;
@@ -82,7 +81,7 @@ header {
 
 .inlagDiv {
     /* text-align: center; */
-    
+
     width: 90%;
     margin: auto;
     max-height: 569px;
@@ -142,8 +141,8 @@ h5 {
     font-size: 2em;
     font-style: normal;
     font-weight: 400;
-    
-    
+
+
 }
 
 .img-box {
@@ -234,10 +233,11 @@ h5 {
     background-color: #FAFAFA;
 }
 
-.comment-form textarea{
+.comment-form textarea {
     width: 99%;
 }
-.comment-form button{
+
+.comment-form button {
     margin: auto;
     display: block;
 }
@@ -371,11 +371,11 @@ textarea {
     color: white;
 }
 
-#forum-ul{
-  padding: 0;
+#forum-ul {
+    padding: 0;
 }
 
-#forum-ul button{
+#forum-ul button {
     background-color: #FAFAFA;
     border: none;
     width: 233px;
@@ -383,13 +383,13 @@ textarea {
     padding: 12px;
     /*box-shadow: 0 1px 1px #636363;*/
     box-shadow: 0 0px 1px #636363;
-  }
+}
 
 #users-ul {
     padding: 0;
 }
 
-#users-ul button{
+#users-ul button {
     /*width: 233px;
     padding: 12px;
     background-color: #FAFAFA;
@@ -401,7 +401,7 @@ textarea {
     margin: 3px;
     padding: 12px;
     box-shadow: 0 0px 1px #636363;
-  }
+}
 
 
 .buttonComment {
@@ -415,7 +415,7 @@ button:hover {
     background-color: #333;
     color: white;
     /*background-image: linear-gradient(to right, #333, #333);*/
-    
+
 }
 
 #signupButton:hover {
@@ -441,3 +441,6 @@ form {
     background-color: aliceblue;
 }
 
+.logOutButton {
+    visibility: hidden;
+}

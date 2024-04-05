@@ -1,3 +1,10 @@
+// Author: Maria Racariu
+
+// This file is used when a User wants to create an account
+// We get the input value from the form that the user inputs their data
+// Using the user input values we send a fetch request to the API
+// Lastly we call the generateProfil function which will display the users profile
+
 import { generateProfil } from "./generat.ts";
 
 const databaseLinkCreateAccount = "http://localhost:3000/users";
@@ -17,15 +24,9 @@ export function createAccount() {
 
     const userNameInput = userNameElement.value;
     const passwordInput = passwordElement.value;
-    const chosenProfilePicture = selectedProfilePicture?.value;
+    const chosenProfilePicture = selectedProfilePicture.value;
 
     console.log(userNameInput, passwordInput, chosenProfilePicture);
-
-    interface User {
-        username: string,
-        password: string,
-        profile_pic: string
-    }
 
     function createUser(user: User): Promise<void> {
         const requestData: RequestInit = {
@@ -44,7 +45,7 @@ export function createAccount() {
                     // console.log(data);
                     userData = data;
                     // Send create account response data to generate a users profile information
-                    generateProfil();
+                    generateProfil(data);
                 })
             })
     }

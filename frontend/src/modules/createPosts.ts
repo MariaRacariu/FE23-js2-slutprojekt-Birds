@@ -1,19 +1,24 @@
-import { Category } from "../types/db.types";
+// Author: Maria Racariu
+
+// This file send a POST request to the API for every Forum
+// We get the the user input title and message
+// Depending which Forum the user has clicked on we send that value
+// to the database as the category. Lastly we call the generateLatestPost
+
 import { userData } from "./logIn";
 import { generateLatestPost } from "./generate.post";
 
 const databaseLinkCreatePosts = "http://localhost:3000/posts";
 
 
-export function createPost() {
+
+export function createPost(categoryId) {
     const userInputTitle = document.querySelector("#title") as HTMLInputElement;
     const userInputMessage = document.querySelector("#message") as HTMLInputElement;
-    const chosenCategory = document.querySelector("#categoryButton") as HTMLButtonElement;
 
     const userInputTitleValue = userInputTitle.value;
     const userInputMessageValue = userInputMessage.value;
-    const chosenCategoryValue = chosenCategory.value;
-
+    const chosenCategoryValue = categoryId;
 
     interface Post {
         author: string,
@@ -23,7 +28,7 @@ export function createPost() {
     }
 
     function sendPost(post: Post): Promise<void> {
-        console.log(post);
+        // console.log(post);
         const sendData: RequestInit = {
             method: "POST",
             headers: {
@@ -37,11 +42,10 @@ export function createPost() {
             .then(response => {
                 response.json().then((data) => {
                     generateLatestPost();
+                    alert("Your post has been submitted");
                 })
             })
     }
-
-    console.log(userData.username, userInputTitleValue, userInputMessageValue, chosenCategoryValue);
 
     sendPost({ author: userData.username, title: userInputTitleValue, body: userInputMessageValue, category: chosenCategoryValue });
 }   

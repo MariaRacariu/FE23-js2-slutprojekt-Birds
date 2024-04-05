@@ -66,6 +66,30 @@
       "category": "anime",
       "created_at": 1711963301284,
       "likes": []
+    },
+    {
+      "id": "0393032b-c2aa-4464-bfb6-8d2eb0f5e1fd",
+      "author": "maria",
+      "title": "Testing if weather Works",
+      "body": "weather is very bad",
+      "category": "anime",
+      "created_at": 1712278002069
+    },
+    {
+      "id": "953ce092-e0f9-4b70-a5f3-b6fe5747f22e",
+      "author": "maria",
+      "title": "testing IT",
+      "body": "testing",
+      "category": "datorit",
+      "created_at": 1712278691045
+    },
+    {
+      "id": "a87f5ef8-e826-4813-9e88-928efed3ed82",
+      "author": "maria",
+      "title": "test",
+      "body": "test",
+      "category": "cars",
+      "created_at": 1712280087892
     }
   ],
   "users": {
@@ -76,10 +100,6 @@
     "bora": {
       "password": "345",
       "profile_pic": "image2"
-    },
-    "alex": {
-      "password": "345",
-      "profile_pic": "image1"
     },
     "Charles Leclerc": {
       "password": "testing",
@@ -117,7 +137,7 @@
     },
     "cars": {
       "name": "Cars",
-      "sss": "4-wheeled monsters"
+      "description": "4-wheeled monsters"
     }
   },
   "comments": {

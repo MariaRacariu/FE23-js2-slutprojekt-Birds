@@ -55,16 +55,12 @@ export function generateProfil(userData: UserData): void {
   }
 
   // Log out button, hides the profile page and clears data info
-  const logOutButton = document.querySelector(
-    "#logOutButton"
-  ) as HTMLButtonElement;
+  const logOutButton = document.querySelector("#logOutButton") as HTMLButtonElement;
   logOutButton.addEventListener("click", () => {
     window.localStorage.removeItem("forum_userdata");
     window.location.reload();
-    // hideAllContentBoxes();
   });
 
-  // Maria
   showPosts(userData.username);
 
   //Change html class to "active" from css style .content-box display none
@@ -72,15 +68,18 @@ export function generateProfil(userData: UserData): void {
   generateLatestPost();
 
   // Delete Account Button
-
   if (userData.username === profileDeleteButton.value) {
     profileDeleteButton.style.visibility = "visible";
+
     profileDeleteButton.addEventListener("click", () => {
       deleteAccount(profileDeleteButton.value);
+      alert("Account Deleted");
     });
+
   } else {
     profileDeleteButton.style.visibility = "hidden";
   }
+
 }
 //Generat post
 export function generatePosts(
@@ -161,6 +160,7 @@ export function generatePosts(
               deleteButton.addEventListener("click", () => {
                 liEl.remove();
                 deletePost(post.id);
+                alert("Your post has been deleted");
               });
             }
             const commentContainer = document.createElement(
@@ -220,23 +220,21 @@ export function generateCategories(): void {
   categoryList.innerHTML = "";
   const resultFromDatabase = getCategories();
   resultFromDatabase.then((res) => {
-    const categoriesContainer = document.getElementById(
-      "forum-container"
-    ) as HTMLDivElement;
+    const categoriesContainer = document.getElementById("forum-container") as HTMLDivElement;
     categoriesContainer.classList.add(content.isActive);
     res.categories.forEach((category) => {
       const categoryListItem = document.createElement("li") as HTMLLIElement;
-      const categoryButton = document.createElement(
-        "button"
-      ) as HTMLButtonElement;
+      const categoryButton = document.createElement("button") as HTMLButtonElement;
       categoryButton.innerText = category.name;
       categoryButton.value = category.id;
       categoryButton.setAttribute("id", "categoryButton");
       categoryList.appendChild(categoryListItem);
       categoryListItem.appendChild(categoryButton);
-      categoryButton.addEventListener("click", () =>
-        generateCategory(category.id)
-      );
+
+      categoryButton.addEventListener("click", () => {
+        console.log(category.id);
+        generateCategory(category.id);
+      });
     });
   });
 }
@@ -245,17 +243,13 @@ export function generateCategories(): void {
 export function generateCategory(id: string) {
   const resultFromDatabase = getCategory(id);
   resultFromDatabase.then((res) => {
-    const postHeader = document.getElementById(
-      "post-header"
-    ) as HTMLHeadingElement;
-    const postDescription = document.getElementById(
-      "post-description"
-    ) as HTMLParagraphElement;
+    const postHeader = document.getElementById("post-header") as HTMLHeadingElement;
+    const postDescription = document.getElementById("post-description") as HTMLParagraphElement;
     postHeader.innerText = res.name;
     postDescription.innerText = res.description;
     generatePostsByCategory(id);
     formContainer.innerHTML = "";
-    generatePostInputForm();
+    generatePostInputForm(id);
   });
 }
 
@@ -313,12 +307,11 @@ function generateComments(container: HTMLDivElement, id: string) {
             }
           });
           if (comment.author === userData?.username) {
-            const deleteButton = document.createElement(
-              "button"
-            ) as HTMLButtonElement;
+            const deleteButton = document.createElement("button") as HTMLButtonElement;
             commentPost.prepend(deleteButton);
             deleteButton.innerText = "X";
             deleteButton.classList.add("delete-button");
+
             deleteButton.addEventListener("click", () => {
               commentPost.remove();
               deleteComment(id, comment.id);
@@ -338,11 +331,9 @@ function generateComments(container: HTMLDivElement, id: string) {
 // Global variable to be able to clear in innerHTML of the form to prevent duplicating
 const formContainer = document.createElement("div");
 
-// Generate input form for categories
-function generatePostInputForm() {
-  const formContainerParent = document.querySelector(
-    "#post-container"
-  ) as HTMLDivElement;
+function generatePostInputForm(categoryID) {
+  const categoryId = categoryID;
+  const formContainerParent = document.querySelector("#post-container") as HTMLDivElement;
 
   formContainer.innerHTML = "";
   formContainerParent.append(formContainer);
@@ -380,37 +371,29 @@ function generatePostInputForm() {
   sendPostButton.type = "submit";
 
   // Event Listener for logged in users sending a post
-  // const sendPostButton = document.querySelector("#post-button") as HTMLButtonElement;
   sendPostButton.addEventListener("click", (event) => {
     event.preventDefault();
-    createPost();
+    createPost(categoryId);
   });
 }
 
-function generateCommentInputForm(
-  commentContainer: HTMLDivElement,
-  postId: string
-) {
+function generateCommentInputForm(commentContainer: HTMLDivElement, postId: string) {
   const formContainer = document.createElement("div") as HTMLDivElement;
   commentContainer.append(formContainer);
-  //formContainer.setAttribute("id", "input-field");
 
   const postForm = document.createElement("form");
   postForm.classList.add("comment-form");
   formContainer.append(postForm);
 
   const messageInput = document.createElement("textarea");
-  //messageInput.setAttribute("id", "message");
   postForm.append(messageInput);
 
   const sendPostButton = document.createElement("button");
-  //sendPostButton.setAttribute("id", "post-button");
   postForm.append(sendPostButton);
   sendPostButton.innerText = "Send";
   sendPostButton.type = "submit";
 
   // Event Listener for logged in users sending a post
-  // const sendPostButton = document.querySelector("#post-button") as HTMLButtonElement;
   sendPostButton.addEventListener("click", (event) => {
     event.preventDefault();
     console.log(messageInput.value);
@@ -425,26 +408,19 @@ function generateCommentInputForm(
       commentContainer.innerHTML = "";
       generateComments(commentContainer, postId);
     });
-    //createPost();
   });
 }
 
 //Generat user list on nav
 function generateUserList() {
-  const userHeadginContainer = document.getElementById(
-    "userHeadingContainer"
-  ) as HTMLDivElement;
+  const userHeadingContainer = document.getElementById("userHeadingContainer") as HTMLDivElement;
 
-  // ADDED FORUM-CONTAINER WHICH WAS GETTING LOST
-  const formContainer = document.getElementById(
-    "forum-container"
-  ) as HTMLDivElement;
+  const formContainer = document.getElementById("forum-container") as HTMLDivElement;
 
   const userList = document.getElementById("users-ul") as HTMLUListElement;
   userList.innerHTML = "";
 
-  // GAVE THE ACTIVE CLASS
-  userHeadginContainer.classList.add(content.isActive);
+  userHeadingContainer.classList.add(content.isActive);
 
   formContainer.classList.add(content.isActive);
   const responseFromDatabase = getUsers();
