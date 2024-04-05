@@ -50,6 +50,6 @@ export function generateCategories(): void {
         "forum-container"
       ) as HTMLDivElement;
       formContainer.innerHTML = ""; */
-      generatePostInputForm();
+      generatePostInputForm(id);
     });
   }

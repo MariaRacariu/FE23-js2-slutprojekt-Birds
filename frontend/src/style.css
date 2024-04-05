@@ -21,10 +21,14 @@ img {
 
 .allWrapper img {
     width: 18%;
+    height: 153px;
 }
 .allWrapper .like-button{
     width: 26px;
     height: 24px;
+}
+.allWrapper .dislike-button{
+    transform: scale(-1);
 }
 .postWrapper {
     width: 86%;

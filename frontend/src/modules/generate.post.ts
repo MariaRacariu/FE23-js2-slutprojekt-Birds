@@ -13,6 +13,7 @@ import { generateProfil } from "./generate.profile.ts";
 import { displayProfileImage } from "./display.ts";
 import { generateUserList } from "./generate.userList.ts";
 import { generateComments } from "./generate.comments.ts";
+import { addComment, likeOrDislikePost, updateProfile } from "./eventListener.post.ts";
 
 export function generatePosts(
   postListResponse: Promise<PostListResponse>
@@ -40,6 +41,14 @@ export function generatePosts(
             const likeButton = document.createElement("img");
             likeButton.classList.add("like-button");
             likeButton.setAttribute("src", like);
+            const numberOfLikes = document.createElement("p") as HTMLParagraphElement;
+            numberOfLikes.innerText = post.likes? `${post.likes.length}` : "";
+            const dislikeButton = document.createElement("img");
+            dislikeButton.classList.add("dislike-button");
+            dislikeButton.classList.add("like-button");
+            dislikeButton.setAttribute("src", like);
+            likeButton.setAttribute("src", like);
+            numberOfLikes.innerText = post.likes? `${post.likes.length}` : "";
             const authorP = document.createElement(
               "button"
             ) as HTMLButtonElement;
@@ -49,8 +58,6 @@ export function generatePosts(
               "button"
             ) as HTMLButtonElement;
             ulEl.appendChild(liEl);
-            /*           liEl.appendChild(profileImage);
-            liEl.appendChild(wrapContainer) */
             commentButton.classList.add("buttonComment");
             postContainer.appendChild(profileImage);
             postContainer.appendChild(postWrapper);
@@ -58,6 +65,8 @@ export function generatePosts(
             postWrapper.appendChild(titleP);
             postWrapper.appendChild(bodyP);
             postWrapper.appendChild(likeButton);
+            postWrapper.appendChild(dislikeButton);
+            postWrapper.appendChild(numberOfLikes);
 
             liEl.appendChild(postContainer);
             postWrapper.classList.add("postWrapper");
@@ -86,25 +95,19 @@ export function generatePosts(
               deleteButton.addEventListener("click", () => {
                 liEl.remove();
                 deletePost(post.id);
+                alert("Your post has been deleted");
               });
             }
             const commentContainer = document.createElement(
               "div"
             ) as HTMLDivElement;
             liEl.appendChild(commentContainer);
-            commentButton.addEventListener("click", () => {
-              //if()
-              generateComments(commentContainer, post.id);
-              //else deleteComments(commentContainer, post.id)
-            });
-            // Generate new Profile based on which post is selected to view
-            authorP.addEventListener("click", () => {
-              const getUserInfo = getUser(authorP.value);
-              getUserInfo.then((res) => {
-                generateProfil(res);
-              });
-              showPosts(authorP.value);
-            });
+
+            likeButton.addEventListener('click', () => likeOrDislikePost(post.id,numberOfLikes, 'like'));
+            dislikeButton.addEventListener('click', () => likeOrDislikePost(post.id,numberOfLikes, 'dislike'));
+            commentButton.addEventListener("click", () => addComment(commentContainer, post.id));
+            authorP.addEventListener("click", () => updateProfile(res.username));
+
           });
         });
     } else {
@@ -137,6 +140,7 @@ export function generatePostsByCategory(id: string): void {
   const resultFromDatabase = getPostsByCategory(id);
   generatePosts(resultFromDatabase);
 }
+
 function clearPosts() {
   const div = document.getElementById("post-ul") as HTMLUListElement;
   div.innerHTML = "";

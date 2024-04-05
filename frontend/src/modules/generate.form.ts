@@ -10,7 +10,7 @@ import { generateComments } from "./generate.comments.ts";
 
 const formContainer = document.createElement("div");
 
-export function generatePostInputForm() {
+export function generatePostInputForm(categoryID:String) {
     const formContainerParent = document.querySelector(
       "#post-container"
     ) as HTMLDivElement;
@@ -54,7 +54,7 @@ export function generatePostInputForm() {
     // const sendPostButton = document.querySelector("#post-button") as HTMLButtonElement;
     sendPostButton.addEventListener("click", (event) => {
       event.preventDefault();
-      createPost();
+      createPost(categoryID);
     });
   }
   

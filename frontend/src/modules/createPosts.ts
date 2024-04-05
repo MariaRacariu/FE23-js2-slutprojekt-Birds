@@ -6,7 +6,7 @@
 // to the database as the category. Lastly we call the generateLatestPost
 
 import { userData } from "./logIn";
-import { generateLatestPost } from "./generate.post";
+import { generateLatestPost, generatePosts, generatePostsByCategory } from "./generate.post";
 
 const databaseLinkCreatePosts = "http://localhost:3000/posts";
 
@@ -41,7 +41,7 @@ export function createPost(categoryId) {
         return fetch(databaseLinkCreatePosts, sendData)
             .then(response => {
                 response.json().then((data) => {
-                    generateLatestPost();
+                    generatePostsByCategory(data.category);
                     alert("Your post has been submitted");
                 })
             })

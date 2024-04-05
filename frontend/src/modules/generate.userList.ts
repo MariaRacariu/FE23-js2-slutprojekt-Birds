@@ -5,7 +5,7 @@ import {
 import { generateProfil } from "./generate.profile";
 
 export function generateUserList() {
-    const userHeadginContainer = document.getElementById(
+    const userHeadingContainer = document.getElementById(
       "userHeadingContainer"
     ) as HTMLDivElement;
   
@@ -18,7 +18,7 @@ export function generateUserList() {
     userList.innerHTML = "";
   
     // GAVE THE ACTIVE CLASS
-    userHeadginContainer.classList.add(content.isActive);
+    userHeadingContainer.classList.add(content.isActive);
   
     formContainer.classList.add(content.isActive);
     const responseFromDatabase = getUsers();

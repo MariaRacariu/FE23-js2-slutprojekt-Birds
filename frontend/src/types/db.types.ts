@@ -1,3 +1,4 @@
+//Global types that database use.
 export type Database = {
   users: { [key: string]: User };
   posts: Post[];
@@ -6,15 +7,21 @@ export type Database = {
 };
 export type DatabaseApiBody =
   | CreateCommentArgs
+  | LikeDislikePostArgs
   | null
   | undefined;
-  
+
+
+export type LikeDislikePostArgs = {
+  author: string;
+}  
+
 export type CreateCommentArgs = {
-    author: string;
-    postId: string;
-    body: string;
-  };
-// ?
+  author: string;
+  postId: string;
+  body: string;
+};
+
 export type User = {
   password: string;
   profile_pic: string;
@@ -26,6 +33,7 @@ export type Post = {
   body: string;
   category: string;
   created_at: number;
+  likes?: string[];
 };
 export type Category = { name: string; description: string };
 export type Comment = {
