@@ -66,6 +66,22 @@
       "category": "anime",
       "created_at": 1711963301284,
       "likes": []
+    },
+    {
+      "id": "0393032b-c2aa-4464-bfb6-8d2eb0f5e1fd",
+      "author": "maria",
+      "title": "Testing if weather Works",
+      "body": "weather is very bad",
+      "category": "anime",
+      "created_at": 1712278002069
+    },
+    {
+      "id": "953ce092-e0f9-4b70-a5f3-b6fe5747f22e",
+      "author": "maria",
+      "title": "testing IT",
+      "body": "testing",
+      "category": "datorit",
+      "created_at": 1712278691045
     }
   ],
   "users": {

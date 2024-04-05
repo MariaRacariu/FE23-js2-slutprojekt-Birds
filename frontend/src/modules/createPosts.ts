@@ -5,15 +5,14 @@ import { generateLatestPost } from "./generat";
 const databaseLinkCreatePosts = "http://localhost:3000/posts";
 
 
-export function createPost() {
+
+export function createPost(categoryId) {
     const userInputTitle = document.querySelector("#title") as HTMLInputElement;
     const userInputMessage = document.querySelector("#message") as HTMLInputElement;
-    const chosenCategory = document.querySelector("#categoryButton") as HTMLButtonElement;
 
     const userInputTitleValue = userInputTitle.value;
     const userInputMessageValue = userInputMessage.value;
-    const chosenCategoryValue = chosenCategory.value;
-
+    const chosenCategoryValue = categoryId;
 
     interface Post {
         author: string,
@@ -37,6 +36,7 @@ export function createPost() {
             .then(response => {
                 response.json().then((data) => {
                     generateLatestPost();
+                    alert("Your post has been submitted");
                 })
             })
     }

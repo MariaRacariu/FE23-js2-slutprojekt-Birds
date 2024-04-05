@@ -62,7 +62,6 @@ export function generateProfil(userData: UserData): void {
     // hideAllContentBoxes();
   });
 
-  // Maria
   showPosts(userData.username);
 
   //Change html class to "active" from css style .content-box display none
@@ -70,7 +69,6 @@ export function generateProfil(userData: UserData): void {
   generateLatestPost();
 
   // Delete Account Button
-
   if (userData.username === profileDeleteButton.value) {
     profileDeleteButton.style.visibility = "visible";
 
@@ -158,6 +156,7 @@ export function generatePosts(
               deleteButton.addEventListener("click", () => {
                 liEl.remove();
                 deletePost(post.id);
+                alert("Your post has been deleted");
               });
             }
             const commentContainer = document.createElement(
@@ -217,23 +216,21 @@ export function generateCategories(): void {
   categoryList.innerHTML = "";
   const resultFromDatabase = getCategories();
   resultFromDatabase.then((res) => {
-    const categoriesContainer = document.getElementById(
-      "forum-container"
-    ) as HTMLDivElement;
+    const categoriesContainer = document.getElementById("forum-container") as HTMLDivElement;
     categoriesContainer.classList.add(content.isActive);
     res.categories.forEach((category) => {
       const categoryListItem = document.createElement("li") as HTMLLIElement;
-      const categoryButton = document.createElement(
-        "button"
-      ) as HTMLButtonElement;
+      const categoryButton = document.createElement("button") as HTMLButtonElement;
       categoryButton.innerText = category.name;
       categoryButton.value = category.id;
       categoryButton.setAttribute("id", "categoryButton");
       categoryList.appendChild(categoryListItem);
       categoryListItem.appendChild(categoryButton);
-      categoryButton.addEventListener("click", () =>
-        generateCategory(category.id)
-      );
+
+      categoryButton.addEventListener("click", () => {
+        console.log(category.id);
+        generateCategory(category.id);
+      });
     });
   });
 }
@@ -242,17 +239,13 @@ export function generateCategories(): void {
 export function generateCategory(id: string) {
   const resultFromDatabase = getCategory(id);
   resultFromDatabase.then((res) => {
-    const postHeader = document.getElementById(
-      "post-header"
-    ) as HTMLHeadingElement;
-    const postDescription = document.getElementById(
-      "post-description"
-    ) as HTMLParagraphElement;
+    const postHeader = document.getElementById("post-header") as HTMLHeadingElement;
+    const postDescription = document.getElementById("post-description") as HTMLParagraphElement;
     postHeader.innerText = res.name;
     postDescription.innerText = res.description;
     generatePostsByCategory(id);
     formContainer.innerHTML = "";
-    generatePostInputForm();
+    generatePostInputForm(id);
   });
 }
 
@@ -339,10 +332,9 @@ function generateComments(container: HTMLDivElement, id: string) {
 const formContainer = document.createElement("div");
 
 // Generate input form for categories
-function generatePostInputForm() {
-  const formContainerParent = document.querySelector(
-    "#post-container"
-  ) as HTMLDivElement;
+function generatePostInputForm(categoryID) {
+  const categoryId = categoryID;
+  const formContainerParent = document.querySelector("#post-container") as HTMLDivElement;
 
   formContainer.innerHTML = "";
   formContainerParent.append(formContainer);
@@ -383,7 +375,7 @@ function generatePostInputForm() {
   // const sendPostButton = document.querySelector("#post-button") as HTMLButtonElement;
   sendPostButton.addEventListener("click", (event) => {
     event.preventDefault();
-    createPost();
+    createPost(categoryId);
   });
 }
 
