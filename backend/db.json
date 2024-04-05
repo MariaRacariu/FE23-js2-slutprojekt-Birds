@@ -82,6 +82,14 @@
       "body": "testing",
       "category": "datorit",
       "created_at": 1712278691045
+    },
+    {
+      "id": "a87f5ef8-e826-4813-9e88-928efed3ed82",
+      "author": "maria",
+      "title": "test",
+      "body": "test",
+      "category": "cars",
+      "created_at": 1712280087892
     }
   ],
   "users": {

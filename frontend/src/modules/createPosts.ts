@@ -1,4 +1,10 @@
-import { Category } from "../types/db.types";
+// Author: Maria Racariu
+
+// This file send a POST request to the API for every Forum
+// We get the the user input title and message
+// Depending which Forum the user has clicked on we send that value
+// to the database as the category. Lastly we call the generateLatestPost
+
 import { userData } from "./logIn";
 import { generateLatestPost } from "./generat";
 
@@ -22,7 +28,7 @@ export function createPost(categoryId) {
     }
 
     function sendPost(post: Post): Promise<void> {
-        console.log(post);
+        // console.log(post);
         const sendData: RequestInit = {
             method: "POST",
             headers: {
@@ -40,8 +46,6 @@ export function createPost(categoryId) {
                 })
             })
     }
-
-    console.log(userData.username, userInputTitleValue, userInputMessageValue, chosenCategoryValue);
 
     sendPost({ author: userData.username, title: userInputTitleValue, body: userInputMessageValue, category: chosenCategoryValue });
 }   

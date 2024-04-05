@@ -303,12 +303,11 @@ function generateComments(container: HTMLDivElement, id: string) {
             }
           });
           if (comment.author === userData?.username) {
-            const deleteButton = document.createElement(
-              "button"
-            ) as HTMLButtonElement;
+            const deleteButton = document.createElement("button") as HTMLButtonElement;
             commentPost.prepend(deleteButton);
             deleteButton.innerText = "X";
             deleteButton.classList.add("delete-button");
+
             deleteButton.addEventListener("click", () => {
               commentPost.remove();
               deleteComment(id, comment.id);
@@ -328,7 +327,6 @@ function generateComments(container: HTMLDivElement, id: string) {
 // Global variable to be able to clear in innerHTML of the form to prevent duplicating
 const formContainer = document.createElement("div");
 
-// Generate input form for categories
 function generatePostInputForm(categoryID) {
   const categoryId = categoryID;
   const formContainerParent = document.querySelector("#post-container") as HTMLDivElement;
@@ -369,37 +367,29 @@ function generatePostInputForm(categoryID) {
   sendPostButton.type = "submit";
 
   // Event Listener for logged in users sending a post
-  // const sendPostButton = document.querySelector("#post-button") as HTMLButtonElement;
   sendPostButton.addEventListener("click", (event) => {
     event.preventDefault();
     createPost(categoryId);
   });
 }
 
-function generateCommentInputForm(
-  commentContainer: HTMLDivElement,
-  postId: string
-) {
+function generateCommentInputForm(commentContainer: HTMLDivElement, postId: string) {
   const formContainer = document.createElement("div") as HTMLDivElement;
   commentContainer.append(formContainer);
-  //formContainer.setAttribute("id", "input-field");
 
   const postForm = document.createElement("form");
   postForm.classList.add("comment-form");
   formContainer.append(postForm);
 
   const messageInput = document.createElement("textarea");
-  //messageInput.setAttribute("id", "message");
   postForm.append(messageInput);
 
   const sendPostButton = document.createElement("button");
-  //sendPostButton.setAttribute("id", "post-button");
   postForm.append(sendPostButton);
   sendPostButton.innerText = "Send";
   sendPostButton.type = "submit";
 
   // Event Listener for logged in users sending a post
-  // const sendPostButton = document.querySelector("#post-button") as HTMLButtonElement;
   sendPostButton.addEventListener("click", (event) => {
     event.preventDefault();
     console.log(messageInput.value);
@@ -414,26 +404,19 @@ function generateCommentInputForm(
       commentContainer.innerHTML = "";
       generateComments(commentContainer, postId);
     });
-    //createPost();
   });
 }
 
 //Generat user list on nav
 function generateUserList() {
-  const userHeadginContainer = document.getElementById(
-    "userHeadingContainer"
-  ) as HTMLDivElement;
+  const userHeadingContainer = document.getElementById("userHeadingContainer") as HTMLDivElement;
 
-  // ADDED FORUM-CONTAINER WHICH WAS GETTING LOST
-  const formContainer = document.getElementById(
-    "forum-container"
-  ) as HTMLDivElement;
+  const formContainer = document.getElementById("forum-container") as HTMLDivElement;
 
   const userList = document.getElementById("users-ul") as HTMLUListElement;
   userList.innerHTML = "";
 
-  // GAVE THE ACTIVE CLASS
-  userHeadginContainer.classList.add(content.isActive);
+  userHeadingContainer.classList.add(content.isActive);
 
   formContainer.classList.add(content.isActive);
   const responseFromDatabase = getUsers();
