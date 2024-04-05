@@ -54,9 +54,17 @@ export function logInUser() {
           errorMessageElement.innerText = errorMessage;
           errorMessageElement.style.color = "red";
         } else {
-          const profileDeleteButton = document.querySelector(
-            "#deleteAccountButtonContainer"
-          ) as HTMLButtonElement;
+          const logOutButton = document.querySelector("#logOutButton") as HTMLButtonElement;
+          logOutButton.style.visibility = "visible";
+
+          const logInButton = document.querySelector("#idBu") as HTMLButtonElement;
+          logInButton.style.visibility = "hidden";
+
+          const SignUpButton = document.querySelector("#signupButton") as HTMLButtonElement;
+          SignUpButton.style.visibility = "hidden";
+
+
+          const profileDeleteButton = document.querySelector("#deleteAccountButtonContainer") as HTMLButtonElement;
           profileDeleteButton.value = "";
           profileDeleteButton.value = data.username;
           userData = data;

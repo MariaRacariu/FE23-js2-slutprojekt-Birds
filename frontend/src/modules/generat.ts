@@ -53,13 +53,10 @@ export function generateProfil(userData: UserData): void {
   }
 
   // Log out button, hides the profile page and clears data info
-  const logOutButton = document.querySelector(
-    "#logOutButton"
-  ) as HTMLButtonElement;
+  const logOutButton = document.querySelector("#logOutButton") as HTMLButtonElement;
   logOutButton.addEventListener("click", () => {
     window.localStorage.removeItem("forum_userdata");
     window.location.reload();
-    // hideAllContentBoxes();
   });
 
   showPosts(userData.username);
