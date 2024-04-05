@@ -6,7 +6,7 @@
 // to the database as the category. Lastly we call the generateLatestPost
 
 import { userData } from "./logIn";
-import { generateLatestPost, generatePosts, generatePostsByCategory } from "./generate.post";
+import { generatePostsByCategory } from "./generate.post";
 
 const databaseLinkCreatePosts = "http://localhost:3000/posts";
 
