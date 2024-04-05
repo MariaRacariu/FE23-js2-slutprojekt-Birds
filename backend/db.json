@@ -8,7 +8,7 @@
       "category": "anime",
       "created_at": 1710974917,
       "likes": [
-        "bora"
+        "luna"
       ]
     },
     {
@@ -77,7 +77,10 @@
       "title": "Testing if weather Works",
       "body": "weather is very bad",
       "category": "anime",
-      "created_at": 1712278002069
+      "created_at": 1712278002069,
+      "likes": [
+        "luna"
+      ]
     },
     {
       "id": "953ce092-e0f9-4b70-a5f3-b6fe5747f22e",
@@ -148,10 +151,6 @@
     "luna": {
       "password": "123",
       "profile_pic": "image1"
-    },
-    "bora": {
-      "password": "345",
-      "profile_pic": "image2"
     },
     "Charles Leclerc": {
       "password": "testing",

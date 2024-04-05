@@ -41,7 +41,18 @@ export async function deleteUser(username: string): Promise<DBResponse> {
   const db = await readJsonFile();
 
   if (!db.users[username]) return createErrorResponse(404, "User not found");
+  const posts = db.posts.filter((post) => post.author !== username);
+  const comments = {};
+  Object.keys(db.comments).forEach(
+    (postId) =>
+      (comments[postId] = db.comments[postId].filter(
+        (comment) => comment.author !== username
+      ))
+  );
 
+  db.posts = posts;
+  db.comments = comments;
+  
   delete db.users[username];
 
   return await writeJsonFile(db).then(() =>
