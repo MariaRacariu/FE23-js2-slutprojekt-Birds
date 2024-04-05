@@ -1,4 +1,4 @@
-
+//constant variables that should be reused
 export const content = {
     isActive: 'content-box-active',
     name: 'content-box'

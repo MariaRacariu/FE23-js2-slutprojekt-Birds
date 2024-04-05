@@ -1,4 +1,7 @@
-import { generateProfil, generateCategories } from "./generat.ts";
+import { generateCategories } from "./generate.categories";
+import { generateProfil } from "./generate.profile";
+
+
 
 const databaseLinkLogIn = "http://localhost:3000/auth/login";
 

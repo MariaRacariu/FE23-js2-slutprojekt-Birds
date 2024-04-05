@@ -1,13 +1,12 @@
 import { displayLogin, displaySignup } from "./modules/display";
-import {
-  generateProfil,
-  generateLatestPost,
-  generateCategories,
-} from "./modules/generat";
+
 /* import { getPost } from "./modules/fetch"; */
 import { logInUser, userData } from "./modules/logIn.ts";
 import { createAccount } from "./modules/createAccount.ts";
 import { createPost } from "./modules/createPosts.ts";
+import { generateProfil } from "./modules/generate.profile.ts";
+import { generateLatestPost } from "./modules/generate.post.ts";
+import { generateCategories } from "./modules/generate.categories.ts";
 
 const buttonLog = document.getElementById("idBu") as HTMLButtonElement;
 buttonLog.addEventListener("click", displayLogin);
@@ -45,12 +44,12 @@ createAccountFormButton.addEventListener("click", (event) => {
 // });
 
 if (userData) {
-  //generateCategories();
+  generateCategories();
   generateProfil(userData);
 } else {
   generateLatestPost();
 }
 
 // For not logged in users to be able to view posts
-generateLatestPost();
-generateCategories();
+//generateLatestPost();
+//generateCategories();

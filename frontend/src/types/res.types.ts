@@ -11,7 +11,13 @@ export type ResponseDataType =
   | PostResponse
   | DeleteResponse
   | CommentListResponse
+  | LikePostResponse
   | ErrorResponse;
+
+export type LikePostResponse = {
+  like_count: number,
+  error?: string
+}
 
 export type DBResponse = {
   status: number;

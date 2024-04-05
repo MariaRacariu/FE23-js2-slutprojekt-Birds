@@ -27,7 +27,9 @@
       "body": "You shouldn't, thats dangerous!",
       "category": "meme",
       "created_at": 1710976732877,
-      "likes": []
+      "likes": [
+        "Anne"
+      ]
     },
     {
       "id": "ef321844-76c3-448c-b479-358a71ba7850",
@@ -65,7 +67,9 @@
       "body": "Wewe wowo",
       "category": "anime",
       "created_at": 1711963301284,
-      "likes": []
+      "likes": [
+        "Anne"
+      ]
     },
     {
       "id": "0393032b-c2aa-4464-bfb6-8d2eb0f5e1fd",
@@ -81,7 +85,10 @@
       "title": "testing IT",
       "body": "testing",
       "category": "datorit",
-      "created_at": 1712278691045
+      "created_at": 1712278691045,
+      "likes": [
+        "Anne"
+      ]
     },
     {
       "id": "a87f5ef8-e826-4813-9e88-928efed3ed82",
@@ -89,7 +96,52 @@
       "title": "test",
       "body": "test",
       "category": "cars",
-      "created_at": 1712280087892
+      "created_at": 1712280087892,
+      "likes": []
+    },
+    {
+      "id": "4a972a0b-1e34-4eac-8c03-aa9ad880137f",
+      "author": "Anne",
+      "title": "test",
+      "body": "dsadsa",
+      "category": "cars",
+      "created_at": 1712335452733,
+      "likes": [
+        "Anne"
+      ]
+    },
+    {
+      "id": "cb2ee3e3-5aa7-4a5d-a79b-64a98702a21b",
+      "author": "Anne",
+      "title": "test",
+      "body": "Super long textSuper long textSuper long textSuper long textSuper long textSuper long textSuper long textSuper long textSuper long textSuper long textSuper long textSuper long textSuper long textSuper long textSuper long textSuper long textSuper long textSuper long textSuper long textSuper long textSuper long textSuper long textSuper long textSuper long textSuper long textSuper long textSuper long textSuper long textSuper long textSuper long textSuper long textSuper long textSuper long textSuper long textSuper long textSuper long textSuper long textSuper long textSuper long textSuper long textSuper long textSuper long textSuper long textSuper long textSuper long textSuper long textSuper long textSuper long text",
+      "category": "movies",
+      "created_at": 1712337310114,
+      "likes": []
+    },
+    {
+      "id": "3d1339a4-e7db-4357-ad83-c91c6bd302b2",
+      "author": "Anne",
+      "title": "test",
+      "body": "asd",
+      "category": "weather",
+      "created_at": 1712339353056
+    },
+    {
+      "id": "86b6447c-9625-4337-bc7a-8c9e41ad9daa",
+      "author": "Anne",
+      "title": "fsa",
+      "body": "dsa",
+      "category": "weather",
+      "created_at": 1712339372342
+    },
+    {
+      "id": "120be040-800d-415a-8096-acb3aed1ac1c",
+      "author": "Anne",
+      "title": "dsa",
+      "body": "dsa",
+      "category": "movies",
+      "created_at": 1712339713507
     }
   ],
   "users": {
@@ -181,6 +233,7 @@
         "body": "cat?",
         "created_at": 1712226071108
       }
-    ]
+    ],
+    "a87f5ef8-e826-4813-9e88-928efed3ed82": []
   }
 }

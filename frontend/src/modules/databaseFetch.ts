@@ -1,5 +1,5 @@
-import { CreateCommentArgs, DatabaseApiBody } from '../types/db.types';
-import { PostListResponse, ResponseDataType, CategoryListResponse, CategoryResponse, CommentListResponse, UserListResponse, UserResponse } from '../types/res.types'
+import { CreateCommentArgs, DatabaseApiBody, LikeDislikePostArgs } from '../types/db.types';
+import { PostListResponse, ResponseDataType, CategoryListResponse, CategoryResponse, CommentListResponse, UserListResponse, UserResponse, LikePostResponse } from '../types/res.types'
 
 export async function doFetchToDatabase(endpoint: string, method: string, body?: DatabaseApiBody): Promise<ResponseDataType> {
   const res = await fetch(`http://localhost:3000${endpoint}`, {
@@ -62,6 +62,14 @@ export async function postComment(postId: string, author: string, comment: strin
     body: comment
   }
   const resultFromDatabase = doFetchToDatabase(`/posts/${postId}/comments`, 'post', body) as Promise<ResponseDataType>;
+  return resultFromDatabase
+}
+export async function postLikeOrDisLike(postId: string, author: string, method:string): Promise<LikePostResponse> {
+
+  const body: LikeDislikePostArgs = {
+    author: author
+  }
+  const resultFromDatabase = doFetchToDatabase(`/posts/${postId}/${method}`, 'post', body) as Promise<LikePostResponse>;
   return resultFromDatabase
 }
 
