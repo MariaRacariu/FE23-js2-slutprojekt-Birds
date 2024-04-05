@@ -101,10 +101,6 @@
       "password": "345",
       "profile_pic": "image2"
     },
-    "alex": {
-      "password": "345",
-      "profile_pic": "image1"
-    },
     "Charles Leclerc": {
       "password": "testing",
       "profile_pic": "image2"
@@ -141,7 +137,7 @@
     },
     "cars": {
       "name": "Cars",
-      "sss": "4-wheeled monsters"
+      "description": "4-wheeled monsters"
     }
   },
   "comments": {
