@@ -14,6 +14,7 @@ import {
   postComment,
   getUsersPosts,
   deleteAccount,
+  deleteComment,
 } from "./databaseFetch";
 import image1 from "../img/image1.png";
 import image2 from "../img/image2.png";
@@ -28,10 +29,18 @@ export function generateProfil(userData: UserData): void {
   // displayInput();
   //TODO: Fetch user
   //user = login user
-  const profileContainer = document.getElementById(profile.id) as HTMLDivElement;
-  const profileHeading = document.getElementById(profile.name) as HTMLHeadingElement;
-  const profileImage = document.getElementById(profile.image) as HTMLImageElement;
-  const profileDeleteButton = document.querySelector("#deleteAccountButtonContainer") as HTMLButtonElement;
+  const profileContainer = document.getElementById(
+    profile.id
+  ) as HTMLDivElement;
+  const profileHeading = document.getElementById(
+    profile.name
+  ) as HTMLHeadingElement;
+  const profileImage = document.getElementById(
+    profile.image
+  ) as HTMLImageElement;
+  const profileDeleteButton = document.querySelector(
+    "#deleteAccountButtonContainer"
+  ) as HTMLButtonElement;
   // Showing the current user logged in name
   profileHeading.innerText = `Profile: ${userData.username}`;
 
@@ -44,9 +53,13 @@ export function generateProfil(userData: UserData): void {
   }
 
   // Log out button, hides the profile page and clears data info
-  const logOutButton = document.querySelector("#logOutButton") as HTMLButtonElement;
+  const logOutButton = document.querySelector(
+    "#logOutButton"
+  ) as HTMLButtonElement;
   logOutButton.addEventListener("click", () => {
-    hideAllContentBoxes();
+    window.localStorage.removeItem("forum_userdata");
+    window.location.reload();
+    // hideAllContentBoxes();
   });
 
   // Maria
@@ -60,16 +73,21 @@ export function generateProfil(userData: UserData): void {
 
   if (userData.username === profileDeleteButton.value) {
     profileDeleteButton.style.visibility = "visible";
+
     profileDeleteButton.addEventListener("click", () => {
       deleteAccount(profileDeleteButton.value);
       alert("Account Deleted");
-    })
+    });
+
   } else {
     profileDeleteButton.style.visibility = "hidden";
   }
+
 }
 //Generat post
-export function generatePosts(postListResponse: Promise<PostListResponse>): void {
+export function generatePosts(
+  postListResponse: Promise<PostListResponse>
+): void {
   clearPosts();
   const ulEl = document.getElementById("post-ul") as HTMLUListElement;
   postListResponse.then((res) => {
@@ -90,9 +108,6 @@ export function generatePosts(postListResponse: Promise<PostListResponse>): void
             ) as HTMLImageElement;
             const postWrapper = document.createElement("div") as HTMLDivElement;
             const liEl = document.createElement("li") as HTMLLIElement;
-            const deleteButton = document.createElement(
-              "button"
-            ) as HTMLButtonElement;
             const authorP = document.createElement(
               "button"
             ) as HTMLButtonElement;
@@ -150,7 +165,9 @@ export function generatePosts(postListResponse: Promise<PostListResponse>): void
             ) as HTMLDivElement;
             liEl.appendChild(commentContainer);
             commentButton.addEventListener("click", () => {
+              //if()
               generateComments(commentContainer, post.id);
+              //else deleteComments(commentContainer, post.id)
             });
             // Generate new Profile based on which post is selected to view
             authorP.addEventListener("click", () => {
@@ -246,54 +263,76 @@ function clearPosts() {
 
 //Generat comments section list.
 function generateComments(container: HTMLDivElement, id: string) {
-  container.innerHTML = "";
-  const commentsGeneratList = document.createElement("ul") as HTMLUListElement;
-  const resultFromDatabase = getAllCommentsByPost(id);
-  resultFromDatabase
-    .then((res) => {
-      const { comments } = res;
-      comments.forEach((comment) => {
-        console.log(comment);
-        const commentPost = document.createElement("li") as HTMLLIElement;
-        const commentContainer = document.createElement(
-          "div"
-        ) as HTMLDivElement;
-        const profileImage = document.createElement("img") as HTMLImageElement;
-        const commentWrapper = document.createElement("div") as HTMLDivElement;
-        const author = document.createElement("p") as HTMLParagraphElement;
-        const commentsText = document.createElement("p");
-        commentWrapper.appendChild(author);
-        commentWrapper.appendChild(commentsText);
-        author.innerText = comment.author;
-        commentsText.innerText = comment.body;
-        commentsGeneratList.appendChild(commentPost);
-        commentPost.appendChild(commentContainer);
-        commentContainer.appendChild(profileImage);
-        commentContainer.appendChild(commentWrapper);
-        container.appendChild(commentsGeneratList);
-        commentWrapper.classList.add("postWrapper");
-        commentContainer.classList.add("allWrapper");
-        commentPost.classList.add("li-post");
+  //toggle comments with generate or remove
+  if (container.innerHTML) {
+    container.innerHTML = "";
+  } else {
+    const commentsGeneratList = document.createElement(
+      "ul"
+    ) as HTMLUListElement;
+    const resultFromDatabase = getAllCommentsByPost(id);
+    resultFromDatabase
+      .then((res) => {
+        const { comments } = res;
+        comments.forEach((comment) => {
+          console.log(comment);
+          const commentPost = document.createElement("li") as HTMLLIElement;
+          const commentContainer = document.createElement(
+            "div"
+          ) as HTMLDivElement;
+          const profileImage = document.createElement(
+            "img"
+          ) as HTMLImageElement;
+          const commentWrapper = document.createElement(
+            "div"
+          ) as HTMLDivElement;
+          const author = document.createElement("p") as HTMLParagraphElement;
+          const commentsText = document.createElement("p");
+          commentWrapper.appendChild(author);
+          commentWrapper.appendChild(commentsText);
+          author.innerText = comment.author;
+          commentsText.innerText = comment.body;
+          commentsGeneratList.appendChild(commentPost);
+          commentPost.appendChild(commentContainer);
+          commentContainer.appendChild(profileImage);
+          commentContainer.appendChild(commentWrapper);
+          container.appendChild(commentsGeneratList);
+          commentWrapper.classList.add("postWrapper");
+          commentContainer.classList.add("allWrapper");
+          commentPost.classList.add("li-post");
 
-        // Display Comments User Profile Picture
-        const resultFromDatabase = getUser(comment.author);
-        resultFromDatabase.then((res) => {
-          if (res.profile_pic === "image1") {
-            profileImage.setAttribute("src", image1);
-          } else if (res.profile_pic === "image2") {
-            profileImage.setAttribute("src", image2);
-          } else if (res.profile_pic === "image3") {
-            profileImage.setAttribute("src", image3);
+          // Display Comments User Profile Picture
+          const resultFromDatabase = getUser(comment.author);
+          resultFromDatabase.then((res) => {
+            if (res.profile_pic === "image1") {
+              profileImage.setAttribute("src", image1);
+            } else if (res.profile_pic === "image2") {
+              profileImage.setAttribute("src", image2);
+            } else if (res.profile_pic === "image3") {
+              profileImage.setAttribute("src", image3);
+            }
+          });
+          if (comment.author === userData?.username) {
+            const deleteButton = document.createElement(
+              "button"
+            ) as HTMLButtonElement;
+            commentPost.prepend(deleteButton);
+            deleteButton.innerText = "X";
+            deleteButton.classList.add("delete-button");
+            deleteButton.addEventListener("click", () => {
+              commentPost.remove();
+              deleteComment(id, comment.id);
+            });
           }
         });
+      })
+      .finally(() => {
+        //check if user is login and then create comment input form
+        if (userData) {
+          generateCommentInputForm(container, id);
+        }
       });
-    })
-    .finally(() => {
-      //check if user is login and then create comment input form
-      if (userData) {
-        generateCommentInputForm(container, id);
-      }
-    });
+  }
 }
 
 // Global variable to be able to clear in innerHTML of the form to prevent duplicating
@@ -357,6 +396,7 @@ function generateCommentInputForm(
   //formContainer.setAttribute("id", "input-field");
 
   const postForm = document.createElement("form");
+  postForm.classList.add("comment-form");
   formContainer.append(postForm);
 
   const messageInput = document.createElement("textarea");
@@ -381,6 +421,8 @@ function generateCommentInputForm(
     );
     //Update comments after it is posted to database
     postResult.then((res) => {
+      //clear comments now so it will create new comments
+      commentContainer.innerHTML = "";
       generateComments(commentContainer, postId);
     });
     //createPost();
