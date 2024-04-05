@@ -1,11 +1,13 @@
 // Author: Maria Racariu
 
+import { generateCategories } from "./generate.categories.ts";
+import { generateProfil } from "./generate.profile.ts";
+
 // This file is used when a User wants to create an account
 // We get the input value from the form that the user inputs their data
 // Using the user input values we send a fetch request to the API
 // Lastly we call the generateProfil function which will display the users profile
 
-import { generateProfil } from "./generat.ts";
 
 const databaseLinkCreateAccount = "http://localhost:3000/users";
 
@@ -46,6 +48,15 @@ export function createAccount() {
                     userData = data;
                     // Send create account response data to generate a users profile information
                     generateProfil(data);
+                    generateCategories();
+                    const logOutButton = document.querySelector("#logOutButton") as HTMLButtonElement;
+                    logOutButton.style.visibility = "visible";
+          
+                    const logInButton = document.querySelector("#idBu") as HTMLButtonElement;
+                    logInButton.style.visibility = "hidden";
+          
+                    const SignUpButton = document.querySelector("#signupButton") as HTMLButtonElement;
+                    SignUpButton.style.visibility = "hidden";
                 })
             })
     }
