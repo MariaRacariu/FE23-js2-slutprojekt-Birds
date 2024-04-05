@@ -12,15 +12,6 @@
       ]
     },
     {
-      "id": "23d3dd",
-      "author": "bora",
-      "title": "How to pee in a bowl",
-      "body": "You shouldn't, thats nasty!",
-      "category": "it",
-      "created_at": 1710975917,
-      "likes": []
-    },
-    {
       "id": "07c0d197-18dd-45c5-a51e-61f4a1cbf9cb",
       "author": "luna",
       "title": "How to dance in a volcano",
@@ -144,7 +135,10 @@
       "title": "dsa",
       "body": "dsa",
       "category": "movies",
-      "created_at": 1712339713507
+      "created_at": 1712339713507,
+      "likes": [
+        "luna"
+      ]
     }
   ],
   "users": {
@@ -215,13 +209,6 @@
         "author": "luna",
         "body": "Anime is interesting browski",
         "created_at": 1711379848119,
-        "likes": []
-      },
-      {
-        "id": "ffff90b6-da1a-406e-b94c-af46dfe65016",
-        "author": "bora",
-        "body": "I think it is bullshit.",
-        "created_at": 1711382997790,
         "likes": []
       }
     ],
